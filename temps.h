@@ -17,4 +17,4 @@ typedef struct temps
 
 } temps;
 
-ini
+initioaslidajlkmc-z.,c
