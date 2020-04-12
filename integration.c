@@ -7,7 +7,7 @@
 //#include "personne.c"
 #include "background.c"
 #include "update_score.c"
-//#include "enigme.c"
+#include "enigme.c"
 #include "vie.c"
 /*#include "obstacle.c"
 #include "ennemi.c"
@@ -26,7 +26,7 @@ background bg;
 score s; vie v;
 //personnage p;
 // les Enigmes 
-//enigme e1,e2,e3,e4,e5,e6;
+enigme e1,e2,e3,e4,e5,e6;
 
 /*
 // Menu
@@ -53,9 +53,9 @@ obstacle o1,o2,o3,o4,o5,o6;
 
 SDL_Surface *ecran=NULL;
 SDL_Rect *position_ecran;
+
 SDL_Event event; 
-//position_ecran.x=0;
-//position_ecran.y=0;
+
 
 /************************************************************************************* INITIALISATION *************************************************************************************/ 
 
@@ -76,7 +76,7 @@ initialiser_background(&bg);
 //initialiser_personnage(&p);
 initialiser_vie(&v);
 initialiser_score(&s);
-//initialiser_enigme(&e1);
+initialiser_enigme(&e1);
 //initialiser_enigme(&e2);
 //initialiser_enigme(&e3);
 //initialiser_enigme(&e4);
@@ -131,7 +131,7 @@ afficher_background(&bg,ecran);
 //afficher_personnage(&p,ecran);
 afficher_score(&s,ecran);
 afficher_vie(&v,ecran);
-//afficher_enigme(&e1,ecran);
+afficher_enigme(&e1,ecran);
 /*
 afficher_obstacle(&o1,ecran);
 afficher_obstacle(&o2,ecran);

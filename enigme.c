@@ -19,12 +19,13 @@ e->img_enigme=IMG_Load("outils/molecule.jpg");
 //e->position_enigme.x=0;
 //e->position_enigme.y=0;
 
-e->position_enigme.w=1600;
-e->position_enigme.h=600;
+e->position_enigme.w=1200;
+e->position_enigme.h=500;
 
 //position sortie de l'erreur
 e->position_erreur.x=640;
 e->position_erreur.y=360;
+
 
 e->reponse=3;
 e->resolu=-1;
