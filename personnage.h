@@ -15,10 +15,11 @@ typedef struct personnage
 }personnage;
 
 
-
 void initialiser_personnage(personnage *p);
 void afficher_personnage(personnage *p,SDL_Surface *ecran);
-
+void deplacement_clavier(personnage *p,int sens,ecran);
+void animation_clavier(personnage *p,int sens);
+void Free_all(personnage *p);
 
 
 

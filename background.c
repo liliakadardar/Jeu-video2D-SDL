@@ -44,14 +44,14 @@ SDL_BlitSurface(bg->img_bg[1],&(bg->scroll),ecran,NULL);
 }
 /*
 
-void animation_bg(background *bg, SDL_Surface *ecran )
+void animation_bg(int sens, background *bg, SDL_Surface *ecran )
 {
 
 // on va travailler l'annimation 
 }
 
 
-void scrolling_bg(background *bg, SDL_Surface *ecran)
+void scrolling_bg(int sens,background *bg, SDL_Surface *ecran)
 {
 
 }

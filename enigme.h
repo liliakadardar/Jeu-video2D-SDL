@@ -14,13 +14,12 @@ typedef struct enigme
 {
 SDL_Surface *img_enigme;
 SDL_Rect position_enigme;
-
 SDL_Rect position_Bg;
 
 SDL_Surface *erreur_enigme;
 SDL_Rect position_erreur;
 
-int resolu;//0 si pas encore resolu 1 si resolu
+int resolu;//0 si pas encore resolu //1 si c resolu
 int reponse; //1 pour a, 2 pour b , 3 pour c
 
 SDL_Surface *tEnigme[10];

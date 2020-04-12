@@ -27,6 +27,7 @@ score s; vie v;
 //personnage p;
 // les Enigmes 
 enigme e1,e2,e3,e4,e5,e6;
+int touche; int done=0; // lorsqu'on clique sur le clavier 
 
 /*
 // Menu
@@ -34,7 +35,7 @@ int i=0;// Quand  le menu est dans son etat initiale : pas de clic sur aucun des
 //JEU 
 int i=1; // lorsqu'on commence le jeu
 
-int touche; // lorsqu'on clique
+
 // Ennemis 
 enemie en1,en2,en3;en4,en5,en6;
 int ennemi1=0;
@@ -87,9 +88,7 @@ initialiser_enigme(&e1);
 //initialiser_tJeu(&tJeu);
 /*
 
- 
-
-// init ennemi 
+ // init ennemi 
 initialiser_ennemi(&en1);  // l'ennemi 3andha nafess el .h au faite mais l'initialisation bich tetbadel khater el image..
 initialiser_ennemi(&en2);
 initialiser_ennemi(&en3);
@@ -113,8 +112,7 @@ initialiser_tEnigme(&tEnigme);
 */
 
 /************************************************************************************* DISPLAY *************************************************************************************/
-
-/* while (done)
+/* while (!done)
 
 {//debut while 
 
@@ -132,6 +130,7 @@ afficher_background(&bg,ecran);
 afficher_score(&s,ecran);
 afficher_vie(&v,ecran);
 afficher_enigme(&e1,ecran);
+
 /*
 afficher_obstacle(&o1,ecran);
 afficher_obstacle(&o2,ecran);
@@ -156,20 +155,84 @@ if (ennemi1==0)
 // enigmeeeeeeeeeeeeeeeeeeeeeeeeee
 // ici y a une condition 3al enigme bich yaffichi ou yaffichi el temps d'enigme pas encore resolu 
 
-
 }
+
+
 }// fin while 
 
 */
 
 /************************************************************************************* INPUT *************************************************************************************/
 
+    //key 
+    SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
 
-// les evenements mezelna matfehemnech fihom 
+int touche=1;
+int sens; // variable qui lorsqu'on clique sur la touche elle nous indique le sens 
+    
+    while (touche)
+    {
+        
+        while(SDL_PollEvent(&event))
+        {
+            switch(event.type)
+            {
+                case SDL_QUIT:
+                touche=0;
+                break;
+
+                //les touches de clavier 
+                case SDL_KEYDOWN: // touches enfoncées
+                    switch (event.key.keysym.sym)
+                    {
+                    case SDLK_ESCAPE:  // echape 
+                    touche = 0;
+                    break;
+
+                    case SDLK_RIGHT: // Flèche droite
+                    sens=1;
+                    animation_clavier(&p,sens); // animation personnage
+                    scrolling_bg(sens,&b,ecran); 
+                    deplacement_clavier(&p,sens,ecran); // deplacement personnage
+                    break;
+
+                    case SDLK_LEFT: // Flèche gauche
+                    sens=2;
+                    animation_clavier(&p,sens); // animation personnage 
+                    scrolling_bg(sens,&b,ecran); 
+                    deplacement_clavier(&p,sens,ecran); // deplacement personnage
+                    break;
+
+
+                    case SDLK_c: // touche permettant aux joeurs de se redonner 3 coeurs
+                        
+                        break;
+                    case SDLK_z: // touche permettant aux joeurs de se donner 10 pièces
+                        break;
+                    case SDLK_t: 
+                    break; // Touche d'attaque
+
+                    }
+                break;
+
+                case SDL_KEYUP: // touches relachées
+                switch (event.key.keysym.sym)
+                {
+                    case SDLK_ESCAPE:
+                    touche= 0;
+                    break;
+
+                    case SDLK_RIGHT: 
+                    break;
+
+                    case SDLK_LEFT:    
+                    break;
+
+                }
+                break;
+
 
 /************************************************************************************* UPDATE *************************************************************************************/
-
-// kifkif 
 
 
 
@@ -179,10 +242,12 @@ if (ennemi1==0)
 
 // derniere chose 
 SDL_Flip (ecran);
+//done=1;
 pause();
+
 // liberation SDL
 TTF_Quit();
- SDL_Quit();
+SDL_Quit();
    
  return EXIT_SUCCESS;
 }
