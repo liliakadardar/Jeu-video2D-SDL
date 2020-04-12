@@ -7,7 +7,7 @@
 //#include "personne.c"
 #include "background.c"
 #include "update_score.c"
-//#include "enigme.c"
+#include "enigme.c"
 #include "vie.c"
 /*#include "obstacle.c"
 #include "ennemi.c"
@@ -25,17 +25,15 @@ background bg;
 score s; vie v;
 //personnage p;
 // les Enigmes 
-/*enigme e1,e2,e3,e4,e5,e6;
+enigme e1,e2,e3,e4,e5,e6;
 
 /*
-
 // Menu
 int i=0;// Quand  le menu est dans son etat initiale : pas de clic sur aucun des boutons. 
 //JEU 
 int i=1; // lorsqu'on commence le jeu
 
-int touche; // lorsqu'on clique */
-/*
+int touche; // lorsqu'on clique
 // Ennemis 
 enemie en1,en2,en3;en4,en5,en6;
 int ennemi1=0;
@@ -49,6 +47,7 @@ int ennemi6=0;
 obstacle o1,o2,o3,o4,o5,o6;
 
 	*/
+
 	/* Declaration des SDLs */
 
 SDL_Surface *ecran=NULL;
@@ -84,7 +83,7 @@ initialiser_score(&s);
 //initialiser_enigme(&e6);
 
 // gestion de temps dans tout le jeu
-initialiser_tJeu(&tJeu);
+//initialiser_tJeu(&tJeu);
 /*
 
  
@@ -129,7 +128,7 @@ if (i==1) // lorsq'on est dans le jeu
 afficher_background(&bg,ecran); 
 //affichage_tJeu(&tJeu);
 //afficher_personnage(&p,ecran);
-//afficher_enigme(&e1,ecran);
+afficher_enigme(&e1,ecran);
 afficher_score(&s,ecran);
 afficher_vie(&v,ecran);
 /*
@@ -171,6 +170,12 @@ if (ennemi1==0)
 
 // kifkif 
 
+
+
+
+
+
+
 // derniere chose 
 SDL_Flip (ecran);
 pause();
@@ -180,6 +185,12 @@ TTF_Quit();
    
  return EXIT_SUCCESS;
 }
+
+
+
+
+
+
 void pause()
 {
     int continuer = 1;
