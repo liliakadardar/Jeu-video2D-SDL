@@ -4,7 +4,7 @@
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_ttf.h>
-//#include "personne.c"
+#include "personne.c"
 #include "background.c"
 #include "update_score.c"
 #include "enigme.c"
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 //menu m;
 background bg;
 score s; vie v;
-//personnage p;
+personnage p;
 // les Enigmes 
 enigme e1,e2,e3,e4,e5,e6;
 int touche; int done=0; // lorsqu'on clique sur le clavier 
@@ -64,7 +64,7 @@ SDL_Event event;
 
  SDL_Init(SDL_INIT_VIDEO);
 TTF_Init();
- SDL_EnableKeyRepeat(100, 100); //Fonctions de la SDL permettant d'initialiser la fenêtre
+ SDL_EnableKeyRepeat(100,100); //Fonctions de la SDL permettant d'initialiser la fenêtre
 
     ecran = SDL_SetVideoMode(1600,600,32,SDL_HWSURFACE|SDL_DOUBLEBUF); //1920 , 1080
     SDL_WM_SetCaption("Land Of Gargoyls", NULL);
@@ -74,7 +74,7 @@ TTF_Init();
 
 //initialiser_menu(&m);
 initialiser_background(&bg);
-//initialiser_personnage(&p);
+initialiser_personnage(&p);
 initialiser_vie(&v);
 initialiser_score(&s);
 initialiser_enigme(&e1);
@@ -86,7 +86,7 @@ initialiser_enigme(&e1);
 
 // gestion de temps dans tout le jeu
 //initialiser_tJeu(&tJeu);
-/*
+
 
  // init ennemi 
 initialiser_ennemi(&en1);  // l'ennemi 3andha nafess el .h au faite mais l'initialisation bich tetbadel khater el image..
@@ -109,7 +109,7 @@ initialiser_obstacle(&o6);
 
  // gestion de temps dans l'enigme 
 initialiser_tEnigme(&tEnigme);
-*/
+
 
 /************************************************************************************* DISPLAY *************************************************************************************/
 /* while (!done)
@@ -126,7 +126,7 @@ if (i==1) // lorsq'on est dans le jeu
 */
 afficher_background(&bg,ecran); 
 //affichage_tJeu(&tJeu);
-//afficher_personnage(&p,ecran);
+afficher_personnage(&p,ecran);
 afficher_score(&s,ecran);
 afficher_vie(&v,ecran);
 afficher_enigme(&e1,ecran);
@@ -168,7 +168,7 @@ if (ennemi1==0)
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
 
 int touche=1;
-int sens; // variable qui lorsqu'on clique sur la touche elle nous indique le sens 
+ // variable qui lorsqu'on clique sur la touche elle nous indique le sens 
     
     while (touche)
     {
@@ -190,26 +190,25 @@ int sens; // variable qui lorsqu'on clique sur la touche elle nous indique le se
                     break;
 
                     case SDLK_RIGHT: // Flèche droite
-                    sens=1;
-                    animation_clavier(&p,sens); // animation personnage
+                    
+                    animation_right(&p); // animation personnage
                     scrolling_bg(sens,&b,ecran); 
-                    deplacement_clavier(&p,sens,ecran); // deplacement personnage
+                    deplacement_clavier_right(&p,ecran); // deplacement personnage
                     break;
 
                     case SDLK_LEFT: // Flèche gauche
-                    sens=2;
-                    animation_clavier(&p,sens); // animation personnage 
+                    
+                    animation_left(&p); // animation personnage 
                     scrolling_bg(sens,&b,ecran); 
-                    deplacement_clavier(&p,sens,ecran); // deplacement personnage
+                    deplacement_clavier_left(&p,ecran); // deplacement personnage
                     break;
-
 
                     case SDLK_c: // touche permettant aux joeurs de se redonner 3 coeurs
                         
                         break;
                     case SDLK_z: // touche permettant aux joeurs de se donner 10 pièces
                         break;
-                    case SDLK_t: 
+                    case SDLK_a: 
                     break; // Touche d'attaque
 
                     }

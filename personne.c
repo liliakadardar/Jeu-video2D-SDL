@@ -32,6 +32,32 @@ void afficher_personnage(personnage *p,SDL_Surface *ecran)
 SDL_SetColorKey(p->image_personnage,SDL_SRCCOLORKEY,SDL_MapRGB(p->image_personnage->format,255,255,255));
 SDL_BlitSurface(p->image_personnage, NULL,ecran, &p->position_personnage);
 }
+void deplacement_clavier_right(personnage *p,ecran)
+{
+
+
+
+}
+void deplacement_clavier_right(personnage *p,ecran)
+{
+
+
+
+}
+void animation_right(personnage *p,int sens)
+
+{
+
+
+}
+void animation_left(personnage *p,int sens)
+
+{
+
+
+}
+
+
 
 
 
