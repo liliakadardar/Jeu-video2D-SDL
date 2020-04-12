@@ -7,12 +7,13 @@
 //#include "personne.c"
 #include "background.c"
 #include "update_score.c"
-#include "enigme.c"
+//#include "enigme.c"
 #include "vie.c"
 /*#include "obstacle.c"
 #include "ennemi.c"
 */
 /*************************************************************INTEGRATION*************************************************************/
+
 void pause();
 
 int main(int argc, char *argv[])
@@ -25,7 +26,7 @@ background bg;
 score s; vie v;
 //personnage p;
 // les Enigmes 
-enigme e1,e2,e3,e4,e5,e6;
+//enigme e1,e2,e3,e4,e5,e6;
 
 /*
 // Menu
@@ -128,9 +129,9 @@ if (i==1) // lorsq'on est dans le jeu
 afficher_background(&bg,ecran); 
 //affichage_tJeu(&tJeu);
 //afficher_personnage(&p,ecran);
-afficher_enigme(&e1,ecran);
 afficher_score(&s,ecran);
 afficher_vie(&v,ecran);
+//afficher_enigme(&e1,ecran);
 /*
 afficher_obstacle(&o1,ecran);
 afficher_obstacle(&o2,ecran);
@@ -185,9 +186,6 @@ TTF_Quit();
    
  return EXIT_SUCCESS;
 }
-
-
-
 
 
 

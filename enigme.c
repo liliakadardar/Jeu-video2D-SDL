@@ -12,13 +12,17 @@
 void initialiser_enigme(enigme *e) // initialisation enigme dynamique (pas une image 
 {
 
-e->img_enigme=IMG_Load("outils/enigme00.jpg");
+e->img_enigme=IMG_Load("outils/molecule.jpg");
 
-e->erreur_enigme=IMG_Load("erreur.jpg"); // kif yoghlot to5rejlou tof d erreur wala msg erreur 
+//e->erreur_enigme=IMG_Load("erreur.jpg"); // kif yoghlot to5rejlou tof d erreur wala msg erreur
+// position de l'enigme sur l ecran 
+//e->position_enigme.x=0;
+//e->position_enigme.y=0;
 
-e->position_enigme.x=0;
-e->position_enigme.y=0;
+e->position_enigme.w=1600;
+e->position_enigme.h=600;
 
+//position sortie de l'erreur
 e->position_erreur.x=640;
 e->position_erreur.y=360;
 

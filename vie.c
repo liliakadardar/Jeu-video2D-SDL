@@ -13,7 +13,7 @@ void initialiser_vie(vie *v)
 /*on a ecrit un texte devant les icons */
 TTF_Font *text=NULL;
 SDL_Surface *texte=NULL;
-v->text=TTF_OpenFont("ttf/avocado.ttf",50);
+v->text=TTF_OpenFont("outils/avocado.ttf",50);
 
 SDL_Color couleur={255,255,255};
  
@@ -23,10 +23,10 @@ SDL_Color couleur={255,255,255};
 
 
 // implemetation des images de la vie dans un tableau sans une boucle 
-v->image_vie[0]=IMG_Load("vie/hearts00.png") ;
-v->image_vie[1]=IMG_Load("vie/hearts01.png") ;
-v->image_vie[2]=IMG_Load("vie/hearts02.png") ;
-v->image_vie[3]=IMG_Load("vie/hearts03.png") ;
+v->image_vie[0]=IMG_Load("outils/hearts00.png") ;
+v->image_vie[1]=IMG_Load("outils/hearts01.png") ;
+v->image_vie[2]=IMG_Load("outils/hearts02.png") ;
+v->image_vie[3]=IMG_Load("outils/hearts03.png") ;
 // positions
  v->position_vie.x=120;
  v->position_vie.y=10;

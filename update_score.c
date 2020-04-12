@@ -11,7 +11,7 @@ void initialiser_score (score *s )
 {
 SDL_Surface *valeur_score=NULL;
 TTF_Font *police=NULL;
-s->police = TTF_OpenFont("ttf/avocado.ttf", 50);
+s->police = TTF_OpenFont("outils/avocado.ttf", 50);
 SDL_Color couleur={255,255,255}; // je ne sais pas pk la couleur change a chaque execution de couleur diffrente de maniere auto à verifier!! ou ken thebou khaliwha fazat  
 s->position_score.x=15;
 s->position_score.y=80;
