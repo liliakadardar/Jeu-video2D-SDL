@@ -23,7 +23,7 @@ for(i=0;i<24;i++)
 }
 
 //p->sens_mouvement=1;
-p->position_actuel=11;
+p->Frame=0;
 p->time=0;
 p->score=0;
 p->vie=5;
@@ -31,7 +31,7 @@ p->vie=5;
 
 void afficher_personnage(personnage *p,SDL_Surface *ecran)
 {
-    SDL_BlitSurface(p->tab[p->position_actuel],NULL,ecran,&(p->position));
+    SDL_BlitSurface(p->tab[p->Frame],NULL,ecran,&(p->position));
 }
 
 void animation_right (personnage *p)
@@ -62,13 +62,13 @@ void animation_stable (personnage *p)
 int nb_frames_p=0;
   if (p->direction==0)
   {
-	if(p->Frame<=29 || p->Frame>=45)
-		p->Frame=30;
+	if(p->Frame<=1 || p->Frame>=5)
+		p->Frame=5;
 
 	p->Frame++;
 	if (p->Frame>=3*nb_frames_p)
-		p->Frame=30;
-  }
+		p->Frame=5;
+  }/*
 else if (p->direction==1)
 {
 int nb_frames_p=0;
@@ -78,7 +78,7 @@ if(p->Frame<=44 || p->Frame>=50)
 p->Frame++;
 if (p->Frame>=4*nb_frames_p)
   p->Frame=45;
-}
+}*/
 
 }
 void deplacement_clavier_right(personnage *p)
@@ -91,9 +91,13 @@ void deplacement_clavier_right(personnage *p)
 void deplacement_clavier_left(personnage *p)
 {
 
+
+
 }
 
 void deplacement_souris(personnage *p)
 {
+
+
 
 }
