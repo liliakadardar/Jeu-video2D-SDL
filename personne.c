@@ -18,7 +18,7 @@ int i;
 
 for(i=0;i<24;i++)
 {
-    sprintf(nomFich,"per/%d.png",i);
+    sprintf(nomFich,"pers/%d.png",i);
     p->tab[i]=IMG_Load(nomFich);
 }
 
