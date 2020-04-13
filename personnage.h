@@ -11,7 +11,10 @@ typedef struct  personnage
 	int vie;
 	int sens_mouvement;
 	SDL_Rect position_personnage; 
+<<<<<<< HEAD
       
+=======
+>>>>>>> 7b0f1a8dac1125d9cfd8cc729a06ffaf92673f99
 	SDL_Surface *tab[25];
 	float time;
 	int score;
