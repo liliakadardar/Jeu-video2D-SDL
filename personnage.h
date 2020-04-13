@@ -19,6 +19,7 @@ typedef struct  personnage
 	int Frame;
 	int direction;
 	int objective; 
+
 }personnage;
 
 
