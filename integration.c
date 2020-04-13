@@ -74,7 +74,7 @@ TTF_Init();
 
 //initialiser_menu(&m);
 initialiser_background(&bg);
-initialiser_personnage(&p);
+//initialiser_personnage(&p);
 initialiser_vie(&v);
 initialiser_score(&s);
 initialiser_enigme(&e1);
@@ -87,7 +87,7 @@ initialiser_enigme(&e1);
 // gestion de temps dans tout le jeu
 //initialiser_tJeu(&tJeu);
 
-
+/*
  // init ennemi 
 initialiser_ennemi(&en1);  // l'ennemi 3andha nafess el .h au faite mais l'initialisation bich tetbadel khater el image..
 initialiser_ennemi(&en2);
@@ -108,7 +108,7 @@ initialiser_obstacle(&o6);
 
 
  // gestion de temps dans l'enigme 
-initialiser_tEnigme(&tEnigme);
+//initialiser_tEnigme(&tEnigme);*/
 
 
 /************************************************************************************* DISPLAY *************************************************************************************/
@@ -126,7 +126,7 @@ if (i==1) // lorsq'on est dans le jeu
 */
 afficher_background(&bg,ecran); 
 //affichage_tJeu(&tJeu);
-afficher_personnage(&p,ecran);
+//afficher_personnage(&p,ecran);
 afficher_score(&s,ecran);
 afficher_vie(&v,ecran);
 afficher_enigme(&e1,ecran);
@@ -167,7 +167,7 @@ if (ennemi1==0)
     //key 
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
 
-int touche=1;
+int touche=1;int sens;
  // variable qui lorsqu'on clique sur la touche elle nous indique le sens 
     
     while (touche)
@@ -193,14 +193,15 @@ int touche=1;
                     
                     animation_right(&p); // animation personnage
                     scrolling_bg(sens,&b,ecran); 
-                    deplacement_clavier_right(&p,ecran); // deplacement personnage
+                    deplacement_clavier_right(&p); // deplacement personnage
                     break;
 
                     case SDLK_LEFT: // Flèche gauche
                     
                     animation_left(&p); // animation personnage 
                     scrolling_bg(sens,&b,ecran); 
-                    deplacement_clavier_left(&p,ecran); // deplacement personnage
+                    // l'appel a cette fct est sur la moitié de l'ecran avce une conditions
+                    deplacement_clavier_left(&p); // deplacement personnage
                     break;
 
                     case SDLK_c: // touche permettant aux joeurs de se redonner 3 coeurs
@@ -227,7 +228,22 @@ int touche=1;
                     case SDLK_LEFT:    
                     break;
 
+                    // avec la sourie 
+                
+                case SDL_MOUSEBUTTONDOWN :
+                if(event.button.button == SDL_BUTTON_LEFT)
+                { 
+                    deplacement_sourie(&p,ecran);
+                    animation_left(&p,event);
                 }
+                else 
+                {
+                    deplacement_sourie(&p,ecran);
+                    animatiom_right(&p);
+                }
+                break;
+            }
+}                // ici je dois verifier avec l'enigme sinon il y a un evenement de l'enigme
                 break;
 
 
@@ -239,7 +255,11 @@ int touche=1;
 
 
 
-// derniere chose 
+
+
+/************************************************************************************* FIN *************************************************************************************/
+
+// derniere chose à faire 
 SDL_Flip (ecran);
 //done=1;
 pause();
@@ -252,7 +272,7 @@ SDL_Quit();
 }
 
 
-
+/*
 void pause()
 {
     int continuer = 1;
@@ -267,4 +287,4 @@ void pause()
                 continuer = 0;
         }
     }
-}
+}*/

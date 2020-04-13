@@ -29,3 +29,5 @@ SDL_Rect pos_affichage;
 
 void initialiser_ennemi(ennemi e[],int n);
 void afficher_ennemi(ennemi e[], SDL_Surface *ecran);
+void perfect_pixel(ennemi e[]);
+void deplacement_ennemi_alea(ennemi e []);

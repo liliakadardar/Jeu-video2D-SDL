@@ -42,21 +42,11 @@ void afficher_background(background *bg, SDL_Surface * ecran)
 SDL_BlitSurface(bg->img_bg[0],&(bg->scroll),ecran,NULL);
 SDL_BlitSurface(bg->img_bg[1],&(bg->scroll),ecran,NULL);
 }
-/*
 
-void animation_bg(int sens, background *bg, SDL_Surface *ecran )
-{
-
-// on va travailler l'annimation 
-}
 
 
 void scrolling_bg(int sens,background *bg, SDL_Surface *ecran)
 {
 
 }
-
-void Free_background(void)
-{
-}*/
 

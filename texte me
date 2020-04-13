@@ -1,0 +1,32 @@
+
+
+
+/*-------- RAYEN BOURGUIBA-------*/
+void scrolling_bg(int sens,background *bg, SDL_Surface *ecran);
+void deplacement_clavier_right(personnage *p); // le deplacement du personnage avec une variable si sens=1 right si sens =2 left 
+void deplacement_clavier_left(personnage *p);
+
+void gestion_score (score *s) // à toi de choisir si tu travail avec un tableau ou d'une façon normal et j'aimerai bien que tu me precise la façon au plutot possible 
+void gestion_vie(vie *v)
+
+
+
+/*----------- MOEZ GHARSALI------------*/
+int  resolution_enigme(enigme *e); // cette fonction retourne soit un 0 soit un 1 de la vaaribale resolu 
+void enigme_aleatoire(enigme *e);
+
+
+/* ------------------ EMNA NAJAI ------------------*/
+void initialiser_ennemi(ennemi e[],int n);
+void afficher_ennemi(ennemi e[], SDL_Surface *ecran);
+void perfect_pixel(ennemi e[]);
+void deplacement_ennemi_alea(ennemi e []);
+
+
+
+/*---------------- SEIFEDDINE CHEBBI----------------*/
+
+void initialiser_obstacle(obstacle *o);
+void afficher_obstacle(obstacle * o, SDL_Surface *ecran);
+void collision_obstacle(obstacle *o,SDL_Surface *ecran);
+void animation_obstacle(obstacle *o);
