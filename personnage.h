@@ -10,8 +10,8 @@ typedef struct  personnage
 {
 	int vie;
 	int sens_mouvement;
-	int position_personnage; 
-        SDL_Rect position;
+	SDL_Rect position_personnage; 
+      
 	SDL_Surface *tab[25];
 	float time;
 	int score;
@@ -31,7 +31,7 @@ void animation_left (personnage *p);
 void animation_stable (personnage *p);
 void deplacement_clavier_right(personnage *p);
 void deplacement_clavier_left(personnage *p);
-void deplacement_souris(personnage *p);
+void deplacement_sourie(personnage *p);
 
 
 

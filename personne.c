@@ -14,8 +14,6 @@ p->position_personnage.x=0;
 p->position_personnage.y=470;
 char nomFich[25];
 int i;
-
-
 for(i=0;i<24;i++)
 {
     sprintf(nomFich,"pers/%d.png",i);
@@ -31,7 +29,7 @@ p->vie=5;
 
 void afficher_personnage(personnage *p,SDL_Surface *ecran)
 {
-    SDL_BlitSurface(p->tab[p->Frame],NULL,ecran,&(p->position));
+    SDL_BlitSurface(p->tab[p->Frame],NULL,ecran,&(p->position_personnage));
 }
 
 void animation_right (personnage *p)

@@ -34,12 +34,12 @@ v->image_vie[3]=IMG_Load("outils/hearts03.png") ;
 TTF_CloseFont(text);
 }
 
-
+/*
 void updatevie(vie *v,int test,personnage *p) 
 {
 if(test && v->val <4) 
  (v->val)++;
-}
+}*/
 
 void afficher_vie(vie *v,SDL_Surface *ecran)
 { 
@@ -48,7 +48,7 @@ SDL_BlitSurface(v->image_vie[v->val],NULL,ecran,&(v->position_vie));
 }
 
 
-
+/*
 
 void vie_freevie(vie *v ) 
 {
@@ -60,7 +60,7 @@ SDL_FreeSurface(v->image_vie[4]);
 }
 
    
-              
+             */ 
 
 
 

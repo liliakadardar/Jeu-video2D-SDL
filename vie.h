@@ -19,7 +19,7 @@ SDL_Rect position_vie ;
 
 
 void initialiser_vie(vie *v); 
-void updatevie(vie *v,int test,personne *p); 
+//void updatevie(vie *v,int test,personnage *p); 
 void afficher_vie(vie *v ,SDL_Surface *ecran) ;  
 void vie_freevie(vie *v);  
 

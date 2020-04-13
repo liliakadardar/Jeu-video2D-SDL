@@ -14,7 +14,7 @@
 */
 /*************************************************************INTEGRATION*************************************************************/
 
-void pause();
+//void pause();
 
 int main(int argc, char *argv[])
 {
@@ -26,8 +26,8 @@ background bg;
 score s; vie v;
 personnage p;
 // les Enigmes 
-enigme e1,e2,e3,e4,e5,e6;
-int touche; int done=0; // lorsqu'on clique sur le clavier 
+//enigme e1,e2,e3,e4,e5,e6;
+int done=0; // lorsqu'on clique sur le clavier 
 
 /*
 // Menu
@@ -74,10 +74,10 @@ TTF_Init();
 
 //initialiser_menu(&m);
 initialiser_background(&bg);
-//initialiser_personnage(&p);
+initialiser_personnage(&p);
 initialiser_vie(&v);
 initialiser_score(&s);
-initialiser_enigme(&e1);
+//initialiser_enigme(&e1);
 //initialiser_enigme(&e2);
 //initialiser_enigme(&e3);
 //initialiser_enigme(&e4);
@@ -126,10 +126,10 @@ if (i==1) // lorsq'on est dans le jeu
 */
 afficher_background(&bg,ecran); 
 //affichage_tJeu(&tJeu);
-//afficher_personnage(&p,ecran);
+afficher_personnage(&p,ecran);
 afficher_score(&s,ecran);
 afficher_vie(&v,ecran);
-afficher_enigme(&e1,ecran);
+//afficher_enigme(&e1,ecran);
 
 /*
 afficher_obstacle(&o1,ecran);
@@ -162,7 +162,7 @@ if (ennemi1==0)
 
 */
 
-/************************************************************************************* INPUT *************************************************************************************/
+/************************************************************************************* INPUT + UPDATE *************************************************************************************/
 
     //key 
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
@@ -192,14 +192,14 @@ int touche=1;int sens;
                     case SDLK_RIGHT: // Flèche droite
                     
                     animation_right(&p); // animation personnage
-                    scrolling_bg(sens,&b,ecran); 
+                    scrolling_bg(sens,&bg,ecran); 
                     deplacement_clavier_right(&p); // deplacement personnage
                     break;
 
                     case SDLK_LEFT: // Flèche gauche
                     
                     animation_left(&p); // animation personnage 
-                    scrolling_bg(sens,&b,ecran); 
+                    scrolling_bg(sens,&bg,ecran); 
                     // l'appel a cette fct est sur la moitié de l'ecran avce une conditions
                     deplacement_clavier_left(&p); // deplacement personnage
                     break;
@@ -232,37 +232,33 @@ int touche=1;int sens;
                 
                 case SDL_MOUSEBUTTONDOWN :
                 if(event.button.button == SDL_BUTTON_LEFT)
-                { 
-                    deplacement_sourie(&p,ecran);
-                    animation_left(&p,event);
-                }
+                    { 
+                    //deplacement_sourie(&p);
+                    animation_left(&p);
+                    }
                 else 
-                {
-                    deplacement_sourie(&p,ecran);
-                    animatiom_right(&p);
-                }
+                    {
+                    //deplacement_sourie(&p);
+                    animation_right(&p);
+                    }
                 break;
-            }
-}                // ici je dois verifier avec l'enigme sinon il y a un evenement de l'enigme
+                 }   
+            // ici je dois verifier avec l'enigme sinon il y a un evenement de l'enigme
                 break;
 
 
-/************************************************************************************* UPDATE *************************************************************************************/
 
 
-
-
-
-
-
-
+}             
+}
+}
 
 /************************************************************************************* FIN *************************************************************************************/
 
 // derniere chose à faire 
 SDL_Flip (ecran);
 //done=1;
-pause();
+//pause();
 
 // liberation SDL
 TTF_Quit();
