@@ -55,6 +55,7 @@ int nb_frames_p=0;
 		p->Frame=16;
 }
 
+
 void animation_stable (personnage *p)
 {
 int nb_frames_p=0;
@@ -79,6 +80,7 @@ if (p->Frame>=4*nb_frames_p)
 }*/
 
 }
+
 void deplacement_clavier_right(personnage *p)
 {
 
