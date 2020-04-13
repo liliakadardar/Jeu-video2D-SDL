@@ -14,7 +14,7 @@
 */
 /*************************************************************INTEGRATION*************************************************************/
 
-//void pause();
+void pause();
 
 int main(int argc, char *argv[])
 {
@@ -165,9 +165,9 @@ if (ennemi1==0)
 /************************************************************************************* INPUT + UPDATE *************************************************************************************/
 
     //key 
-    SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
-
-int touche=1;int sens;
+    //SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
+/*
+int touche=1;int sens=0;
  // variable qui lorsqu'on clique sur la touche elle nous indique le sens 
     
     while (touche)
@@ -193,7 +193,7 @@ int touche=1;int sens;
                     
                     animation_right(&p); // animation personnage
                     scrolling_bg(sens,&bg,ecran); 
-                    deplacement_clavier_right(&p); // deplacement personnage
+                    deplacement_clavier_right(&p,ecran); // deplacement personnage
                     break;
 
                     case SDLK_LEFT: // Flèche gauche
@@ -231,14 +231,15 @@ int touche=1;int sens;
                     // avec la sourie 
                 
                 case SDL_MOUSEBUTTONDOWN :
+
                 if(event.button.button == SDL_BUTTON_LEFT)
-                    { 
-                    deplacement_sourie(&p);
+                    { sens=1;
+                   deplacement_sourie(&p,sens,ecran);
                     animation_left(&p);
                     }
                 else 
-                    {
-                    deplacement_sourie(&p);
+                    {sens=2;
+                    deplacement_sourie(&p,sens,ecran);
                     animation_right(&p);
                     }
                 break;
@@ -252,13 +253,13 @@ int touche=1;int sens;
 }             
 }
 }
-
+*/
 /************************************************************************************* FIN *************************************************************************************/
 
 // derniere chose à faire 
 SDL_Flip (ecran);
  // noublie pas ou le mettre 
-//pause();//done=1;
+pause();//done=1;
 
 // liberation SDL
 TTF_Quit();
@@ -268,7 +269,7 @@ SDL_Quit();
 }
 
 
-/*
+
 void pause()
 {
     int continuer = 1;
@@ -283,4 +284,4 @@ void pause()
                 continuer = 0;
         }
     }
-}*/
+}

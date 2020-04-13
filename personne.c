@@ -81,23 +81,39 @@ if (p->Frame>=4*nb_frames_p)
 
 }
 
-void deplacement_clavier_right(personnage *p)
+
+
+void deplacement_clavier_right(personnage *p,SDL_Surface *ecran)
 {
-
-
-
-}
-
+    }
 void deplacement_clavier_left(personnage *p)
 {
 
-
-
 }
 
-void deplacement_sourie(personnage *p)
+
+
+
+
+void deplacement_sourie (personnage *p,int sens , SDL_Surface *ecran)
 {
+ /*if (sens==1)
+ 	        if(perso->position.x>255)
 
+p->position_personnage.x+=20;
+ else {
 
+p->position_personnage.y-=20;
+
+ }
+
+if (sens==2)
+p->position_personnage.x+=20;
+ else {
+
+p->position_personnage.y-=20;
+
+ }
+*/
 
 }
