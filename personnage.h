@@ -10,6 +10,7 @@ typedef struct  personnage
 {
 	int vie;
 	int sens_mouvement;
+
 	SDL_Rect position_personnage; 
 	SDL_Surface *tab[25];
 	float time;
@@ -19,6 +20,7 @@ typedef struct  personnage
 	int Frame;
 	int direction;
 	int objective; 
+
 }personnage;
 
 

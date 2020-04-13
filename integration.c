@@ -7,7 +7,7 @@
 #include "personne.c"
 #include "background.c"
 #include "update_score.c"
-#include "enigme.c"
+//#include "enigme.c"
 #include "vie.c"
 /*#include "obstacle.c"
 #include "ennemi.c"

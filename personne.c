@@ -16,7 +16,7 @@ char nomFich[25];
 int i;
 for(i=0;i<24;i++)
 {
-    sprintf(nomFich,"pers/%d.png",i);
+    sprintf(nomFich,"per/%d.png",i);
     p->tab[i]=IMG_Load(nomFich);
 }
 
@@ -67,7 +67,7 @@ int nb_frames_p=0;
 	p->Frame++;
 	if (p->Frame>=3*nb_frames_p)
 		p->Frame=5;
-  }/*
+  }
 else if (p->direction==1)
 {
 int nb_frames_p=0;
@@ -77,7 +77,7 @@ if(p->Frame<=44 || p->Frame>=50)
 p->Frame++;
 if (p->Frame>=4*nb_frames_p)
   p->Frame=45;
-}*/
+}
 
 }
 
