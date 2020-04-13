@@ -233,12 +233,12 @@ int touche=1;int sens;
                 case SDL_MOUSEBUTTONDOWN :
                 if(event.button.button == SDL_BUTTON_LEFT)
                     { 
-                    //deplacement_sourie(&p);
+                    deplacement_sourie(&p);
                     animation_left(&p);
                     }
                 else 
                     {
-                    //deplacement_sourie(&p);
+                    deplacement_sourie(&p);
                     animation_right(&p);
                     }
                 break;
@@ -257,8 +257,8 @@ int touche=1;int sens;
 
 // derniere chose à faire 
 SDL_Flip (ecran);
-//done=1; // noublie pas ou le mettre 
-//pause();
+ // noublie pas ou le mettre 
+//pause();//done=1;
 
 // liberation SDL
 TTF_Quit();
