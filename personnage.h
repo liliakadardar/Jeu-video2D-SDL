@@ -23,6 +23,7 @@ typedef struct  personnage
 }personnage;
 
 
+
 void initialiser_personnage(personnage *p);
 void afficher_personnage(personnage *p,SDL_Surface *ecran);
 void animation_right (personnage *p);
