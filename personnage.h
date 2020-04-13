@@ -6,12 +6,20 @@
 #include <SDL/SDL_ttf.h> 
 #include<SDL/SDL_audio.h>
 
-typedef struct personnage
+typedef struct  personnage
 {
-	SDL_Surface *image_personnage;
-	SDL_Rect position_personnage;
-    	int nombre_vie;
-    	int score;
+	int vie;
+	int sens_mouvement;
+	int position_actuel; 
+        SDL_Rect position;
+	SDL_Surface *tab[25];
+	float time;
+	int score;
+	SDL_Rect pos_score;
+	SDL_Rect scroll;
+	int Frame;
+	int direction;
+	int objective; 
 }personnage;
 
 
