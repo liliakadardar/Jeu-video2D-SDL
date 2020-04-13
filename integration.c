@@ -257,7 +257,7 @@ int touche=1;int sens;
 
 // derniere chose à faire 
 SDL_Flip (ecran);
-//done=1;
+//done=1; // noublie pas ou le mettre 
 //pause();
 
 // liberation SDL
