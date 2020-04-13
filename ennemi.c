@@ -44,3 +44,21 @@ void afficher_ennemi(ennemi *e[], SDL_Surface *ecran)
 int i=0,j=0;
 	SDL_BlitSurface(e[i]->affichage_secondaire[j],NULL,ecran ,&e[i]->position_entite);
 } 
+
+
+void perfect_pixel(ennemi e[])
+{
+
+
+
+
+}
+void deplacement_ennemi_alea(ennemi e [])
+{
+
+
+
+
+
+  
+}

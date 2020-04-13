@@ -21,8 +21,7 @@ void initialiser_background(background *bg);
 
 void afficher_background(background *bg, SDL_Surface * ecran);
 
-/*void animation_bg(background *bg, SDL_Surface *ecran );
+//void animation_bg(background *bg, SDL_Surface *ecran );
 
-void scrolling_bg(background *bg, SDL_Surface *ecran);
-
-void Free_background(void);*/
+void scrolling_bg(int sens,background *bg, SDL_Surface *ecran);
+//void Free_background(void);

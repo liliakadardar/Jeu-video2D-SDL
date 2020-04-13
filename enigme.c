@@ -41,4 +41,18 @@ SDL_BlitSurface(e->img_enigme,NULL,ecran,&e->position_enigme);
 }
 
 
+int resolution_enigme(enigme *e)
 
+{
+
+
+
+}
+ void enigme_aleatoire(enigme *e)
+ {
+
+
+
+
+
+ }

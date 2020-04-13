@@ -10,8 +10,8 @@
 
 void initialiser_personnage(personnage *p)
 {
-p->position.x=0;
-p->position.y=470;
+p->position_personnage.x=0;
+p->position_personnage.y=470;
 char nomFich[25];
 int i;
 
