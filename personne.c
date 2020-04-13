@@ -81,6 +81,19 @@ if (p->Frame>=4*nb_frames_p)
 }
 
 }
+void deplacement_clavier_right(personnage *p)
+{
 
 
 
+}
+
+void deplacement_clavier_left(personnage *p)
+{
+
+}
+
+void deplacement_souris(personnage *p)
+{
+
+}

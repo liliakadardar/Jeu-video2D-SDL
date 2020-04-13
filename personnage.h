@@ -20,6 +20,9 @@ void afficher_personnage(personnage *p,SDL_Surface *ecran);
 void animation_right (personnage *p);
 void animation_left (personnage *p);
 void animation_stable (personnage *p);
+void deplacement_clavier_right(personnage *p);
+void deplacement_clavier_left(personnage *p);
+void deplacement_souris(personnage *p);
 
 
 
