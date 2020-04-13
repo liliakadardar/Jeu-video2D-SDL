@@ -93,7 +93,7 @@ void deplacement_clavier_left(personnage *p)
 
 }
 
-void deplacement_souris(personnage *p)
+void deplacement_sourie(personnage *p)
 {
 
 
