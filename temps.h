@@ -4,17 +4,23 @@
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_ttf.h>
-
+#include <string.h>
+#include <time.h>
 
 typedef struct temps
-{ 
+{
+SDL_Surface *texte;
+ SDL_Rect position;
+  
+    TTF_Font *police ;
 
+ char entree[100];
+ int secondesEcoulees;
+SDL_Color couleurBlanche;
+time_t t1,t2;
 
+}temps;
 
-
-
-
-
-} temps;
-
-initioaslidajlkmc-z.,c
+void initialiser_temps(temps *t);
+void afficher_temps(temps *t, SDL_Surface *ecran);
+void free_temps(temps *t,SDL_Surface *ecran);

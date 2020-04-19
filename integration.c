@@ -7,14 +7,14 @@
 #include "personne.c"
 #include "background.c"
 #include "update_score.c"
-//#include "enigme.c"
 #include "vie.c"
-/*#include "obstacle.c"
-#include "ennemi.c"
-*/
+#include "obstacle.c"
+#include "temps.c"
+//#include "enigme.c"
+//#include "ennemi.c"
+
 /*************************************************************INTEGRATION*************************************************************/
 
-void pause();
 
 int main(int argc, char *argv[])
 {
@@ -23,19 +23,15 @@ int main(int argc, char *argv[])
 
 //menu m;
 background bg;
-score s; vie v;
-personnage p;
+score s; vie v; temps t;
+personnage p; obstacle o1,o2,o3;
+int touche=1;
+int sens=0;
+
 // les Enigmes 
 //enigme e1,e2,e3,e4,e5,e6;
 int done=0; // lorsqu'on clique sur le clavier 
-
 /*
-// Menu
-int i=0;// Quand  le menu est dans son etat initiale : pas de clic sur aucun des boutons. 
-//JEU 
-int i=1; // lorsqu'on commence le jeu
-
-
 // Ennemis 
 enemie en1,en2,en3;en4,en5,en6;
 int ennemi1=0;
@@ -43,30 +39,32 @@ int ennemi2=0;
 int ennemi3=0;
 int ennemi4=0;
 int ennemi5=0;
-int ennemi6=0;
+int ennemi6=0;*/
 
-// Les Obstacles 
-obstacle o1,o2,o3,o4,o5,o6;
 
-	*/
+/*
+int i=0;// Quand  le menu est dans son etat initiale : pas de clic sur aucun des boutons. 
+//JEU 
+int i=1; // lorsqu'on commence le jeu
+
+
 
 	/* Declaration des SDLs */
 
 SDL_Surface *ecran=NULL;
 SDL_Rect *position_ecran;
-
 SDL_Event event; 
 
 
-/************************************************************************************* INITIALISATION *************************************************************************************/ 
+/*---------------------------------------------------------------- INITIALISATION ---------------------------------------------------------------- */ 
 
 // fenetre et ecran
 
- SDL_Init(SDL_INIT_VIDEO);
-TTF_Init();
+ SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER);
+ TTF_Init();
  SDL_EnableKeyRepeat(100,100); //Fonctions de la SDL permettant d'initialiser la fenêtre
 
-    ecran = SDL_SetVideoMode(1600,600,32,SDL_HWSURFACE|SDL_DOUBLEBUF); //1920 , 1080
+    ecran = SDL_SetVideoMode(1600,600,32,SDL_HWSURFACE|SDL_DOUBLEBUF); 
     SDL_WM_SetCaption("Land Of Gargoyls", NULL);
 
 
@@ -77,15 +75,12 @@ initialiser_background(&bg);
 initialiser_personnage(&p);
 initialiser_vie(&v);
 initialiser_score(&s);
+initialiser_temps(&t);
+initialiser_obstacle1(&o1);
 //initialiser_enigme(&e1);
+//enigme
+//
 //initialiser_enigme(&e2);
-//initialiser_enigme(&e3);
-//initialiser_enigme(&e4);
-//initialiser_enigme(&e5);
-//initialiser_enigme(&e6);
-
-// gestion de temps dans tout le jeu
-//initialiser_tJeu(&tJeu);
 
 /*
  // init ennemi 
@@ -94,51 +89,36 @@ initialiser_ennemi(&en2);
 initialiser_ennemi(&en3);
 initialiser_ennemi(&en4);
 initialiser_ennemi(&en5);
-initialiser_ennemi(&en6);
+initialiser_ennemi(&en6);*/
 
-// int obstacle
-
-initialiser_obstacle(&o1);
+// init obstacle
+/*
 initialiser_obstacle(&o2);
-initialiser_obstacle(&o3);
-initialiser_obstacle(&o4);
-initialiser_obstacle(&o5);
-initialiser_obstacle(&o6);
+initialiser_obstacle(&o3);*/
 
+/*---------------------------------------------------------------- DISPLAY ----------------------------------------------------------------*/
 
+// la boucle du jeu 
+ //while (!done)
+//{ 
 
- // gestion de temps dans l'enigme 
-//initialiser_tEnigme(&tEnigme);*/
-
-
-/************************************************************************************* DISPLAY *************************************************************************************/
-/* while (!done)
-
-{//debut while 
-
-if (i==0) // lorsqu'on est dans le menu
-{
-afficher_menu(m,ecran);
-}
+/*if (i==0) // lorsqu'on est dans le menu
+	{afficher_menu(m,ecran);}
 
 if (i==1) // lorsq'on est dans le jeu
-{
-*/
+	{*/
 afficher_background(&bg,ecran); 
-//affichage_tJeu(&tJeu);
 afficher_personnage(&p,ecran);
 afficher_score(&s,ecran);
 afficher_vie(&v,ecran);
+afficher_obstacle1(&o1,ecran);
+/*afficher_obstacle(&o2,ecran);
+afficher_obstacle(&o3,ecran);*/
+//afficher_temps(&t,ecran);
 //afficher_enigme(&e1,ecran);
 
+// affichage de l'ennemi
 /*
-afficher_obstacle(&o1,ecran);
-afficher_obstacle(&o2,ecran);
-afficher_obstacle(&o3,ecran);
-afficher_obstacle(&o4,ecran);
-afficher_obstacle(&o5,ecran);
-afficher_obstacle(&o6,ecran);
- 
 if (ennemi1==0)
 {affiche_ennemi(&e1,ecran);}
  if (ennemi2==0)
@@ -150,31 +130,28 @@ if (ennemi1==0)
  if (ennemi5==0)
 {affiche_ennemi(&e5,ecran);}
  if (ennemi6==0)
-{affiche_ennemi(&e6,ecran);}
+{affiche_ennemi(&e6,ecran);}*/
 
 // enigmeeeeeeeeeeeeeeeeeeeeeeeeee
 // ici y a une condition 3al enigme bich yaffichi ou yaffichi el temps d'enigme pas encore resolu 
+	//}
 
-}
+//done=1;
+//}
 
 
-}// fin while 
 
-*/
+/*---------------------------------------------------------------- INPUT + UPDATE ----------------------------------------------------------------*/
 
-/************************************************************************************* INPUT + UPDATE *************************************************************************************/
 
-    //key 
-    //SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
-/*
-int touche=1;int sens=0;
- // variable qui lorsqu'on clique sur la touche elle nous indique le sens 
+
+ // variable que lorsqu'on clique sur la touche elle nous indique le sens 
     
     while (touche)
     {
-        
         while(SDL_PollEvent(&event))
         {
+		
             switch(event.type)
             {
                 case SDL_QUIT:
@@ -191,17 +168,17 @@ int touche=1;int sens=0;
 
                     case SDLK_RIGHT: // Flèche droite
                     
-                    animation_right(&p); // animation personnage
+                   /* animation_right(&p); // animation personnage
                     scrolling_bg(sens,&bg,ecran); 
-                    deplacement_clavier_right(&p,ecran); // deplacement personnage
+                    deplacement_clavier_right(&p,ecran); // deplacement personnage*/
                     break;
 
                     case SDLK_LEFT: // Flèche gauche
                     
-                    animation_left(&p); // animation personnage 
+                   /* animation_left(&p); // animation personnage 
                     scrolling_bg(sens,&bg,ecran); 
                     // l'appel a cette fct est sur la moitié de l'ecran avce une conditions
-                    deplacement_clavier_left(&p); // deplacement personnage
+                    deplacement_clavier_left(&p); // deplacement personnage*/
                     break;
 
                     case SDLK_c: // touche permettant aux joeurs de se redonner 3 coeurs
@@ -212,7 +189,7 @@ int touche=1;int sens=0;
                     case SDLK_a: 
                     break; // Touche d'attaque
 
-                    }
+                   }
                 break;
 
                 case SDL_KEYUP: // touches relachées
@@ -233,34 +210,36 @@ int touche=1;int sens=0;
                 case SDL_MOUSEBUTTONDOWN :
 
                 if(event.button.button == SDL_BUTTON_LEFT)
-                    { sens=1;
+                    { /*sens=1;
                    deplacement_sourie(&p,sens,ecran);
-                    animation_left(&p);
+                    animation_left(&p);*/
                     }
                 else 
-                    {sens=2;
+                    {/*sens=2;
                     deplacement_sourie(&p,sens,ecran);
-                    animation_right(&p);
+                    animation_right(&p);*/
                     }
                 break;
                  }   
             // ici je dois verifier avec l'enigme sinon il y a un evenement de l'enigme
-                break;
-
+               
+              
 
 
 
 }             
 }
 }
-*/
+
+
 /************************************************************************************* FIN *************************************************************************************/
 
 // derniere chose à faire 
 SDL_Flip (ecran);
- // noublie pas ou le mettre 
-pause();//done=1;
 
+ // noublie pas ou le mettre 
+
+free_temps(&t,ecran);
 // liberation SDL
 TTF_Quit();
 SDL_Quit();
@@ -269,19 +248,3 @@ SDL_Quit();
 }
 
 
-
-void pause()
-{
-    int continuer = 1;
-    SDL_Event event;
- 
-    while (continuer)
-    {
-        SDL_WaitEvent(&event);
-        switch(event.type)
-        {
-            case SDL_QUIT:
-                continuer = 0;
-        }
-    }
-}

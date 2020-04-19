@@ -9,46 +9,46 @@
 
 
 
-void initialiser_enigme(enigme *e) // initialisation enigme dynamique (pas une image 
+void initialiser_enigme(enigme *e1) // initialisation enigme dynamique (pas une image 
 {
 
-e->img_enigme=IMG_Load("outils/molecule.jpg");
+e1->img_enigme=IMG_Load("outils/molecule.jpg");
 
 //e->erreur_enigme=IMG_Load("erreur.jpg"); // kif yoghlot to5rejlou tof d erreur wala msg erreur
 // position de l'enigme sur l ecran 
 //e->position_enigme.x=0;
 //e->position_enigme.y=0;
 
-e->position_enigme.w=1200;
-e->position_enigme.h=500;
+e1->position_enigme.w=1200;
+e1->position_enigme.h=500;
 
 //position sortie de l'erreur
-e->position_erreur.x=640;
-e->position_erreur.y=360;
+e1->position_erreur.x=640;
+e1->position_erreur.y=360;
 
 
-e->reponse=3;
-e->resolu=-1;
+e1->reponse=3;
+e1->resolu=-1;
 
 // inititialisation avec fichier 
 }
 
 
 /**************AFFICHAGE Enigme ***************/
-void afficher_enigme (enigme *e, SDL_Surface * ecran)
+void afficher_enigme (enigme *e1, SDL_Surface * ecran)
 {
-SDL_BlitSurface(e->img_enigme,NULL,ecran,&e->position_enigme);
+SDL_BlitSurface(e1->img_enigme,NULL,ecran,&e1->position_enigme);
 }
 
 
-int resolution_enigme(enigme *e)
+int resolution_enigme(enigme *e1)
 
 {
 
 
 
 }
- void enigme_aleatoire(enigme *e)
+ void enigme_aleatoire(enigme *e1)
  {
 
 

@@ -29,10 +29,10 @@ SDL_Rect position_tEnigme;
 /***********************************les fonctions***********************************/
 
 // init enigme 
-void initialiser_enigme(enigme *e);
-void affichage_enigme(enigme *e, SDL_Surface *ecran);
-int resolution_enigme(enigme *e);
-void enigme_aleatoire(enigme *e);
+void initialiser_enigme(enigme *e1);
+void affichage_enigme(enigme *e1, SDL_Surface *ecran);
+int resolution_enigme(enigme *e1);
+void enigme_aleatoire(enigme *e1);
 
 
 
