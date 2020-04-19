@@ -9,8 +9,8 @@
 
 void initialiser_personnage(personnage *p)
 {
-p->position_personnage.x=0;
-p->position_personnage.y=150;
+p->position_personnage.x=50;
+p->position_personnage.y=80;
 char nomFich[50];
 int i;
 for(i=0;i<50;i++)

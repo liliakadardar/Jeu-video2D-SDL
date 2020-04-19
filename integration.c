@@ -10,10 +10,11 @@
 #include "vie.c"
 #include "obstacle.c"
 #include "temps.c"
+#include "ennemi.c"
 //#include "enigme.c"
-//#include "ennemi.c"
 
-/*************************************************************INTEGRATION*************************************************************/
+
+/*************************************************************  INTEGRATION  *************************************************************/
 
 
 int main(int argc, char *argv[])
@@ -27,14 +28,13 @@ score s; vie v; temps t;
 personnage p; obstacle o1,o2,o3;
 int touche=1;
 int sens=0;
-
 // les Enigmes 
 //enigme e1,e2,e3,e4,e5,e6;
 int done=0; // lorsqu'on clique sur le clavier 
-/*
+
 // Ennemis 
-enemie en1,en2,en3;en4,en5,en6;
-int ennemi1=0;
+ennemi en1,en2;
+/*int ennemi1=0;
 int ennemi2=0;
 int ennemi3=0;
 int ennemi4=0;
@@ -77,6 +77,8 @@ initialiser_vie(&v);
 initialiser_score(&s);
 initialiser_temps(&t);
 initialiser_obstacle1(&o1);
+initialiser_ennemi1(&en1);
+initialiser_ennemi2(&en2);
 //initialiser_enigme(&e1);
 //enigme
 //
@@ -84,7 +86,7 @@ initialiser_obstacle1(&o1);
 
 /*
  // init ennemi 
-initialiser_ennemi(&en1);  // l'ennemi 3andha nafess el .h au faite mais l'initialisation bich tetbadel khater el image..
+  // l'ennemi 3andha nafess el .h au faite mais l'initialisation bich tetbadel khater el image..
 initialiser_ennemi(&en2);
 initialiser_ennemi(&en3);
 initialiser_ennemi(&en4);
@@ -99,8 +101,8 @@ initialiser_obstacle(&o3);*/
 /*---------------------------------------------------------------- DISPLAY ----------------------------------------------------------------*/
 
 // la boucle du jeu 
- //while (!done)
-//{ 
+ while (!done)
+{ 
 
 /*if (i==0) // lorsqu'on est dans le menu
 	{afficher_menu(m,ecran);}
@@ -111,34 +113,32 @@ afficher_background(&bg,ecran);
 afficher_personnage(&p,ecran);
 afficher_score(&s,ecran);
 afficher_vie(&v,ecran);
+//afficher_temps(&t,ecran);
+afficher_ennemi1(&en1,ecran);
+afficher_ennemi2(&en2,ecran);
 afficher_obstacle1(&o1,ecran);
 /*afficher_obstacle(&o2,ecran);
 afficher_obstacle(&o3,ecran);*/
-//afficher_temps(&t,ecran);
 //afficher_enigme(&e1,ecran);
 
-// affichage de l'ennemi
+// affichage de l'ennemi avec des conditions
 /*
 if (ennemi1==0)
-{affiche_ennemi(&e1,ecran);}
+{affiche_ennemi(&en1,ecran);}
  if (ennemi2==0)
-{affiche_ennemi(&e2,ecran);}
+{affiche_ennemi(&en2,ecran);}
  if (ennemi3==0)
-{affiche_ennemi(&e3,ecran);}
+{affiche_ennemi(&en3,ecran);}
  if (ennemi4==0)
-{affiche_ennemi(&e4,ecran);}
+{affiche_ennemi(&en4,ecran);}
  if (ennemi5==0)
-{affiche_ennemi(&e5,ecran);}
+{affiche_ennemi(&en5,ecran);}
  if (ennemi6==0)
-{affiche_ennemi(&e6,ecran);}*/
+{affiche_ennemi(&en6,ecran);}*/
 
 // enigmeeeeeeeeeeeeeeeeeeeeeeeeee
 // ici y a une condition 3al enigme bich yaffichi ou yaffichi el temps d'enigme pas encore resolu 
 	//}
-
-//done=1;
-//}
-
 
 
 /*---------------------------------------------------------------- INPUT + UPDATE ----------------------------------------------------------------*/
@@ -148,7 +148,8 @@ if (ennemi1==0)
  // variable que lorsqu'on clique sur la touche elle nous indique le sens 
     
     while (touche)
-    {
+    {  
+        
         while(SDL_PollEvent(&event))
         {
 		
@@ -230,16 +231,17 @@ if (ennemi1==0)
 }             
 }
 }
+done=1;
+}
 
-
-/************************************************************************************* FIN *************************************************************************************/
+/*----------------------------------------------------------------  FIN ----------------------------------------------------------------*/
 
 // derniere chose à faire 
 SDL_Flip (ecran);
-
- // noublie pas ou le mettre 
-
 free_temps(&t,ecran);
+ // noublie pas ou le mettre  
+
+
 // liberation SDL
 TTF_Quit();
 SDL_Quit();

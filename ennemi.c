@@ -7,58 +7,45 @@
 #include "ennemi.h"
 
 
-void initialiser_ennemi(ennemi *e[],int n)
+void initialiser_ennemi1(ennemi *en1)
 {
+en1->position_entite.x=600;
+en1->position_entite.y=80;
+
 	char entites[20];
-	int i,j ; 
-
-	
-  for ( i = 0; i < n; i++)
+	int i;
+  for ( i = 0; i < 20; i++)
   {
-  	e[i]->position_max.x=0;
-  	e[i]->position_min.x=0;
-  	e[i]->frameup=0;
-  	e[i]->framedown=96;
-  	e[i]->frameleft=48;
-  	e[i]->frameright=144;
-	e[i]->position_aleatoire_max.x=0;
-	e[i]->position_aleatoire_max.y=0;
-	e[i]->position_aleatoire_min.x=0;
-	e[i]->position_aleatoire_min.y=0;
-  	e[i]->position_min.y=0;
-  	e[i]->position_max.x=0;
-  	e[i]->position_entite.x=0 ; 
-  	e[i]->position_entite.y=0 ; 
-	e[i]->pos_affichage.x=0;
-	e[i]->pos_affichage.y=0;
-	e[i]->affichage_ou_non=0;
-        sprintf(entites,"ennemi/ennemi%d.png",i);
-for (j=0;j<20;j++)
-  {	
-e[i]->affichage_secondaire[j]=IMG_Load(entites);
-   }
-}}
+      sprintf(entites,"outils/en1/%d.png",i);
+    en1->affichage_secondaire[i]=IMG_Load(entites);
+  }
+en1->Frame=0;
 
-void afficher_ennemi(ennemi *e[], SDL_Surface *ecran)
+}
+
+void afficher_ennemi1(ennemi *en1, SDL_Surface *ecran)
 {
-int i=0,j=0;
-	SDL_BlitSurface(e[i]->affichage_secondaire[j],NULL,ecran ,&e[i]->position_entite);
+
+  SDL_BlitSurface(en1->affichage_secondaire[en1->Frame],NULL,ecran ,&(en1->position_entite));
 } 
 
 
-void perfect_pixel(ennemi e[])
+void initialiser_ennemi2(ennemi *en2)
 {
-
-
-
-
+en2->position_entite.x=200;
+en2->position_entite.y=130;
+  char entites[20];
+  int i;
+  for ( i = 0; i < 20; i++)
+  {
+      sprintf(entites,"outils/en2/%d.png",i);
+    en2->affichage_secondaire[i]=IMG_Load(entites);
+  }
+en2->Frame=0;
 }
-void deplacement_ennemi_alea(ennemi e [])
+
+void afficher_ennemi2(ennemi *en2, SDL_Surface *ecran)
 {
+	SDL_BlitSurface(en2->affichage_secondaire[en2->Frame],NULL,ecran ,&(en2->position_entite));
+} 
 
-
-
-
-
-  
-}
