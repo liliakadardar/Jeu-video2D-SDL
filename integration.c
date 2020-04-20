@@ -23,8 +23,8 @@ int main(int argc, char *argv[])
 /*declarations des variables */
 
 //menu m;
-background bg;
-score s; vie v; temps t;
+background bg; temps t;
+score s; vie v;
 personnage p; obstacle o1,o2,o3;
 int touche=1;
 int sens=0;
@@ -73,9 +73,10 @@ SDL_Event event;
 //initialiser_menu(&m);
 initialiser_background(&bg);
 initialiser_personnage(&p);
+initialiser_temps(&t);
 initialiser_vie(&v);
 initialiser_score(&s);
-initialiser_temps(&t);
+
 initialiser_obstacle1(&o1);
 initialiser_ennemi1(&en1);
 initialiser_ennemi2(&en2);
@@ -109,17 +110,17 @@ initialiser_obstacle(&o3);*/
 
 if (i==1) // lorsq'on est dans le jeu
 	{*/
-afficher_background(&bg,ecran); 
-afficher_personnage(&p,ecran);
-afficher_score(&s,ecran);
-afficher_vie(&v,ecran);
-//afficher_temps(&t,ecran);
-afficher_ennemi1(&en1,ecran);
-afficher_ennemi2(&en2,ecran);
-afficher_obstacle1(&o1,ecran);
-/*afficher_obstacle(&o2,ecran);
-afficher_obstacle(&o3,ecran);*/
-//afficher_enigme(&e1,ecran);
+afficher_background(bg,ecran); 
+afficher_personnage(p,ecran);
+afficher_temps(&t,ecran);
+afficher_score(s,ecran);
+afficher_vie(v,ecran);
+afficher_ennemi1(en1,ecran);
+afficher_ennemi2(en2,ecran);
+afficher_obstacle1(o1,ecran);
+/*afficher_obstacle(o2,ecran);
+afficher_obstacle(o3,ecran);*/
+//afficher_enigme(e1,ecran);
 
 // affichage de l'ennemi avec des conditions
 /*
@@ -144,19 +145,16 @@ if (ennemi1==0)
 /*---------------------------------------------------------------- INPUT + UPDATE ----------------------------------------------------------------*/
 
 
-
+int clic=0;
  // variable que lorsqu'on clique sur la touche elle nous indique le sens 
     
-    while (touche)
-    {  
-        
         while(SDL_PollEvent(&event))
         {
 		
             switch(event.type)
             {
                 case SDL_QUIT:
-                touche=0;
+                done=1;
                 break;
 
                 //les touches de clavier 
@@ -164,80 +162,80 @@ if (ennemi1==0)
                     switch (event.key.keysym.sym)
                     {
                     case SDLK_ESCAPE:  // echape 
-                    touche = 0;
+                    done = 1;
                     break;
 
-                    case SDLK_RIGHT: // Flèche droite
+                    case SDLK_LEFT: // Flèche droite
+                     clic=1;
+                    break;
+
+                    case SDLK_RIGHT: // Flèche gauche
+                        clic=2;
+                    break;
+
+                    case SDLK_UP: // Flèche bas 
+                        clic=3;
+                    break;
+
+                    case SDLK_DOWN: // Flèche haut
+                        clic=4;
+                    break;
                     
-                   /* animation_right(&p); // animation personnage
-                    scrolling_bg(sens,&bg,ecran); 
-                    deplacement_clavier_right(&p,ecran); // deplacement personnage*/
-                    break;
+                    // Touche d'attaque clic sur "a"
+                    case SDLK_a: 
+                    clic=5;
+                    break; 
 
-                    case SDLK_LEFT: // Flèche gauche
-                    
-                   /* animation_left(&p); // animation personnage 
-                    scrolling_bg(sens,&bg,ecran); 
-                    // l'appel a cette fct est sur la moitié de l'ecran avce une conditions
-                    deplacement_clavier_left(&p); // deplacement personnage*/
-                    break;
-
+                    // option pour le joueur
                     case SDLK_c: // touche permettant aux joeurs de se redonner 3 coeurs
                         
                         break;
                     case SDLK_z: // touche permettant aux joeurs de se donner 10 pièces
                         break;
-                    case SDLK_a: 
-                    break; // Touche d'attaque
-
+                   
                    }
                 break;
 
-                case SDL_KEYUP: // touches relachées
-                switch (event.key.keysym.sym)
-                {
-                    case SDLK_ESCAPE:
-                    touche= 0;
-                    break;
-
-                    case SDLK_RIGHT: 
-                    break;
-
-                    case SDLK_LEFT:    
-                    break;
-
-                    // avec la sourie 
+                    // touche de la sourie 
                 
                 case SDL_MOUSEBUTTONDOWN :
 
                 if(event.button.button == SDL_BUTTON_LEFT)
-                    { /*sens=1;
-                   deplacement_sourie(&p,sens,ecran);
-                    animation_left(&p);*/
-                    }
-                else 
-                    {/*sens=2;
-                    deplacement_sourie(&p,sens,ecran);
-                    animation_right(&p);*/
-                    }
-                break;
+                    { clic=1;}
+                else if(event.button.button == SDL_BUTTON_RIGHT)
+                    {clic=2;}
+                    
+		        else if (event.button.button== SDL_BUTTON_WHEELUP)
+		          {clic=3;}
+                else if (event.button.button == SDL_BUTTON_WHEELDOWN)
+		          {clic=4;}
+              
+			     break;
                  }   
-            // ici je dois verifier avec l'enigme sinon il y a un evenement de l'enigme
-               
               
 
+}     
+  /*---------------------------------------------------------------- UPDATE ----------------------------------------------------------------*/
+      
+if (clic!=0)
+{deplacement_clavier(&p,clic);
+ deplacement_sourie(&p,clic); //printf("%d\n",p.position_personnage.x );
+}
 
 
-}             
-}
-}
-done=1;
+
+
+
+
+
+
+
+
+/*-------- FLIP------*/
+SDL_Flip (ecran);
 }
 
 /*----------------------------------------------------------------  FIN ----------------------------------------------------------------*/
-
-// derniere chose à faire 
-SDL_Flip (ecran);
 free_temps(&t,ecran);
  // noublie pas ou le mettre  
 

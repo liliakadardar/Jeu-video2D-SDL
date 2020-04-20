@@ -30,7 +30,7 @@ SDL_Rect position_tEnigme;
 
 // init enigme 
 void initialiser_enigme(enigme *e1);
-void affichage_enigme(enigme *e1, SDL_Surface *ecran);
+void affichage_enigme(enigme e1, SDL_Surface *ecran);
 int resolution_enigme(enigme *e1);
 void enigme_aleatoire(enigme *e1);
 

@@ -19,7 +19,7 @@ int speed;
 
 void initialiser_background(background *bg);
 
-void afficher_background(background *bg, SDL_Surface * ecran);
+void afficher_background(background bg, SDL_Surface * ecran);
 
 //void animation_bg(background *bg, SDL_Surface *ecran );
 

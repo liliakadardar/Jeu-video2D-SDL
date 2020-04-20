@@ -35,9 +35,9 @@ e1->resolu=-1;
 
 
 /**************AFFICHAGE Enigme ***************/
-void afficher_enigme (enigme *e1, SDL_Surface * ecran)
+void afficher_enigme (enigme e1, SDL_Surface * ecran)
 {
-SDL_BlitSurface(e1->img_enigme,NULL,ecran,&e1->position_enigme);
+SDL_BlitSurface(e1.img_enigme,NULL,ecran,&e1.position_enigme);
 }
 
 

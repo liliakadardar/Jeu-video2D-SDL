@@ -28,7 +28,7 @@ o1->image_obs1[6]=IMG_Load("outils/obs03_6.png") ;
 
 
 }
-  void initialiser_obstacle2(obstacle * o2)
+  void initialiser_obstacle2(obstacle *o2)
 {    
   // implemetation des images du obstacle dans un tableau sans une boucle 
    o2->image_obs2[0]=IMG_Load("outils/obs01.png") ;
@@ -55,18 +55,18 @@ o1->image_obs1[6]=IMG_Load("outils/obs03_6.png") ;
    o3->position_trap.h=0.290;*/
 
 }
-void afficher_obstacle1(obstacle * o1, SDL_Surface *ecran)
+void afficher_obstacle1(obstacle o1, SDL_Surface *ecran)
 {
 
-    SDL_BlitSurface(o1->image_obs1[0],NULL,ecran,&(o1->position_obs1));
+    SDL_BlitSurface(o1.image_obs1[0],NULL,ecran,&(o1.position_obs1));
 }
-void afficher_obstacle2(obstacle * o2, SDL_Surface *ecran)
+void afficher_obstacle2(obstacle o2, SDL_Surface *ecran)
 {   
-    SDL_BlitSurface(o2->image_obs2[0],NULL,ecran,&(o2->position_obs2));
+    SDL_BlitSurface(o2.image_obs2[0],NULL,ecran,&(o2.position_obs2));
 }
-void afficher_obstacle3(obstacle * o3, SDL_Surface *ecran)
+void afficher_obstacle3(obstacle o3, SDL_Surface *ecran)
 {    
-     SDL_BlitSurface(o3->image_trap,NULL,ecran,&(o3->position_trap));
+     SDL_BlitSurface(o3.image_trap,NULL,ecran,&(o3.position_trap));
 }
 
 /*

@@ -41,10 +41,10 @@ if(test && v->val <4)
  (v->val)++;
 }*/
 
-void afficher_vie(vie *v,SDL_Surface *ecran)
+void afficher_vie(vie v,SDL_Surface *ecran)
 { 
-SDL_BlitSurface(v->texte,NULL,ecran,&(v->position_texte));
-SDL_BlitSurface(v->image_vie[v->val],NULL,ecran,&(v->position_vie));
+SDL_BlitSurface(v.texte,NULL,ecran,&(v.position_texte));
+SDL_BlitSurface(v.image_vie[v.val],NULL,ecran,&(v.position_vie));
 }
 
 

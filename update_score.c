@@ -61,8 +61,8 @@ int gestion_vies (SDL_Rect personnage,objet ennemie,SDL_Surface *coeur1,SDL_Surf
  }*/
 
 
-void afficher_score(score *s,SDL_Surface *ecran)
+void afficher_score(score s,SDL_Surface *ecran)
 {
-              SDL_BlitSurface(s->valeur_score, NULL, ecran, &s->position_score);
+              SDL_BlitSurface(s.valeur_score, NULL, ecran, &s.position_score);
 }
 

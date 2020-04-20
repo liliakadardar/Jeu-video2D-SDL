@@ -36,11 +36,11 @@ bg->img_bg[1]=IMG_Load("outils/bg_final_0.png");
 // ajout d'un son continue avec la bg 
 }
 
-void afficher_background(background *bg, SDL_Surface * ecran)
+void afficher_background(background bg, SDL_Surface * ecran)
 
 {
-SDL_BlitSurface(bg->img_bg[0],&(bg->scroll),ecran,NULL);
-SDL_BlitSurface(bg->img_bg[1],&(bg->scroll),ecran,NULL);
+SDL_BlitSurface(bg.img_bg[0],&(bg.scroll),ecran,NULL);
+SDL_BlitSurface(bg.img_bg[1],&(bg.scroll),ecran,NULL);
 }
 
 

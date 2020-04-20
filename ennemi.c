@@ -23,10 +23,10 @@ en1->Frame=0;
 
 }
 
-void afficher_ennemi1(ennemi *en1, SDL_Surface *ecran)
+void afficher_ennemi1(ennemi en1, SDL_Surface *ecran)
 {
 
-  SDL_BlitSurface(en1->affichage_secondaire[en1->Frame],NULL,ecran ,&(en1->position_entite));
+  SDL_BlitSurface(en1.affichage_secondaire[en1.Frame],NULL,ecran ,&(en1.position_entite));
 } 
 
 
@@ -44,8 +44,8 @@ en2->position_entite.y=130;
 en2->Frame=0;
 }
 
-void afficher_ennemi2(ennemi *en2, SDL_Surface *ecran)
+void afficher_ennemi2(ennemi en2, SDL_Surface *ecran)
 {
-	SDL_BlitSurface(en2->affichage_secondaire[en2->Frame],NULL,ecran ,&(en2->position_entite));
+	SDL_BlitSurface(en2.affichage_secondaire[en2.Frame],NULL,ecran ,&(en2.position_entite));
 } 
 

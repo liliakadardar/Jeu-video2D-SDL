@@ -31,7 +31,7 @@ SDL_Rect pos_affichage;
 }ennemi;
 
 void initialiser_ennemi1(ennemi *en1);
-void afficher_ennemi1(ennemi *en1, SDL_Surface *ecran);
+void afficher_ennemi1(ennemi en1, SDL_Surface *ecran);
 void initialiser_ennemi2(ennemi *en2);
-void afficher_ennemi2(ennemi *en2, SDL_Surface *ecran);
+void afficher_ennemi2(ennemi en2, SDL_Surface *ecran);
 

@@ -7,10 +7,15 @@
 #include <SDL/SDL_mixer.h>
 #include "personnage.h"
 
+
+//---------------------Initialisation des variables ---------------------//
+
+
 void initialiser_personnage(personnage *p)
 {
-p->position_personnage.x=50;
-p->position_personnage.y=80;
+p->position_personnage.x=0;
+p->position_personnage.y=180;
+
 char nomFich[50];
 int i;
 for(i=0;i<50;i++)
@@ -19,144 +24,157 @@ for(i=0;i<50;i++)
     p->tab[i]=IMG_Load(nomFich);
 }
 
-//p->sens_mouvement=1;
 p->Frame=0;
-p->time=0;
-p->score=0;
-p->vie=5;
+p->vitesse=15;
 }
 
-void afficher_personnage(personnage *p,SDL_Surface *ecran)
+//---------------------Affichage du personnage sur l'ecran ---------------------//
+
+void afficher_personnage(personnage p,SDL_Surface *ecran)
 {
-    SDL_BlitSurface(p->tab[p->Frame],NULL,ecran,&(p->position_personnage));
+    SDL_BlitSurface(p.tab[p.Frame],NULL,ecran,&(p.position_personnage));
 }
 
-void animation (personnage *p) 
-{
-  if (p->direction == Left) 
-  {
-    animation_left(p);
-  }
-  else 
-  {
-    animation_right(p);
-  }
-}
 
+//---------------------Animation a droite ---------------------//
 
 void animation_right (personnage *p)
 {
-  int nb_frames_p=0;
-  if(p->Frame<=11 || p->Frame>=25)
-    p->Frame=11;
+  if(p->Frame<=0 || p->Frame>=9)
+		p->Frame=0;
 	p->Frame++;
-
-	/*if (p->Frame>=nb_frames_p)
-		p->Frame=0;*/
-
 }
+
+//---------------------Animation a gauche---------------------//
 
 void animation_left (personnage *p)
 {
-  int nb_frames_p=0;
-  if(p->Frame<=0 || p->Frame>=10)
-    p->Frame=0;
+	if(p->Frame<=10 || p->Frame>=19)
+		p->Frame=10;
+
+	p->Frame++;	
+}
+
+//---------------------Animation du saut ---------------------//
+void animation_jump (personnage *p)
+{
+	if(p->Frame<=20 || p->Frame>=34)
+		p->Frame=21;
 
 	p->Frame++;
-	/*if (p->Frame>=2*nb_frames_p)
-		p->Frame=16;*/
+
 }
 
-
-void animation_stable (personnage *p)
+//---------------------Animation de l'accroupissement apres le saut--------------------//
+void animation_crouch (personnage *p)
 {
-int nb_frames_p=0;
-  if (p->direction == Left)
-  {
-	if(p->Frame<=29 || p->Frame>=45)
-		p->Frame=30;
+  if(p->Frame<=35 || p->Frame>=44)
+		p->Frame=36;
 
 	p->Frame++;
-	if (p->Frame>=3*nb_frames_p)
-		p->Frame=30;
-  }
-else if (p->direction == Right)
+}
+
+/*
+//---------------------Animation de l'attack du personnage---------------------//
+
+void animation_hit (personnage *p)
 {
 int nb_frames_p=0;
-if(p->Frame<=44 || p->Frame>=60)
-  p->Frame=45;
+  
+	if(p->Frame<=45 || p->Frame>=60)
+		p->Frame=46;
 
-p->Frame++;
-if (p->Frame>=4*nb_frames_p)
-  p->Frame=45;
-}
-
-}
-
-
-
-void deplacement_clavier_right(personnage *p,SDL_Surface *ecran)
-{
- 
-
-}
-void deplacement_clavier_left(personnage *p)
-{
-
-}
-
-
-
-
-
-void deplacement_sourie (personnage *p, SDL_Surface *ecran)
-{
-
-  SDL_Event event;
-  int continuer=1;
-  int vitesse=5;
-
-  while (continuer)
-	{
-SDL_EnableKeyRepeat(10, 10);
-    SDL_WaitEvent(&event);
-    switch(event.type)
-    {
-        case SDL_QUIT:
-continuer=0;
-        break;
-case SDL_MOUSEBUTTONUP:
-          if(event.button.button == SDL_BUTTON_LEFT )
-          {
-            p->position_personnage.x -= vitesse;
-            p->direction = Left;
-          }
-          else if(event.button.button == SDL_BUTTON_RIGHT)
-          {
-            p->position_personnage.x += vitesse;
-            p->direction = Right;
-          }
-          else if(event.button.button== SDL_BUTTON_WHEELUP)
-          {
-            p->position_personnage.y -= vitesse;
-          }
-          else if(event.button.button == SDL_BUTTON_WHEELDOWN)
-          {
-            p->position_personnage.y += vitesse;
-          }
-        animation (p);
-        break;
-default:
-break;
-
-      }
-       
-    SDL_FillRect(ecran, NULL, 0x000000);
-    afficher_personnage(p,ecran);
-    SDL_Flip(ecran);
-
-    }
-
-
-}
+	p->Frame++;
 	
+}
+
+//---------------------animation du personnage en cas d'echouer---------------------//
+void animation_fail (personnage *p)
+{
+int nb_frames_p=0;
+  
+	if(p->Frame<=61 || p->Frame>=74)
+		p->Frame=62;
+
+	p->Frame++;
+	
+}*/
+
+
+
+//---------------------Deplacement clavier ---------------------//
+
+
+void deplacement_clavier(personnage *p,int clic)
+{
+            if (clic==1)
+         
+          {
+            p->position_personnage.x -=p-> vitesse;
+           
+            animation_left (p);
+          }
+          else if(clic==2)
+          {
+            p->position_personnage.x += p->vitesse;
+            
+            animation_right (p);
+          }
+            else if (clic==3)
+              {p->position_personnage.x -= p->vitesse;
+            p->position_personnage.y -= p->vitesse;
+            
+            animation_jump (p);
+
+               }
+               else if(clic==4)
+               {
+                 p->position_personnage.x += p->vitesse;
+            p->position_personnage.y += p->vitesse;
+            animation_crouch (p);
+
+
+               }
+}
+
+//---------------------Deplacement du personnage moyennant la sourie---------------------//
+
+
+void deplacement_sourie (personnage *p, int clic)
+{
+
+            if (clic==1)
+         
+          {
+            p->position_personnage.x -=p-> vitesse;
+           
+		        animation_left (p);
+          }
+          else if(clic==2)
+          {
+            p->position_personnage.x += p->vitesse;
+            
+		        animation_right (p);
+          }
+          else if(clic==3)
+          {
+            p->position_personnage.y -= p->vitesse;
+            p->position_personnage.x -= p->vitesse;
+		  
+            animation_jump (p);
+          }
+          else if(clic==4)
+          {
+            p->position_personnage.y += p->vitesse;
+            p->position_personnage.x += p->vitesse;
+		        animation_crouch (p);
+          }
+
+       
+
+    
+
+
+}
+
+

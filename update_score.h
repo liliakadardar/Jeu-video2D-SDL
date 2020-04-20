@@ -19,5 +19,5 @@ TTF_Font *police;
 
 
 void initialiser_score (score *s);
-void afficher_score  (score *s,SDL_Surface *ecran);
+void afficher_score  (score s,SDL_Surface *ecran);
 #endif 
