@@ -16,9 +16,9 @@ void initialiser_personnage(personnage *p)
 p->position_personnage.x=0;
 p->position_personnage.y=180;
 
-char nomFich[50];
+char nomFich[99];
 int i;
-for(i=0;i<50;i++)
+for(i=0;i<99;i++)
 {
     sprintf(nomFich,"per/%d.png",i);
     p->tab[i]=IMG_Load(nomFich);
@@ -74,14 +74,12 @@ void animation_crouch (personnage *p)
 	p->Frame++;
 }
 
-/*
+
 //---------------------Animation de l'attack du personnage---------------------//
 
 void animation_hit (personnage *p)
 {
-int nb_frames_p=0;
-  
-	if(p->Frame<=45 || p->Frame>=60)
+	if(p->Frame<=45 || p->Frame>=55)
 		p->Frame=46;
 
 	p->Frame++;
@@ -89,16 +87,20 @@ int nb_frames_p=0;
 }
 
 //---------------------animation du personnage en cas d'echouer---------------------//
+/*
 void animation_fail (personnage *p)
 {
 int nb_frames_p=0;
   
-	if(p->Frame<=61 || p->Frame>=74)
-		p->Frame=62;
+	if(p->Frame<=45 || p->Frame>=55)
+		p->Frame=46;
 
 	p->Frame++;
 	
 }*/
+
+
+
 
 
 
@@ -121,8 +123,9 @@ void deplacement_clavier(personnage *p,int clic)
             animation_right (p);
           }
             else if (clic==3)
-              {p->position_personnage.x -= p->vitesse;
-            p->position_personnage.y -= p->vitesse;
+ 	{
+            p->position_personnage.x += p->vitesse;
+             p->position_personnage.y -= p->vitesse;
             
             animation_jump (p);
 
@@ -132,6 +135,15 @@ void deplacement_clavier(personnage *p,int clic)
                  p->position_personnage.x += p->vitesse;
             p->position_personnage.y += p->vitesse;
             animation_crouch (p);
+
+
+               }
+
+		else if(clic==5)
+               {
+                 p->position_personnage.x += p->vitesse;
+            
+            animation_hit (p);
 
 
                }
@@ -158,8 +170,8 @@ void deplacement_sourie (personnage *p, int clic)
           }
           else if(clic==3)
           {
+            p->position_personnage.x += p->vitesse;
             p->position_personnage.y -= p->vitesse;
-            p->position_personnage.x -= p->vitesse;
 		  
             animation_jump (p);
           }

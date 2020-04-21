@@ -182,7 +182,7 @@ int clic=0;
                     break;
                     
                     // Touche d'attaque clic sur "a"
-                    case SDLK_a: 
+                    case SDLK_SPACE: 
                     clic=5;
                     break; 
 
