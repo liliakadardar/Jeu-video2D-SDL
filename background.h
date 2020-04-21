@@ -8,11 +8,12 @@
 
 typedef struct background
 {
-SDL_Surface *img_bg[2];
+SDL_Surface *img_bg;
 SDL_Rect position_bg;
 SDL_Rect position_collision;
 SDL_Rect scroll;
 int speed;
+
 //ajout d'un son continue 
 }background;
 
@@ -20,8 +21,5 @@ int speed;
 void initialiser_background(background *bg);
 
 void afficher_background(background bg, SDL_Surface * ecran);
+void scrolling_bg(int clic,background *bg);
 
-//void animation_bg(background *bg, SDL_Surface *ecran );
-
-void scrolling_bg(int sens,background *bg, SDL_Surface *ecran);
-//void Free_background(void);
