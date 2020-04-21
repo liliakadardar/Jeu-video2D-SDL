@@ -14,7 +14,7 @@ typedef struct  personnage
 	
 int vitesse;
 	SDL_Rect position_personnage; 
-	SDL_Surface *tab[50];
+	SDL_Surface *tab[99];
 	float time;
 	int score;
 	SDL_Rect pos_score;
@@ -33,6 +33,7 @@ void animation_right (personnage *p);
 void animation_left (personnage *p);
 void animation_jump (personnage *p);
 void animation_crouch(personnage *p);
+void animation_hit(personnage *p);
 /*---- deplacements ----*/
 void deplacement_clavier_left(personnage *p,int clic);
 void deplacement_sourie(personnage *p,int clic);

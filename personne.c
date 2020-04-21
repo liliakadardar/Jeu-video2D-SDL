@@ -14,7 +14,7 @@
 void initialiser_personnage(personnage *p)
 {
 p->position_personnage.x=0;
-p->position_personnage.y=100;
+p->position_personnage.y=180;
 
 char nomFich[50];
 int i;
