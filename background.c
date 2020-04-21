@@ -49,8 +49,8 @@ void scrolling_bg(int clic,background *bg)
 		
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
-		if(bg->scroll.x>=8000-800)
-			bg->scroll.x=8000-800;
+		if(bg->scroll.x>=5000-600)
+			bg->scroll.x=5000-600;
 	}
 	else if(clic==1)//gauche
 	{ 
@@ -58,8 +58,30 @@ void scrolling_bg(int clic,background *bg)
 		bg->scroll.x-=bg->speed;
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
-		if(bg->scroll.x>=8000-800)
-			bg->scroll.x=8000-800;
+		if(bg->scroll.x>=5000-600)
+			bg->scroll.x=5000-600;
+		
+	}
+	else if(clic==5)//run&&attack
+	{ 
+		bg->scroll.x+=bg->speed;
+		bg->position_bg.x+=bg->speed;
+		
+		if(bg->scroll.x<=0)
+			bg->scroll.x=0;
+		if(bg->scroll.x>=5000-600)
+			bg->scroll.x=5000-600;
+		
+	}
+	else if(clic==6)//slide
+	{ 
+		bg->scroll.x+=bg->speed;
+		bg->position_bg.x+=bg->speed;
+		
+		if(bg->scroll.x<=0)
+			bg->scroll.x=0;
+		if(bg->scroll.x>=5000-600)
+			bg->scroll.x=5000-600;
 		
 	}
 }

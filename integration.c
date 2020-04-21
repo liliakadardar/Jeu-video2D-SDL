@@ -181,9 +181,13 @@ int clic=0;
                         clic=4;
                     break;
                     
-                    // Touche d'attaque clic sur "a"
-                    case SDLK_a: 
+                    // Touche d'attaque clic sur "espace"
+                    case SDLK_SPACE: 
                     clic=5;
+                    break; 
+                    // Touche pour slide:glisser clic sur "0"
+                    case SDLK_RETURN: 
+                    clic=6;
                     break; 
 
                     // option pour le joueur

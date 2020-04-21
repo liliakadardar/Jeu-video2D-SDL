@@ -21,6 +21,7 @@ int vitesse;
 	SDL_Rect scroll;
 	int Frame;
 	int objective; 
+
 }personnage;
 
 
@@ -33,6 +34,7 @@ void animation_left (personnage *p);
 void animation_jump (personnage *p);
 void animation_crouch(personnage *p);
 void animation_hit(personnage *p);
+void animation_slide(personnage *p);
 /*---- deplacements ----*/
 void deplacement_clavier_left(personnage *p,int clic);
 void deplacement_sourie(personnage *p,int clic);

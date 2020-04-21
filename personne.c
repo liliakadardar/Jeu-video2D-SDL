@@ -25,7 +25,7 @@ for(i=0;i<99;i++)
 }
 
 p->Frame=0;
-p->vitesse=15;
+p->vitesse=5;
 }
 
 //---------------------Affichage du personnage sur l'ecran ---------------------//
@@ -86,6 +86,18 @@ void animation_hit (personnage *p)
 	
 }
 
+//---------------------Animation pour glisser---------------------//
+
+void animation_slide (personnage *p)
+{
+	if(p->Frame<=66 || p->Frame>=75)
+		p->Frame=67;
+
+	p->Frame++;
+	
+}
+
+
 //---------------------animation du personnage en cas d'echouer---------------------//
 /*
 void animation_fail (personnage *p)
@@ -143,7 +155,15 @@ void deplacement_clavier(personnage *p,int clic)
                {
                  p->position_personnage.x += p->vitesse;
             
-            animation_hit (p);
+                animation_hit (p);
+
+
+               }
+		else if(clic==6)
+               {
+                 p->position_personnage.x += p->vitesse;
+            
+                 animation_slide (p);
 
 
                }
