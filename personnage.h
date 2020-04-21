@@ -21,7 +21,6 @@ int vitesse;
 	SDL_Rect scroll;
 	int Frame;
 	int objective; 
-
 }personnage;
 
 
