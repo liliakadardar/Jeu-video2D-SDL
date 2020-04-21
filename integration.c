@@ -181,8 +181,13 @@ int clic=0;
                         clic=4;
                     break;
                     
+<<<<<<< HEAD
                     // Touche d'attaque clic sur "espace"
                     case SDLK_SPACE: 
+=======
+                    // Touche d'attaque clic sur "a"
+                    case SDLK_a: 
+>>>>>>> 6eb245f1700661a0363f2fb02d7b302efeac1720
                     clic=5;
                     break; 
                     // Touche pour slide:glisser clic sur "0"

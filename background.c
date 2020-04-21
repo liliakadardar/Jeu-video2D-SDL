@@ -49,8 +49,13 @@ void scrolling_bg(int clic,background *bg)
 		
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
+<<<<<<< HEAD
 		if(bg->scroll.x>=5000-600)
 			bg->scroll.x=5000-600;
+=======
+		if(bg->scroll.x>=8000-800)
+			bg->scroll.x=8000-800;
+>>>>>>> 6eb245f1700661a0363f2fb02d7b302efeac1720
 	}
 	else if(clic==1)//gauche
 	{ 
@@ -58,6 +63,7 @@ void scrolling_bg(int clic,background *bg)
 		bg->scroll.x-=bg->speed;
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
+<<<<<<< HEAD
 		if(bg->scroll.x>=5000-600)
 			bg->scroll.x=5000-600;
 		
@@ -82,6 +88,10 @@ void scrolling_bg(int clic,background *bg)
 			bg->scroll.x=0;
 		if(bg->scroll.x>=5000-600)
 			bg->scroll.x=5000-600;
+=======
+		if(bg->scroll.x>=8000-800)
+			bg->scroll.x=8000-800;
+>>>>>>> 6eb245f1700661a0363f2fb02d7b302efeac1720
 		
 	}
 }
