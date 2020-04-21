@@ -218,8 +218,10 @@ int clic=0;
   /*---------------------------------------------------------------- UPDATE ----------------------------------------------------------------*/
       
 if (clic!=0)
-{deplacement_clavier(&p,clic);
- deplacement_sourie(&p,clic); //printf("%d\n",p.position_personnage.x );
+{
+deplacement_clavier(&p,clic);
+deplacement_sourie(&p,clic); //printf("%d\n",p.position_personnage.x );
+scrolling_bg(clic,&bg);
 }
 
 
@@ -230,14 +232,13 @@ if (clic!=0)
 
 
 
-
-/*-------- FLIP------*/
+/*--------FLIP------*/
 SDL_Flip (ecran);
 }
 
 /*----------------------------------------------------------------  FIN ----------------------------------------------------------------*/
 free_temps(&t,ecran);
- // noublie pas ou le mettre  
+ 
 
 
 // liberation SDL

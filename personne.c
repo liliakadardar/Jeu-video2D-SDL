@@ -14,7 +14,7 @@
 void initialiser_personnage(personnage *p)
 {
 p->position_personnage.x=0;
-p->position_personnage.y=180;
+p->position_personnage.y=100;
 
 char nomFich[50];
 int i;
@@ -121,8 +121,8 @@ void deplacement_clavier(personnage *p,int clic)
             animation_right (p);
           }
             else if (clic==3)
-              {p->position_personnage.x -= p->vitesse;
-            p->position_personnage.y -= p->vitesse;
+              {p->position_personnage.x += p->vitesse;
+               p->position_personnage.y -= p->vitesse;
             
             animation_jump (p);
 
@@ -130,7 +130,7 @@ void deplacement_clavier(personnage *p,int clic)
                else if(clic==4)
                {
                  p->position_personnage.x += p->vitesse;
-            p->position_personnage.y += p->vitesse;
+                 p->position_personnage.y += p->vitesse;
             animation_crouch (p);
 
 
@@ -158,15 +158,15 @@ void deplacement_sourie (personnage *p, int clic)
           }
           else if(clic==3)
           {
-            p->position_personnage.y -= p->vitesse;
-            p->position_personnage.x -= p->vitesse;
-		  
+           p->position_personnage.x += p->vitesse;
+               p->position_personnage.y -= p->vitesse;
             animation_jump (p);
           }
           else if(clic==4)
           {
-            p->position_personnage.y += p->vitesse;
-            p->position_personnage.x += p->vitesse;
+            
+                 p->position_personnage.x += p->vitesse;
+                 p->position_personnage.y += p->vitesse;
 		        animation_crouch (p);
           }
 
