@@ -14,7 +14,7 @@
 void initialiser_personnage(personnage *p)
 {
 p->position_personnage.x=0;
-p->position_personnage.y=180;
+p->position_personnage.y=230;
 
 char nomFich[99];
 int i;
@@ -40,7 +40,7 @@ void afficher_personnage(personnage p,SDL_Surface *ecran)
 
 void animation_right (personnage *p)
 {
-  if(p->Frame<=0 || p->Frame>=9)
+  if(p->Frame<=0 || p->Frame>=8)
 		p->Frame=0;
 	p->Frame++;
 }
@@ -49,7 +49,7 @@ void animation_right (personnage *p)
 
 void animation_left (personnage *p)
 {
-	if(p->Frame<=10 || p->Frame>=19)
+	if(p->Frame<=9 || p->Frame>=17)
 		p->Frame=10;
 
 	p->Frame++;	
