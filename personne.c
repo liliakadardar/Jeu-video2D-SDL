@@ -58,8 +58,8 @@ void animation_left (personnage *p)
 //---------------------Animation du saut ---------------------//
 void animation_jump (personnage *p)
 {
-	if(p->Frame<=20 || p->Frame>=34)
-		p->Frame=21;
+	if(p->Frame<=22 || p->Frame>=32)
+		p->Frame=23;
 
 	p->Frame++;
 
