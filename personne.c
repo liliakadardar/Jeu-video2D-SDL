@@ -14,7 +14,7 @@
 void initialiser_personnage(personnage *p)
 {
 p->position_personnage.x=0;
-p->position_personnage.y=180;
+p->position_personnage.y=230;
 
 char nomFich[99];
 int i;
@@ -36,71 +36,71 @@ void afficher_personnage(personnage p,SDL_Surface *ecran)
 }
 
 
-//---------------------Animation a droite ---------------------//
+//---------------------Animation marche a droite ---------------------//
 
-void animation_right (personnage *p)
+void animation_walk_right (personnage *p)
 {
-  if(p->Frame<=0 || p->Frame>=9)
-		p->Frame=0;
+  if(p->Frame<=0 || p->Frame>=8)
+		p->Frame=1;
 	p->Frame++;
 }
 
-//---------------------Animation a gauche---------------------//
+//---------------------Animation marche a gauche---------------------//
 
-void animation_left (personnage *p)
+void animation_walk_left (personnage *p)
 {
-	if(p->Frame<=10 || p->Frame>=19)
+	if(p->Frame<=9 || p->Frame>=19)
 		p->Frame=10;
 
 	p->Frame++;	
 }
 
-//---------------------Animation du saut ---------------------//
-void animation_jump (personnage *p)
+//---------------------Animation du saut a droite---------------------//
+void animation_jump_right (personnage *p)
 {
-	if(p->Frame<=22 || p->Frame>=32)
+	if(p->Frame<=20 || p->Frame>=34)
 		p->Frame=23;
 
 	p->Frame++;
 
 }
 
-//---------------------Animation de l'accroupissement apres le saut--------------------//
-void animation_crouch (personnage *p)
+//---------------------Animation du saut a gauche--------------------//
+void animation_jump_left (personnage *p)
 {
-  if(p->Frame<=35 || p->Frame>=44)
+  if(p->Frame<=35 || p->Frame>=49)
 		p->Frame=36;
 
 	p->Frame++;
 }
 
 
-//---------------------Animation de l'attack du personnage---------------------//
+//---------------------Animation crouse a droite---------------------//
 
-void animation_hit (personnage *p)
+void animation_run_right (personnage *p)
 {
-	if(p->Frame<=45 || p->Frame>=55)
-		p->Frame=46;
+	if(p->Frame<=50 || p->Frame>=60)
+		p->Frame=51;
 
 	p->Frame++;
 	
 }
 
-//---------------------Animation pour glisser---------------------//
+//---------------------Animation crourse a gauche---------------------//
 
-void animation_slide (personnage *p)
+void animation_run_left (personnage *p)
 {
-	if(p->Frame<=66 || p->Frame>=75)
-		p->Frame=67;
+	if(p->Frame<=61 || p->Frame>=70)
+		p->Frame=62;
 
 	p->Frame++;
 	
 }
 
-
-//---------------------animation du personnage en cas d'echouer---------------------//
 /*
-void animation_fail (personnage *p)
+//---------------------Animation de l'accroupissemnt droite---------------------//
+
+void animation_crouch_right (personnage *p)
 {
 int nb_frames_p=0;
   
@@ -109,64 +109,215 @@ int nb_frames_p=0;
 
 	p->Frame++;
 	
-}*/
+}
+
+
+//---------------------Animation de l'accroupissemnt gauche---------------------//
+
+void animation_crouch_left (personnage *p)
+{
+int nb_frames_p=0;
+  
+	if(p->Frame<=45 || p->Frame>=55)
+		p->Frame=46;
+
+	p->Frame++;
+	
+}
+
+
+
+//---------------------Animation de glissage droite---------------------//
+
+void animation_slide_right (personnage *p)
+{
+int nb_frames_p=0;
+  
+	if(p->Frame<=45 || p->Frame>=55)
+		p->Frame=46;
+
+	p->Frame++;
+	
+}
+
+
+//---------------------Animation de glissage gauche---------------------//
+
+void animation_slide_left (personnage *p)
+{
+int nb_frames_p=0;
+  
+	if(p->Frame<=45 || p->Frame>=55)
+		p->Frame=46;
+
+	p->Frame++;
+	
+}
 
 
 
 
 
+//---------------------Animation de l'attack droite---------------------//
 
-//---------------------Deplacement clavier ---------------------//
+void animation_attack_right (personnage *p)
+{
+int nb_frames_p=0;
+  
+	if(p->Frame<=45 || p->Frame>=55)
+		p->Frame=46;
+
+	p->Frame++;
+	
+}
 
 
+//---------------------Animation de l'attack gauche---------------------//
+
+void animation_attack_left (personnage *p)
+{
+int nb_frames_p=0;
+  
+	if(p->Frame<=45 || p->Frame>=55)
+		p->Frame=46;
+
+	p->Frame++;
+	
+}
+
+
+//---------------------Animation en cas d'echouer a droite------------------------//
+
+void animation_fail_right (personnage *p)
+{
+int nb_frames_p=0;
+  
+	if(p->Frame<=45 || p->Frame>=55)
+		p->Frame=46;
+
+	p->Frame++;
+	
+}
+
+
+//---------------------Animation en cas d'echouer a gauche------------------------//
+
+void animation_fail_left (personnage *p)
+{
+int nb_frames_p=0;
+  
+	if(p->Frame<=45 || p->Frame>=55)
+		p->Frame=46;
+
+	p->Frame++;
+	
+}
+
+
+
+
+*/
+
+//------------------------Deplacement clavier ------------------------//
+
+ 
 void deplacement_clavier(personnage *p,int clic)
 {
             if (clic==1)
          
           {
             p->position_personnage.x -=p-> vitesse;
-           
-            animation_left (p);
+                         //animation_walk_right (p);
+                        animation_walk_left (p);
           }
           else if(clic==2)
           {
             p->position_personnage.x += p->vitesse;
-            
-            animation_right (p);
+                         animation_walk_right (p);
+                       // animation_walk_left (p);
           }
             else if (clic==3)
  	{
             p->position_personnage.x += p->vitesse;
              p->position_personnage.y -= p->vitesse;
-            
-            animation_jump (p);
+             animation_jump_right (p);
 
                }
                else if(clic==4)
                {
                  p->position_personnage.x += p->vitesse;
             p->position_personnage.y += p->vitesse;
-            animation_crouch (p);
-
+             animation_jump_left (p);
 
                }
 
 		else if(clic==5)
                {
-                 p->position_personnage.x += p->vitesse;
+                 p->position_personnage.x += p->vitesse+5;
             
-                animation_hit (p);
+                 animation_run_right (p);
 
 
                }
 		else if(clic==6)
                {
-                 p->position_personnage.x += p->vitesse;
+                 p->position_personnage.x -= p->vitesse+5;
             
-                 animation_slide (p);
+                  animation_run_left (p);
 
 
                }
+
+/*
+		else if(clic==7)
+               {
+                 p->position_personnage.x -= p->vitesse;
+            
+                  animation_run_left (p);
+
+
+               }
+		else if(clic==8)
+               {
+                 p->position_personnage.x -= p->vitesse;
+            
+                  animation_run_left (p);
+
+
+               }
+		else if(clic==9)
+               {
+                 p->position_personnage.x -= p->vitesse;
+            
+                  animation_run_left (p);
+
+
+               }
+		else if(clic==10)
+               {
+                 p->position_personnage.x -= p->vitesse;
+            
+                  animation_run_left (p);
+
+
+               }
+		else if(clic==11)
+               {
+                 p->position_personnage.x -= p->vitesse;
+            
+                  animation_run_left (p);
+
+
+               }
+		else if(clic==12)
+               {
+                 p->position_personnage.x -= p->vitesse;
+            
+                  animation_run_left (p);
+
+
+               }
+*/
 }
 
 //---------------------Deplacement du personnage moyennant la sourie---------------------//
@@ -179,32 +330,28 @@ void deplacement_sourie (personnage *p, int clic)
          
           {
             p->position_personnage.x -=p-> vitesse;
-           
-		        animation_left (p);
+		    //animation_walk_right (p);
+		    animation_walk_left (p);
           }
           else if(clic==2)
           {
             p->position_personnage.x += p->vitesse;
-            
-		        animation_right (p);
+		    animation_walk_right (p);
+		    //animation_walk_left (p);
           }
           else if(clic==3)
           {
             p->position_personnage.x += p->vitesse;
             p->position_personnage.y -= p->vitesse;
-		  
-            animation_jump (p);
+		   animation_jump_right (p);
           }
           else if(clic==4)
           {
             p->position_personnage.y += p->vitesse;
             p->position_personnage.x += p->vitesse;
-		        animation_crouch (p);
+		    animation_jump_left (p);
           }
 
-       
-
-    
 
 
 }

@@ -5,6 +5,13 @@
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_ttf.h>
 
+typedef enum direction 
+{
+
+  Left,
+  Right
+
+} direction;
 
 
 typedef struct ennemi
@@ -15,7 +22,7 @@ SDL_Surface *affichage_secondaire[20];
 SDL_Rect position_max;
 SDL_Rect position_min;
 
-//int direction;
+direction direction;
 int nbIm;
 int num_im;
 int sens;

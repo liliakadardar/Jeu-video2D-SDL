@@ -42,7 +42,7 @@ SDL_BlitSurface(bg.img_bg,&(bg.scroll),ecran,NULL);
 
 void scrolling_bg(int clic,background *bg)
 {
-	if(clic==2)//droite
+	if(clic==2)//walk droite
 	{ 
 		bg->scroll.x+=bg->speed;
 		bg->position_bg.x+=bg->speed;
@@ -52,7 +52,7 @@ void scrolling_bg(int clic,background *bg)
 		if(bg->scroll.x>=5000-600)
 			bg->scroll.x=5000-600;
 	}
-	else if(clic==1)//gauche
+	else if(clic==1)//walk gauche
 	{ 
 		bg->position_bg.x-=bg->speed;
 		bg->scroll.x-=bg->speed;
@@ -62,7 +62,7 @@ void scrolling_bg(int clic,background *bg)
 			bg->scroll.x=5000-600;
 		
 	}
-	else if(clic==5)//run&&attack
+	else if(clic==5)//run droite
 	{ 
 		bg->scroll.x+=bg->speed;
 		bg->position_bg.x+=bg->speed;
@@ -73,11 +73,10 @@ void scrolling_bg(int clic,background *bg)
 			bg->scroll.x=5000-600;
 		
 	}
-	else if(clic==6)//slide
+	else if(clic==6)//run gauche
 	{ 
-		bg->scroll.x+=bg->speed;
-		bg->position_bg.x+=bg->speed;
-		
+			bg->position_bg.x-=bg->speed;
+		bg->scroll.x-=bg->speed;
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
 		if(bg->scroll.x>=5000-600)
