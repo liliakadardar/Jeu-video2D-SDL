@@ -10,11 +10,12 @@
 
 //---------------------Initialisation des variables ---------------------//
 
-
 void initialiser_personnage(personnage *p)
 {
 p->position_personnage.x=0;
-p->position_personnage.y=230;
+p->position_personnage.y=200;
+p->position_personnage.w=138;
+p->position_personnage.h=233;
 
 char nomFich[99];
 int i;
@@ -25,7 +26,7 @@ for(i=0;i<99;i++)
 }
 
 p->Frame=0;
-p->vitesse=5;
+p->vitesse=3;
 }
 
 //---------------------Affichage du personnage sur l'ecran ---------------------//
@@ -33,77 +34,54 @@ p->vitesse=5;
 void afficher_personnage(personnage p,SDL_Surface *ecran)
 {
     SDL_BlitSurface(p.tab[p.Frame],NULL,ecran,&(p.position_personnage));
+
 }
 
 
-//---------------------Animation marche a droite ---------------------//
+//---------------------Animation a droite ---------------------//
 
-void animation_walk_right (personnage *p)
+void animation_right (personnage *p)
 {
-  if(p->Frame<=0 || p->Frame>=8)
-		p->Frame=1;
+  if(p->Frame<=0 || p->Frame>=9)
+		p->Frame=0;
 	p->Frame++;
 }
 
-//---------------------Animation marche a gauche---------------------//
+//---------------------Animation a gauche---------------------//
 
-void animation_walk_left (personnage *p)
+void animation_left (personnage *p)
 {
-	if(p->Frame<=9 || p->Frame>=19)
+	if(p->Frame<=10 || p->Frame>=19)
 		p->Frame=10;
 
 	p->Frame++;	
 }
 
-//---------------------Animation du saut a droite---------------------//
-void animation_jump_right (personnage *p)
+//---------------------Animation du saut ---------------------//
+void animation_jump (personnage *p)
 {
 	if(p->Frame<=20 || p->Frame>=34)
-		p->Frame=23;
+		p->Frame=21;
 
 	p->Frame++;
 
 }
 
-//---------------------Animation du saut a gauche--------------------//
-void animation_jump_left (personnage *p)
+//---------------------Animation de l'accroupissement apres le saut--------------------//
+
+void animation_crouch (personnage *p)
 {
-  if(p->Frame<=35 || p->Frame>=49)
+  if(p->Frame<=35 || p->Frame>=44)
 		p->Frame=36;
 
 	p->Frame++;
 }
 
 
-//---------------------Animation crouse a droite---------------------//
+//---------------------Animation de l'attack du personnage---------------------//
 
-void animation_run_right (personnage *p)
+void animation_hit (personnage *p)
 {
-	if(p->Frame<=50 || p->Frame>=60)
-		p->Frame=51;
-
-	p->Frame++;
-	
-}
-
-//---------------------Animation crourse a gauche---------------------//
-
-void animation_run_left (personnage *p)
-{
-	if(p->Frame<=61 || p->Frame>=70)
-		p->Frame=62;
-
-	p->Frame++;
-	
-}
-
-/*
-//---------------------Animation de l'accroupissemnt droite---------------------//
-
-void animation_crouch_right (personnage *p)
-{
-int nb_frames_p=0;
-  
 	if(p->Frame<=45 || p->Frame>=55)
 		p->Frame=46;
 
@@ -111,39 +89,9 @@ int nb_frames_p=0;
 	
 }
 
+//---------------------animation du personnage en cas d'echouer---------------------//
 
-//---------------------Animation de l'accroupissemnt gauche---------------------//
-
-void animation_crouch_left (personnage *p)
-{
-int nb_frames_p=0;
-  
-	if(p->Frame<=45 || p->Frame>=55)
-		p->Frame=46;
-
-	p->Frame++;
-	
-}
-
-
-
-//---------------------Animation de glissage droite---------------------//
-
-void animation_slide_right (personnage *p)
-{
-int nb_frames_p=0;
-  
-	if(p->Frame<=45 || p->Frame>=55)
-		p->Frame=46;
-
-	p->Frame++;
-	
-}
-
-
-//---------------------Animation de glissage gauche---------------------//
-
-void animation_slide_left (personnage *p)
+void animation_fail (personnage *p)
 {
 int nb_frames_p=0;
   
@@ -158,166 +106,50 @@ int nb_frames_p=0;
 
 
 
-//---------------------Animation de l'attack droite---------------------//
 
-void animation_attack_right (personnage *p)
-{
-int nb_frames_p=0;
-  
-	if(p->Frame<=45 || p->Frame>=55)
-		p->Frame=46;
-
-	p->Frame++;
-	
-}
+//---------------------Deplacement clavier ---------------------//
 
 
-//---------------------Animation de l'attack gauche---------------------//
-
-void animation_attack_left (personnage *p)
-{
-int nb_frames_p=0;
-  
-	if(p->Frame<=45 || p->Frame>=55)
-		p->Frame=46;
-
-	p->Frame++;
-	
-}
-
-
-//---------------------Animation en cas d'echouer a droite------------------------//
-
-void animation_fail_right (personnage *p)
-{
-int nb_frames_p=0;
-  
-	if(p->Frame<=45 || p->Frame>=55)
-		p->Frame=46;
-
-	p->Frame++;
-	
-}
-
-
-//---------------------Animation en cas d'echouer a gauche------------------------//
-
-void animation_fail_left (personnage *p)
-{
-int nb_frames_p=0;
-  
-	if(p->Frame<=45 || p->Frame>=55)
-		p->Frame=46;
-
-	p->Frame++;
-	
-}
-
-
-
-
-*/
-
-//------------------------Deplacement clavier ------------------------//
-
- 
 void deplacement_clavier(personnage *p,int clic)
 {
             if (clic==1)
          
           {
             p->position_personnage.x -=p-> vitesse;
-                         //animation_walk_right (p);
-                        animation_walk_left (p);
+           
+            animation_left (p);
           }
           else if(clic==2)
           {
             p->position_personnage.x += p->vitesse;
-                         animation_walk_right (p);
-                       // animation_walk_left (p);
+            
+            animation_right (p);
           }
             else if (clic==3)
  	{
             p->position_personnage.x += p->vitesse;
              p->position_personnage.y -= p->vitesse;
-             animation_jump_right (p);
+            
+            animation_jump (p);
 
                }
                else if(clic==4)
                {
                  p->position_personnage.x += p->vitesse;
             p->position_personnage.y += p->vitesse;
-             animation_jump_left (p);
+            animation_crouch (p);
+
 
                }
 
 		else if(clic==5)
                {
-                 p->position_personnage.x += p->vitesse+5;
+                 p->position_personnage.x += p->vitesse;
             
-                 animation_run_right (p);
+            animation_hit (p);
 
 
                }
-		else if(clic==6)
-               {
-                 p->position_personnage.x -= p->vitesse+5;
-            
-                  animation_run_left (p);
-
-
-               }
-
-/*
-		else if(clic==7)
-               {
-                 p->position_personnage.x -= p->vitesse;
-            
-                  animation_run_left (p);
-
-
-               }
-		else if(clic==8)
-               {
-                 p->position_personnage.x -= p->vitesse;
-            
-                  animation_run_left (p);
-
-
-               }
-		else if(clic==9)
-               {
-                 p->position_personnage.x -= p->vitesse;
-            
-                  animation_run_left (p);
-
-
-               }
-		else if(clic==10)
-               {
-                 p->position_personnage.x -= p->vitesse;
-            
-                  animation_run_left (p);
-
-
-               }
-		else if(clic==11)
-               {
-                 p->position_personnage.x -= p->vitesse;
-            
-                  animation_run_left (p);
-
-
-               }
-		else if(clic==12)
-               {
-                 p->position_personnage.x -= p->vitesse;
-            
-                  animation_run_left (p);
-
-
-               }
-*/
 }
 
 //---------------------Deplacement du personnage moyennant la sourie---------------------//
@@ -330,30 +162,31 @@ void deplacement_sourie (personnage *p, int clic)
          
           {
             p->position_personnage.x -=p-> vitesse;
-		    //animation_walk_right (p);
-		    animation_walk_left (p);
+           
+		        animation_left (p);
           }
           else if(clic==2)
           {
             p->position_personnage.x += p->vitesse;
-		    animation_walk_right (p);
-		    //animation_walk_left (p);
+            
+		        animation_right (p);
           }
           else if(clic==3)
           {
             p->position_personnage.x += p->vitesse;
             p->position_personnage.y -= p->vitesse;
-		   animation_jump_right (p);
+		  
+            animation_jump (p);
           }
           else if(clic==4)
           {
             p->position_personnage.y += p->vitesse;
             p->position_personnage.x += p->vitesse;
-		    animation_jump_left (p);
+		        animation_crouch (p);
           }
-
-
-
 }
+
+
+
 
 

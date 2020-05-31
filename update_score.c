@@ -6,42 +6,50 @@
 #include <string.h>
 #include "update_score.h"
 
-
 void initialiser_score (score *s )
 {
+
 SDL_Surface *valeur_score=NULL;
 TTF_Font *police=NULL;
 s->police = TTF_OpenFont("outils/avocado.ttf", 50);
-SDL_Color couleur={255,255,255}; // je ne sais pas pk la couleur change a chaque execution de couleur diffrente de maniere auto à verifier!! ou ken thebou khaliwha fazat  
+SDL_Color rouge={255,255,255}; // je ne sais pas pk la couleur change a chaque execution de couleur diffrente de maniere auto à verifier!! ou ken thebou khaliwha fazat  
 s->position_score.x=15;
 s->position_score.y=80;
-s->valeur_score= TTF_RenderText_Blended(s->police,"Score :",couleur);
-// normalement le score est relié avce la fonction vie. donc trouve toi une liaison 
-/*char scoree[20];
-char klem[20]; // yatba3 el comptage du score fil jeu tawoi pour juste afficher on va juste utiliser une variable qqconque
+s->score1=20;
 
-       strcpy(klem,"score:");
-              sprintf(scoree, " %d ", score1);
-             valeur_score= TTF_RenderText_Blended(police,scoree,rouge);// ici yatba3 le meme travail du comptage */
+char scoree[20];
+              sprintf(scoree, "score: %d ", s->score1);
+		
+            
+s->valeur_score= TTF_RenderText_Blended(s->police,scoree,rouge);
 
 TTF_CloseFont(police);
 
 
 }
-/*************** 5edmaa mehich tawoi ******/
 
 
 
-/*
-void update_score  (int *score1,int x)
+void afficher_score(score s,SDL_Surface *ecran)
+{
+              SDL_BlitSurface(s.valeur_score, NULL, ecran,&s.position_score);
+}
+
+
+int update_score  (score *s,personnage *p)
 {
 
-   if (x==1)
- {*score=*score+100;
-   printf("collision \n");
-  	  }
+  //if (x==1)
+   if(( ( (p->position_personnage.x)/2)>=0) && (p->position_personnage.x!=0))
+ {
+	(s->score1)+=100;
 
-}*/
+   	/*printf("collision \n");
+	printf("%d",s->score1);*/
+  }
+return (s->score1);
+
+}
 /*
 int gestion_vies (SDL_Rect personnage,objet ennemie,SDL_Surface *coeur1,SDL_Surface *coeur2,SDL_Surface *coeur3)
 { int vies=0,i=0;
@@ -60,9 +68,4 @@ int gestion_vies (SDL_Rect personnage,objet ennemie,SDL_Surface *coeur1,SDL_Surf
 
  }*/
 
-
-void afficher_score(score s,SDL_Surface *ecran)
-{
-              SDL_BlitSurface(s.valeur_score, NULL, ecran, &s.position_score);
-}
 

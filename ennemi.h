@@ -5,6 +5,7 @@
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_ttf.h>
 
+/*
 typedef enum direction 
 {
 
@@ -12,7 +13,7 @@ typedef enum direction
   Right
 
 } direction;
-
+*/
 
 typedef struct ennemi
 {
@@ -21,8 +22,8 @@ SDL_Surface *affichage_secondaire[20];
 
 SDL_Rect position_max;
 SDL_Rect position_min;
-
-direction direction;
+int speed;
+int direction;
 int nbIm;
 int num_im;
 int sens;
@@ -33,12 +34,33 @@ SDL_Rect position_aleatoire_max;
 // son bref deplcement 
 SDL_Rect position_aleatoire_min;
 SDL_Rect pos_affichage;
+	int vy,vx;
+	int status;
+	int STAT_SOL;
+	int STAT_AIR;
+	float dt;
+	float factgravite;
+	float factsautmaintenu;
+	float impulsion;
 
 
 }ennemi;
 
+/*----- ennemi 1-----*/
 void initialiser_ennemi1(ennemi *en1);
-void afficher_ennemi1(ennemi en1, SDL_Surface *ecran);
+void afficher_ennemi1(ennemi en1,SDL_Surface *ecran);
+void scroll_ennemi(int clic, ennemi *en1);
+void animation_droite (ennemi *en1);
+
+/*----- ennemi 2-----*/
 void initialiser_ennemi2(ennemi *en2);
 void afficher_ennemi2(ennemi en2, SDL_Surface *ecran);
+void scroll_ennemi2(int clic, ennemi *en2);
+void animation_droite2(ennemi *en2);
 
+/*-- extrat--*/
+
+void animation_up_down (ennemi *en2);
+int deplacement_ennemi_aleaH(ennemi *en1);
+int deplacement_ennemi_aleaV(ennemi *en2);
+void sol( ennemi *en1);	

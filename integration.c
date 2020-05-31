@@ -11,6 +11,7 @@
 #include "obstacle.c"
 #include "temps.c"
 #include "ennemi.c"
+//#include "collision.c"
 //#include "enigme.c"
 
 
@@ -24,9 +25,9 @@ int main(int argc, char *argv[])
 
 //menu m;
 background bg; temps t;
-score s; vie v;
-personnage p; obstacle o1,o2,o3;
-int touche=1;
+score s; vie v; 
+personnage p; obstacle o1,o2,o3; //collision c;
+int touche=1; 
 int sens=0;
 // les Enigmes 
 //enigme e1,e2,e3,e4,e5,e6;
@@ -78,6 +79,9 @@ initialiser_vie(&v);
 initialiser_score(&s);
 
 initialiser_obstacle1(&o1);
+initialiser_obstacle2(&o2);
+initialiser_obstacle3(&o3);
+
 initialiser_ennemi1(&en1);
 initialiser_ennemi2(&en2);
 //initialiser_enigme(&e1);
@@ -94,16 +98,18 @@ initialiser_ennemi(&en4);
 initialiser_ennemi(&en5);
 initialiser_ennemi(&en6);*/
 
-// init obstacle
-/*
-initialiser_obstacle(&o2);
-initialiser_obstacle(&o3);*/
+
+
+
 
 /*---------------------------------------------------------------- DISPLAY ----------------------------------------------------------------*/
 
 // la boucle du jeu 
  while (!done)
 { 
+SDL_Rect positionchamp; SDL_Surface *champignon=NULL;
+positionchamp.x=50;
+positionchamp.y=200;
 
 /*if (i==0) // lorsqu'on est dans le menu
 	{afficher_menu(m,ecran);}
@@ -112,16 +118,16 @@ if (i==1) // lorsq'on est dans le jeu
 	{*/
 afficher_background(bg,ecran); 
 afficher_personnage(p,ecran);
-afficher_temps(&t,ecran);
+afficher_obstacle1(o1,ecran);
+afficher_obstacle2(o2,ecran);
+afficher_obstacle3(o3,ecran);
 afficher_score(s,ecran);
 afficher_vie(v,ecran);
 afficher_ennemi1(en1,ecran);
 afficher_ennemi2(en2,ecran);
-afficher_obstacle1(o1,ecran);
-/*afficher_obstacle(o2,ecran);
-afficher_obstacle(o3,ecran);*/
-//afficher_enigme(e1,ecran);
 
+//afficher_enigme(e1,ecran);
+afficher_temps(&t,ecran);
 // affichage de l'ennemi avec des conditions
 /*
 if (ennemi1==0)
@@ -222,17 +228,41 @@ int clic=0;
   /*---------------------------------------------------------------- UPDATE ----------------------------------------------------------------*/
       
 if (clic!=0)
+//if ((p.position_personnage.x)>800) 
 {
-deplacement_clavier(&p,clic);
-deplacement_sourie(&p,clic); //printf("%d\n",p.position_personnage.x );
 scrolling_bg(clic,&bg);
+scroll_ennemi(clic,&en1);
+scroll_ennemi2(clic,&en2);
+scroll_obstacle(clic,&o1);
+scroll_obstacle2(clic,&o2);
+scroll_obstacle3(clic,&o3);
+
+deplacement_clavier(&p,clic);
+deplacement_sourie(&p,clic); 
+
 }
+printf("%d\n",p.position_personnage.x );
+update_score(&s,&p);
+
+printf("score :%d \n",s.score1);
+gestion_vies (&v,&p);
 
 
 
+/*animation_droite (&en1);
+SDL_Delay(80);
+animation_droite2 (&en2);
+SDL_Delay(80);*/
 
 
+/*
+if (check_collision( c.pers.position_personnage, c.enn->position_entite )==1)
+{
+c.pers.position_personnage.x--;
 
+printf("%d\n",c.enn->position_entite.x );*/
+//printf("colision \n");
+//animation_fail(&p);
 
 
 
@@ -242,7 +272,7 @@ SDL_Flip (ecran);
 
 /*----------------------------------------------------------------  FIN ----------------------------------------------------------------*/
 free_temps(&t,ecran);
- 
+ vie_freevie(v ) ;
 
 
 // liberation SDL
