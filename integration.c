@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
 //menu m;
 background bg; temps t;
-score s; vie v; 
+score s; vie v; int valeur_score=20;
 personnage p; obstacle o1,o2,o3; //collision c;
 int touche=1; 
 int sens=0;
@@ -76,7 +76,7 @@ initialiser_background(&bg);
 initialiser_personnage(&p);
 initialiser_temps(&t);
 initialiser_vie(&v);
-initialiser_score(&s);
+initialiser_score(valeur_score,&s);
 
 initialiser_obstacle1(&o1);
 initialiser_obstacle2(&o2);
@@ -121,7 +121,8 @@ afficher_personnage(p,ecran);
 afficher_obstacle1(o1,ecran);
 afficher_obstacle2(o2,ecran);
 afficher_obstacle3(o3,ecran);
-afficher_score(s,ecran);
+afficher_score(valeur_score,s,ecran);
+
 afficher_vie(v,ecran);
 afficher_ennemi1(en1,ecran);
 afficher_ennemi2(en2,ecran);
@@ -242,9 +243,8 @@ deplacement_sourie(&p,clic);
 
 }
 printf("%d\n",p.position_personnage.x );
-update_score(&s,&p);
-
-printf("score :%d \n",s.score1);
+update_score (&valeur_score,s,&p);
+printf("score :%d\n",valeur_score);
 gestion_vies (&v,&p);
 
 
@@ -270,8 +270,9 @@ printf("%d\n",c.enn->position_entite.x );*/
 SDL_Flip (ecran);
 }
 
-/*----------------------------------------------------------------  FIN ----------------------------------------------------------------*/
+/*----------------------------------------------------------------  FIN  ----------------------------------------------------------------*/
 free_temps(&t,ecran);
+free_score( s);
  vie_freevie(v ) ;
 
 

@@ -9,20 +9,23 @@
 
 typedef struct score 
 {
-SDL_Surface *valeur_score;
-SDL_Rect position_score;  
+SDL_Surface *texte1;
+SDL_Surface *number1;
+
+SDL_Rect position_texte;
+SDL_Rect position_number;  
 TTF_Font *police;
-char scoree[20];
-char klem[20];
-int score1;
+
+int valeur_score;
+
 
 
 }score ;
 
 
-void initialiser_score (score *s);
-//void update_score  (int *score1,potion *pt,personnage p);
-int update_score  (score *s,personnage *p);
-void afficher_score  (score s,SDL_Surface *ecran);
+void initialiser_score (int valeur_score,score *s);
+void update_score (int *valeur_score,score s,personnage *p);
+void afficher_score  (int valeur_score, score s,SDL_Surface *ecran);
+void free_score( score s);
 
 #endif 
