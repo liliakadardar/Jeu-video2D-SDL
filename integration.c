@@ -11,6 +11,10 @@
 #include "obstacle.c"
 #include "temps.c"
 #include "ennemi.c"
+#include "objet.c"
+#include "objet1.c"
+#include "objet2.c"
+//#include "save.c"
 //#include "collision.c"
 //#include "enigme.c"
 
@@ -25,7 +29,10 @@ int main(int argc, char *argv[])
 
 //menu m;
 background bg; temps t;
-score s; vie v; int valeur_score=20;
+score s; vie v; int valeur_score=0; 
+potion pt0,pt1,pt2;
+potion1 pt4,pt5,pt6,pt7;
+potion2 pt3,pt8,pt9;
 personnage p; obstacle o1,o2,o3; //collision c;
 int touche=1; 
 int sens=0;
@@ -84,19 +91,16 @@ initialiser_obstacle3(&o3);
 
 initialiser_ennemi1(&en1);
 initialiser_ennemi2(&en2);
-//initialiser_enigme(&e1);
+
+
+initialiser_potion(&pt0,&pt1,&pt2);
+initialiser_potion1(&pt4,&pt5,&pt6,&pt7);
+initialiser_potion2(&pt3,&pt8,&pt9);
+
 //enigme
-//
+//initialiser_enigme(&e1);
 //initialiser_enigme(&e2);
 
-/*
- // init ennemi 
-  // l'ennemi 3andha nafess el .h au faite mais l'initialisation bich tetbadel khater el image..
-initialiser_ennemi(&en2);
-initialiser_ennemi(&en3);
-initialiser_ennemi(&en4);
-initialiser_ennemi(&en5);
-initialiser_ennemi(&en6);*/
 
 
 
@@ -118,31 +122,25 @@ if (i==1) // lorsq'on est dans le jeu
 	{*/
 afficher_background(bg,ecran); 
 afficher_personnage(p,ecran);
+afficher_score(&s,ecran,&p,&valeur_score);
+afficher_vie(v,ecran);
+
 afficher_obstacle1(o1,ecran);
 afficher_obstacle2(o2,ecran);
 afficher_obstacle3(o3,ecran);
-afficher_score(valeur_score,s,ecran);
 
-afficher_vie(v,ecran);
 afficher_ennemi1(en1,ecran);
 afficher_ennemi2(en2,ecran);
 
 //afficher_enigme(e1,ecran);
 afficher_temps(&t,ecran);
-// affichage de l'ennemi avec des conditions
-/*
-if (ennemi1==0)
-{affiche_ennemi(&en1,ecran);}
- if (ennemi2==0)
-{affiche_ennemi(&en2,ecran);}
- if (ennemi3==0)
-{affiche_ennemi(&en3,ecran);}
- if (ennemi4==0)
-{affiche_ennemi(&en4,ecran);}
- if (ennemi5==0)
-{affiche_ennemi(&en5,ecran);}
- if (ennemi6==0)
-{affiche_ennemi(&en6,ecran);}*/
+
+
+afficher_potion(pt0,pt1,pt2,ecran);
+afficher_potion1(pt4,pt5,pt6,pt7,ecran);
+afficher_potion2(pt3,pt8,pt9,ecran);
+
+
 
 // enigmeeeeeeeeeeeeeeeeeeeeeeeeee
 // ici y a une condition 3al enigme bich yaffichi ou yaffichi el temps d'enigme pas encore resolu 
@@ -198,12 +196,19 @@ int clic=0;
                     break; 
 
                     // option pour le joueur
-                    case SDLK_c: // touche permettant aux joeurs de se redonner 3 coeurs
-                        
+                    case SDLK_s: 
+                        clic=7;
                         break;
-                    case SDLK_z: // touche permettant aux joeurs de se donner 10 pièces
+                    case SDLK_e: 
+			clic=9;
                         break;
-                   
+
+                   case SDLK_a:
+			clic=8; 
+                        break;
+			case SDLK_p: 
+			clic=12;
+                        break;
                    }
                 break;
 
@@ -237,15 +242,34 @@ scroll_ennemi2(clic,&en2);
 scroll_obstacle(clic,&o1);
 scroll_obstacle2(clic,&o2);
 scroll_obstacle3(clic,&o3);
+/*potions */
+scroll_potion0(clic,&pt0);
+scroll_potion1(clic,&pt1);
+scroll_potion2(clic,&pt2);
+scroll_potion3(clic,&pt3);
+scroll_potion4(clic,&pt4);
+scroll_potion5(clic,&pt5);
+scroll_potion6(clic,&pt6);
+scroll_potion7(clic,&pt7);
+scroll_potion8(clic,&pt8);
+scroll_potion9(clic,&pt9);
 
 deplacement_clavier(&p,clic);
 deplacement_sourie(&p,clic); 
 
+
+//InitSprite(&p);
+
+    
+        Evolue(&p,clic);
+       
+
 }
-printf("%d\n",p.position_personnage.x );
-update_score (&valeur_score,s,&p);
-printf("score :%d\n",valeur_score);
-gestion_vies (&v,&p);
+printf("pos:%d\n",p.position_personnage.x );
+
+//printf("score :%d\n",valeur_score);
+//gestion_vies(&v,&p);
+
 
 
 
@@ -253,7 +277,6 @@ gestion_vies (&v,&p);
 SDL_Delay(80);
 animation_droite2 (&en2);
 SDL_Delay(80);*/
-
 
 /*
 if (check_collision( c.pers.position_personnage, c.enn->position_entite )==1)
@@ -272,9 +295,10 @@ SDL_Flip (ecran);
 
 /*----------------------------------------------------------------  FIN  ----------------------------------------------------------------*/
 free_temps(&t,ecran);
-free_score( s);
- vie_freevie(v ) ;
-
+free_score(s);
+ //vie_freevie(v ) ;
+//save (p.position_personnage.x,p.position_personnage.y,s.score);
+//load (p.position_personnage.x,p.position_personnage.y,s.score);
 
 // liberation SDL
 TTF_Quit();

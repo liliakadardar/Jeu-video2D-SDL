@@ -5,7 +5,7 @@
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_ttf.h>
 #include <string.h>
-#include <time.h>
+
 #include "temps.h"
 
 void initialiser_temps(temps *t)

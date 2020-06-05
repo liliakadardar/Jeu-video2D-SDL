@@ -164,17 +164,4 @@ en1->Frame++;
 
 }*/
 
-void sol( ennemi *en1)
-{
-
-
-    if (en1->position_entite.y>230.0f)
-    {
-        en1->position_entite.y = 230.0f;
-        if (en1->vy>0)
-            en1->vy = 0.30f;
-       en1->status = en1->STAT_SOL;
-    }
-
-}
 

@@ -36,8 +36,6 @@ SDL_Rect position_aleatoire_min;
 SDL_Rect pos_affichage;
 	int vy,vx;
 	int status;
-	int STAT_SOL;
-	int STAT_AIR;
 	float dt;
 	float factgravite;
 	float factsautmaintenu;
@@ -63,4 +61,4 @@ void animation_droite2(ennemi *en2);
 void animation_up_down (ennemi *en2);
 int deplacement_ennemi_aleaH(ennemi *en1);
 int deplacement_ennemi_aleaV(ennemi *en2);
-void sol( ennemi *en1);	
+
