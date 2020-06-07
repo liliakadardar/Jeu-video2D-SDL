@@ -38,7 +38,7 @@ void afficher_ennemi1(ennemi en1, SDL_Surface *ecran)
 
 void animation_droite (ennemi *en1)
 {
-	if(en1->Frame<=0 || en1->Frame>=4)
+	if(en1->Frame<=0 || en1->Frame>=9)
 	{
 	//printf("hello!");
 	en1->Frame=1;

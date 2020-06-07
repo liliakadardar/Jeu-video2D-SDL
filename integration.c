@@ -11,9 +11,8 @@
 #include "obstacle.c"
 #include "temps.c"
 #include "ennemi.c"
-#include "objet.c"
-#include "objet1.c"
-#include "objet2.c"
+#include "potion.c"
+
 //#include "save.c"
 //#include "collision.c"
 //#include "enigme.c"
@@ -30,9 +29,9 @@ int main(int argc, char *argv[])
 //menu m;
 background bg; temps t;
 score s; vie v; int valeur_score=0; 
-potion pt0,pt1,pt2;
+/*potion pt0,pt1,pt2;
 potion1 pt4,pt5,pt6,pt7;
-potion2 pt3,pt8,pt9;
+potion2 pt3,pt8,pt9;*/
 personnage p; obstacle o1,o2,o3; //collision c;
 int touche=1; 
 int sens=0;
@@ -92,10 +91,8 @@ initialiser_obstacle3(&o3);
 initialiser_ennemi1(&en1);
 initialiser_ennemi2(&en2);
 
+initialiser_potion();
 
-initialiser_potion(&pt0,&pt1,&pt2);
-initialiser_potion1(&pt4,&pt5,&pt6,&pt7);
-initialiser_potion2(&pt3,&pt8,&pt9);
 
 //enigme
 //initialiser_enigme(&e1);
@@ -111,37 +108,29 @@ initialiser_potion2(&pt3,&pt8,&pt9);
 // la boucle du jeu 
  while (!done)
 { 
-SDL_Rect positionchamp; SDL_Surface *champignon=NULL;
-positionchamp.x=50;
-positionchamp.y=200;
 
 /*if (i==0) // lorsqu'on est dans le menu
 	{afficher_menu(m,ecran);}
 
 if (i==1) // lorsq'on est dans le jeu
 	{*/
-afficher_background(bg,ecran); 
-afficher_personnage(p,ecran);
-afficher_score(&s,ecran,&p,&valeur_score);
-afficher_vie(v,ecran);
-
+afficher_background(bg,ecran);
+ 
 afficher_obstacle1(o1,ecran);
 afficher_obstacle2(o2,ecran);
 afficher_obstacle3(o3,ecran);
 
 afficher_ennemi1(en1,ecran);
 afficher_ennemi2(en2,ecran);
+afficher_potion(ecran);
 
-//afficher_enigme(e1,ecran);
+afficher_personnage(p,ecran);
+
+afficher_score(&s,ecran,&p,&valeur_score);
+afficher_vie(v,ecran);
 afficher_temps(&t,ecran);
 
-
-afficher_potion(pt0,pt1,pt2,ecran);
-afficher_potion1(pt4,pt5,pt6,pt7,ecran);
-afficher_potion2(pt3,pt8,pt9,ecran);
-
-
-
+//afficher_enigme(e1,ecran);
 // enigmeeeeeeeeeeeeeeeeeeeeeeeeee
 // ici y a une condition 3al enigme bich yaffichi ou yaffichi el temps d'enigme pas encore resolu 
 	//}
@@ -236,56 +225,45 @@ int clic=0;
 if (clic!=0)
 //if ((p.position_personnage.x)>800) 
 {
+/*deplacement du personnage */
+deplacement_clavier(&p,clic);
+deplacement_sourie(&p,clic);
+Evolue(&p,clic);
+
 scrolling_bg(clic,&bg);
+
+/*--- animations Ennemis---*/
+animation_droite (&en1);
+SDL_Delay(80);
+animation_droite2 (&en2);
+SDL_Delay(80);
+
+// pour faire rouler les entites au meme temps avec le scrolling du perso 
 scroll_ennemi(clic,&en1);
 scroll_ennemi2(clic,&en2);
 scroll_obstacle(clic,&o1);
 scroll_obstacle2(clic,&o2);
 scroll_obstacle3(clic,&o3);
-/*potions */
-scroll_potion0(clic,&pt0);
+
+/* POTIONS */
+scroll_potion0(clic, &pt0);
 scroll_potion1(clic,&pt1);
-scroll_potion2(clic,&pt2);
+scroll_potion2(clic, &pt2);
 scroll_potion3(clic,&pt3);
-scroll_potion4(clic,&pt4);
-scroll_potion5(clic,&pt5);
+scroll_potion4(clic, &pt4);
+scroll_potion5(clic, &pt5);
 scroll_potion6(clic,&pt6);
-scroll_potion7(clic,&pt7);
+scroll_potion7(clic, &pt7);
 scroll_potion8(clic,&pt8);
-scroll_potion9(clic,&pt9);
-
-deplacement_clavier(&p,clic);
-deplacement_sourie(&p,clic); 
-
-
-
-    
-        Evolue(&p,clic);
-       
-
+scroll_potion9(clic, &pt9);
 }
 printf("pos:%d\n",p.position_personnage.x );
+if( collision_potion(&p,pt4)==1)
+printf("hey collision" );
+
 
 //printf("score :%d\n",valeur_score);
 //gestion_vies(&v,&p);
-
-
-
-
-/*animation_droite (&en1);
-SDL_Delay(80);
-animation_droite2 (&en2);
-SDL_Delay(80);*/
-
-/*
-if (check_collision( c.pers.position_personnage, c.enn->position_entite )==1)
-{
-c.pers.position_personnage.x--;
-
-printf("%d\n",c.enn->position_entite.x );*/
-//printf("colision \n");
-//animation_fail(&p);
-
 
 
 /*--------FLIP------*/

@@ -7,15 +7,6 @@
 #include "collision.h"
 
 
-
-
-
-
-
-
-
-
-
 int collision_ennemi(collision *c)
 {
 

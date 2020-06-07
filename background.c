@@ -13,8 +13,8 @@ SDL_Surface *img_bg=NULL;
 //position bg
 bg->position_bg.x=0;
 bg->position_bg.y=0;
-bg->position_bg.w = bg->img_bg->w;
-bg->position_bg.h = bg->img_bg->h;
+//bg->position_bg.w = bg->img_bg->w;
+//bg->position_bg.h = bg->img_bg->h;
 
 //position bg colision 
 //bg->position_collision.x=1920;
