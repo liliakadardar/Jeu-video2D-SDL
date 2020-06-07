@@ -258,7 +258,6 @@ deplacement_clavier(&p,clic);
 deplacement_sourie(&p,clic); 
 
 
-//InitSprite(&p);
 
     
         Evolue(&p,clic);

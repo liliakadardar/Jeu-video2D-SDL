@@ -15,7 +15,7 @@ typedef struct  personnage
 	int vie;
 	int vitesse;
 	SDL_Rect position_personnage; 
-	SDL_Surface *tab[99];
+	SDL_Surface *tab[119];
 	float time;
 	int score;
 	SDL_Rect pos_score;
@@ -57,19 +57,20 @@ void animation_crouch_right (personnage *p);
 void animation_crouch_left (personnage *p);
 void animation_slide_right (personnage *p);
 void animation_slide_left (personnage *p);
-void animation_attack_right (personnage *p);
-void animation_attack_left (personnage *p);
 void animation_fail_right (personnage *p);
 void animation_fail_left (personnage *p);
 */
+void animation_attack_right (personnage *p);
+void animation_attack_left (personnage *p);
+
 /*---- deplacements ----*/
 void deplacement_clavier_left(personnage *p,int clic);
 void deplacement_sourie(personnage *p,int clic);
 
 void InitSprite(personnage *p);
 void Render(personnage *p,SDL_Surface* ecran);
-void Saute(personnage *p);
-void Gravite(personnage *p, int clic);
+void Saute(personnage *p,float impulsion);
+void Gravite(personnage *p,int clic,float factgravite,float factsautmaintenu);
 void Evolue(personnage *p, int clic);
 
 
