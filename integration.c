@@ -185,11 +185,11 @@ int clic=0;
                         clic=2;
                     break;
 
-                    case SDLK_UP: // Flèche bas 
+                    case SDLK_UP: // Flèche haut 
                         clic=3;
                     break;
 
-                    case SDLK_DOWN: // Flèche haut
+                    case SDLK_DOWN: // Flèche bas
                         clic=4;
                     break;
                     
