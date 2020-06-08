@@ -20,10 +20,10 @@ TTF_Font *police;
 int valeur_score;
 }score ;
 
+void initialiser_score (int valeur_score, score *s );
+void update_score (int *valeur_score,score s,personnage *p,int nb_potion);
 
-void initialiser_score (int valeur_score,score *s);
-//void update_score (int *valeur_score,score s,personnage *p);
-void afficher_score(score *s,SDL_Surface *ecran,personnage *p,int *valeur_score);
+void afficher_score(score *s,SDL_Surface *ecran,int valeur_score);
 void free_score(score s);
 
 #endif 

@@ -44,6 +44,7 @@ SDL_Rect pos_affichage;
 
 }ennemi;
 
+int collision_enn(personnage *p, ennemi en);
 /*----- ennemi 1-----*/
 void initialiser_ennemi1(ennemi *en1);
 void afficher_ennemi1(ennemi en1,SDL_Surface *ecran);

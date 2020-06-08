@@ -12,7 +12,7 @@ void initialiser_potion()
 	
 
 	pt0.img_pt=IMG_Load("outils/potions/potion00.png");
-	pt0.position_potion.x=3000;
+	pt0.position_potion.x=2000;
 	pt0.position_potion.y=50;
 	pt0.speed=25;
 
@@ -48,7 +48,7 @@ void initialiser_potion()
 
 	pt6.img_pt=IMG_Load("outils/potions/potion06.png");   
 	pt6.position_potion.x=3000;
-	pt6.position_potion.y=400;
+	pt6.position_potion.y=280;
 	pt6.speed=25;
 
 	pt7.img_pt=IMG_Load("outils/potions/potion07.png");
@@ -69,7 +69,7 @@ void initialiser_potion()
 }
 
 
-void afficher_potion(SDL_Surface *ecran)
+/*void afficher_potion(SDL_Surface *ecran)
 {
 SDL_BlitSurface(pt0.img_pt,NULL,ecran,&pt0.position_potion);
 
@@ -87,43 +87,55 @@ SDL_BlitSurface(pt7.img_pt,NULL,ecran,&pt7.position_potion);
 SDL_BlitSurface(pt8.img_pt,NULL,ecran,&pt8.position_potion);
 SDL_BlitSurface(pt9.img_pt,NULL,ecran,&pt9.position_potion);
 
-}
-
-
-/*int collision_potion(personnage *p, potion pt)
-{
-if (((p->position_personnage.x + p->position_personnage.w )>= pt.position_potion.x)||
-
-(p->position_personnage.x<=(pt.position_potion.x+ pt.position_potion.w))||
-
-((p->position_personnage.x>=pt.potion_position.x)||(p->position_personnage.x)> pt.position_potion.y)||
-
-(p->position_personnage.y<(pt.position_potion.y + pt.position_potion.h))||((p->position_personnage.y+p->position_personnage.h)>pt.position_potion.y))
-
-{
-return 0;}
-return 1;
-
 }*/
+
+void afficher_potion0(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt0.img_pt,NULL,ecran,&pt0.position_potion);
+}
+void afficher_potion1(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt1.img_pt,NULL,ecran,&pt1.position_potion);
+}
+void afficher_potion2(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt2.img_pt,NULL,ecran,&pt2.position_potion);
+}
+void afficher_potion3(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt3.img_pt,NULL,ecran,&pt3.position_potion);
+}
+void afficher_potion4(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt4.img_pt,NULL,ecran,&pt4.position_potion);
+}
+void afficher_potion5(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt5.img_pt,NULL,ecran,&pt5.position_potion);
+}
+void afficher_potion6(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt6.img_pt,NULL,ecran,&pt6.position_potion);
+}
+void afficher_potion7(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt7.img_pt,NULL,ecran,&pt7.position_potion);
+}
+void afficher_potion8(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt8.img_pt,NULL,ecran,&pt8.position_potion);
+}
+void afficher_potion9(SDL_Surface *ecran)
+{
+SDL_BlitSurface(pt9.img_pt,NULL,ecran,&pt9.position_potion);
+}
 int collision_potion(personnage *p, potion pt)
 {
 if (((p->position_personnage.x+p->position_personnage.w>=pt.position_potion.x)&&(p->position_personnage.x+p->position_personnage.w<=pt.position_potion.x+pt.position_potion.w))||((p->position_personnage.x>=pt.position_potion.x)&&(p->position_personnage.x<=pt.position_potion.x+pt.position_potion.w)))
-{if (p->position_personnage.y>=pt.position_potion.y-pt.position_potion.y)
+{if ((p->position_personnage.y+p->position_personnage.h>=pt.position_potion.y-pt.position_potion.h)&&(p->position_personnage.y<=pt.position_potion.y+pt.position_potion.h))
 return 1;}
 return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 	
 void scroll_potion0(int clic, potion *pt0)
 {

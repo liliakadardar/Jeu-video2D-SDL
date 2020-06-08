@@ -30,8 +30,10 @@ SDL_Color couleurBlanche= {255, 255, 255};
     	time(&(t->t2));// temps actuel
 
 		t->secondesEcoulees = t->t2 - t->t1;
-       
-	 sprintf(t->entree,"%02d:%02d",(t->secondesEcoulees/60)%60, (t->secondesEcoulees)%60);
+
+        t->min=((t->secondesEcoulees/60)%60);
+	t->sec= ((t->secondesEcoulees)%60);
+	 sprintf(t->entree,"%02d:%02d",t->min,t->sec);
       
 
         t->texte = TTF_RenderUTF8_Solid(t->police, t->entree, couleurBlanche);

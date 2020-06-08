@@ -18,7 +18,7 @@ SDL_Surface *texte;
  int secondesEcoulees;
 SDL_Color couleurBlanche;
 time_t t1,t2;
-
+int min, sec;
 }temps;
 
 void initialiser_temps(temps *t);

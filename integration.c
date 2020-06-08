@@ -28,10 +28,8 @@ int main(int argc, char *argv[])
 
 //menu m;
 background bg; temps t;
-score s; vie v; int valeur_score=0; 
-/*potion pt0,pt1,pt2;
-potion1 pt4,pt5,pt6,pt7;
-potion2 pt3,pt8,pt9;*/
+score s; vie v; int valeur_score=0; int nb_potion=0; int potion0=1;
+int potion1=2;int potion2=3;int potion3=4;int potion4=5;int potion5=6;int potion6=7;int potion7=8;int potion8=9;int potion9=10;
 personnage p; obstacle o1,o2,o3; //collision c;
 int touche=1; 
 int sens=0;
@@ -40,7 +38,8 @@ int sens=0;
 int done=0; // lorsqu'on clique sur le clavier 
 
 // Ennemis 
-ennemi en1,en2;
+ennemi en1,en2,en;
+
 /*int ennemi1=0;
 int ennemi2=0;
 int ennemi3=0;
@@ -82,7 +81,7 @@ initialiser_background(&bg);
 initialiser_personnage(&p);
 initialiser_temps(&t);
 initialiser_vie(&v);
-initialiser_score(valeur_score,&s);
+initialiser_score (valeur_score, &s );
 
 initialiser_obstacle1(&o1);
 initialiser_obstacle2(&o2);
@@ -122,11 +121,30 @@ afficher_obstacle3(o3,ecran);
 
 afficher_ennemi1(en1,ecran);
 afficher_ennemi2(en2,ecran);
-afficher_potion(ecran);
-
+if (potion4)
+afficher_potion4(ecran);
+if (potion0)
+afficher_potion0(ecran);
+if (potion1)
+afficher_potion1(ecran);
+if (potion2)
+afficher_potion2(ecran);
+if (potion3)
+afficher_potion3(ecran);
+if (potion5)
+afficher_potion5(ecran);
+if (potion6)
+afficher_potion6(ecran);
+if (potion7)
+afficher_potion7(ecran);
+if (potion8)
+afficher_potion8(ecran);
+if (potion9)
+afficher_potion9(ecran);
+//if ((potion0)||(potion1)||(potion2)||(potion3)||(potion5)||(potion6)||(potion7)||(potion8)||(potion9))
+//afficher_potion(ecran);
 afficher_personnage(p,ecran);
-
-afficher_score(&s,ecran,&p,&valeur_score);
+afficher_score(&s,ecran,valeur_score);
 afficher_vie(v,ecran);
 afficher_temps(&t,ecran);
 
@@ -256,34 +274,92 @@ scroll_potion6(clic,&pt6);
 scroll_potion7(clic, &pt7);
 scroll_potion8(clic,&pt8);
 scroll_potion9(clic, &pt9);
+
 }
 printf("pos:%d\n",p.position_personnage.x );
+
+/******* collision 1*************/
+
 if( collision_potion(&p,pt0)==1)
-printf("hey collision0" );
+{ if (potion0==1)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+nb_potion++;
+potion0=0;}}
+
+/******* collision 2*************/
 if( collision_potion(&p,pt1)==1)
-printf("hey collision1" );
+{if (potion1==2)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+
+potion1=0;}}
+/******* collision 3 *************/
 if( collision_potion(&p,pt2)==1)
-printf("hey collision2" );
+{if (potion2==3)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+
+potion2=0;}}
+/******* collision 4*************/
 if( collision_potion(&p,pt3)==1)
-printf("hey collision3" );
+{if (potion3==4)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+
+potion3=0;}}
+/******* collision 5*************/
 if( collision_potion(&p,pt4)==1)
-printf("hey collision4" );
+{if (potion4==5)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+
+potion4=0;}}
+/******* collision 6*************/
 if( collision_potion(&p,pt5)==1)
-printf("hey collision5" );
+{if (potion5==6)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+
+potion5=0;}}
+/******* collision 7*************/
 if( collision_potion(&p,pt6)==1)
-printf("hey collision6" );
+{if (potion6==7)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+printf("col");
+
+potion6=0;}}
+/******* collision 8*************/
 if( collision_potion(&p,pt7)==1)
-printf("hey collision7" );
+{if (potion7==8)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+
+potion7=0;}}
+
 if( collision_potion(&p,pt8)==1)
-printf("hey collision8" );
+{if (potion8==9)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+
+potion8=0;}}
+/******* collision 9*************/
 if( collision_potion(&p,pt9)==1)
-printf("hey collision9" );
+{if (potion9==10)
+{
+update_score (&valeur_score,s,&p,nb_potion);
+
+potion9=0;}}
+
+printf("score :%d\n",valeur_score);
+printf("nb: :%d\n",nb_potion);
 
 
+if( collision_enn( &p,  en1)==1)
+printf("hello uts me ");
 
 
-
-//printf("score :%d\n",valeur_score);
 //gestion_vies(&v,&p);
 
 

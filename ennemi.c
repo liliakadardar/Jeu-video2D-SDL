@@ -87,6 +87,21 @@ if(clic==2)//walk droite
 
 
 }
+
+
+
+
+
+
+
+int collision_enn(personnage *p, ennemi en)
+{
+if (((p->position_personnage.x+p->position_personnage.w>=en.position_entite.x)&&(p->position_personnage.x+p->position_personnage.w<=en.position_entite.x+en.position_entite.w))||((p->position_personnage.x>=en.position_entite.x)&&(p->position_personnage.x<=en.position_entite.x+en.position_entite.w)))
+{if (p->position_personnage.y>=en.position_entite.y-en.position_entite.h)
+return 1;}
+return 0;
+}
+
 /***********-------------- ENNEMI 2 ------------------**************/
 
 

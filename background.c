@@ -80,6 +80,15 @@ void scrolling_bg(int clic,background *bg)
 		if(bg->scroll.x>=5000-600)
 			bg->scroll.x=5000-600;
 		
+	}else if(clic==7)//run gauche
+	{ 
+			bg->position_bg.x-=bg->speed;
+		bg->scroll.x-=bg->speed;
+		if(bg->scroll.x<=0)
+			bg->scroll.x=0;
+		if(bg->scroll.x>=5000-600)
+			bg->scroll.x=5000-600;
+		
 	}
 }
 

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "SDL/SDL.h"
+#include <stdlib.h>
+#include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_ttf.h"
 #include <string.h>
@@ -14,6 +16,7 @@ TTF_Font *police=NULL;
 
 s->police = TTF_OpenFont("outils/avocado.ttf", 35);
 
+SDL_Color blanc={255,255,255}; 
 
 
 s->position_number.x=170;
@@ -21,46 +24,54 @@ s->position_number.y=20;
 
 s->position_texte.x=15;
 s->position_texte.y=20;
-SDL_Color blanc={255,255,255};
+char texte[20];
+
+strcpy(texte,"Score :"); // variable pouur l'affichage du message score sur l ecran 
+
+char number[20]; //tableau de chaine de c ou on va stocker la valeur du score 
 
 
-strcpy(s->texte,"Score :"); // variable pouur l'affichage du message score sur l ecran 
-s->texte1= TTF_RenderText_Solid(s->police,s->texte,blanc);
- //tableau de chaine de c ou on va stocker la valeur du score 
 
-
-
+sprintf(number, "%d ", valeur_score);
+s->texte1= TTF_RenderText_Blended(s->police,texte,blanc);
+s->number1= TTF_RenderText_Blended(s->police,number,blanc);
+TTF_CloseFont(police);
 
 }
 
-
-void afficher_score(score *s,SDL_Surface *ecran,personnage *p,int *valeur_score)
+// AFFICHAGE
+void afficher_score(score *s,SDL_Surface *ecran,int valeur_score)
 {
 SDL_Color blanc={255,255,255}; 
+char texte[20];
+strcpy(texte,"Score :"); // variable pouur l'affichage du message score sur l ecran 
 
-if( ( ((p->position_personnage.x) % 100)==0 ) && (p->position_personnage.x!=0)&& p->position_personnage.x != p->position_personnage.x+1)
- 	{
-	*valeur_score=*valeur_score+25;
+char number[20]; //tableau de chaine de c ou on va stocker la valeur du score 
 
-  	}
 
-sprintf(s->number, "%d ", *valeur_score);
 
-s->number1= TTF_RenderText_Solid(s->police,s->number,blanc);
+sprintf(number, "%d ", valeur_score);
+s->texte1= TTF_RenderText_Blended(s->police,texte,blanc);
+s->number1= TTF_RenderText_Blended(s->police,number,blanc);
 
 
  SDL_BlitSurface(s->texte1, NULL, ecran,&s->position_texte);
 SDL_BlitSurface(s->number1, NULL, ecran,&s->position_number);
+}
 
+//UPDATE
 
+void update_score  (int *valeur_score,score s,personnage *p, int nb_potion)
+{
   
-   }
+	*valeur_score=*valeur_score+25;	
+nb_potion++;
 
-
+}
 void free_score( score s)
-{TTF_CloseFont(s.police);
+{
 SDL_FreeSurface(s.texte1);
 SDL_FreeSurface(s.number1);
 
 }
-
+  

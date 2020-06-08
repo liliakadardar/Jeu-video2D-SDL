@@ -9,6 +9,7 @@ typedef struct potion
 {
 SDL_Surface *img_pt;
 SDL_Rect position_potion;
+
 int speed;
 }potion;
 
