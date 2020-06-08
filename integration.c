@@ -258,8 +258,29 @@ scroll_potion8(clic,&pt8);
 scroll_potion9(clic, &pt9);
 }
 printf("pos:%d\n",p.position_personnage.x );
+if( collision_potion(&p,pt0)==1)
+printf("hey collision0" );
+if( collision_potion(&p,pt1)==1)
+printf("hey collision1" );
+if( collision_potion(&p,pt2)==1)
+printf("hey collision2" );
+if( collision_potion(&p,pt3)==1)
+printf("hey collision3" );
 if( collision_potion(&p,pt4)==1)
-printf("hey collision" );
+printf("hey collision4" );
+if( collision_potion(&p,pt5)==1)
+printf("hey collision5" );
+if( collision_potion(&p,pt6)==1)
+printf("hey collision6" );
+if( collision_potion(&p,pt7)==1)
+printf("hey collision7" );
+if( collision_potion(&p,pt8)==1)
+printf("hey collision8" );
+if( collision_potion(&p,pt9)==1)
+printf("hey collision9" );
+
+
+
 
 
 //printf("score :%d\n",valeur_score);
