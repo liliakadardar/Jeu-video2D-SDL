@@ -30,22 +30,18 @@ int main(int argc, char *argv[])
 background bg; temps t;
 score s; vie v; int valeur_score=0; int nb_potion=0; int potion0=1;
 int potion1=2;int potion2=3;int potion3=4;int potion4=5;int potion5=6;int potion6=7;int potion7=8;int potion8=9;int potion9=10;
+
+
 personnage p; obstacle o1,o2,o3; //collision c;
 int touche=1; 
 int sens=0;
 // les Enigmes 
 //enigme e1,e2,e3,e4,e5,e6;
 int done=0; // lorsqu'on clique sur le clavier 
-
 // Ennemis 
-ennemi en1,en2,en;
-
-/*int ennemi1=0;
-int ennemi2=0;
-int ennemi3=0;
-int ennemi4=0;
-int ennemi5=0;
-int ennemi6=0;*/
+ennemi en1,en2;
+int ennemi1=1;
+int ennemi2=2;
 
 
 /*
@@ -118,8 +114,9 @@ afficher_background(bg,ecran);
 afficher_obstacle1(o1,ecran);
 afficher_obstacle2(o2,ecran);
 afficher_obstacle3(o3,ecran);
-
+if(ennemi1)
 afficher_ennemi1(en1,ecran);
+if(ennemi2)
 afficher_ennemi2(en2,ecran);
 if (potion4)
 afficher_potion4(ecran);
@@ -185,11 +182,11 @@ int clic=0;
                         clic=2;
                     break;
 
-                    case SDLK_UP: // Flèche haut 
+                    case SDLK_UP: // Flèche bas 
                         clic=3;
                     break;
 
-                    case SDLK_DOWN: // Flèche bas
+                    case SDLK_DOWN: // Flèche haut
                         clic=4;
                     break;
                     
@@ -354,13 +351,21 @@ potion9=0;}}
 
 printf("score :%d\n",valeur_score);
 printf("nb: :%d\n",nb_potion);
+/********** collision avec ennemi ******/
+if(collision_enn(&p,en1)==1)
+{ if (ennemi1==1)
+{
+gestion_vies(&v,&p);
+ennemi1=0;}
+}
 
+if( collision_enn2(&p,en2)==1)
+//printf("hello uts me ");
+ {if (ennemi2==2)
+{
+gestion_vies (&v,&p);
+ennemi2=0;}}
 
-if( collision_enn( &p,  en1)==1)
-printf("hello uts me ");
-
-
-//gestion_vies(&v,&p);
 
 
 /*--------FLIP------*/

@@ -63,7 +63,7 @@ void initialiser_potion()
 	pt8.speed=35;
 
 	pt9.img_pt=IMG_Load("outils/potions/potion09.png");
-	pt9.position_potion.x=5580;
+	pt9.position_potion.x=5500;
 	pt9.position_potion.y=250;
 	pt9.speed=35;
 }
@@ -143,7 +143,7 @@ if(clic==2)//walk droite
 	{
 		pt0->position_potion.x-=pt0->speed;
 	}
-	else if ((clic==1)&&(pt0->position_potion.x<3000))//walk gauche
+	else if ((clic==1)&&(pt0->position_potion.x<6500))//walk gauche
 	{ 
 		pt0->position_potion.x+=pt0->speed;	
 	}
@@ -151,9 +151,17 @@ if(clic==5)//walk droite
 	{
 		pt0->position_potion.x-=pt0->speed+2;
 	}
-	else if ((clic==6)&&(pt0->position_potion.x<3000))//walk gauche
+	else if ((clic==6)&&(pt0->position_potion.x<6500))//walk gauche
 	{ 
 		pt0->position_potion.x+=pt0->speed+2;	
+	}
+
+
+if(clic==3)
+	{
+		
+		pt0->position_potion.x-=pt0->speed;
+		
 	}
 }
 		
@@ -164,7 +172,7 @@ if(clic==2)//walk droite
 	{
 		pt1->position_potion.x-=pt1->speed;
 	}
-	else if ((clic==1)&&(pt1->position_potion.x<3600))//walk gauche
+	else if ((clic==1)&&(pt1->position_potion.x<6500))//walk gauche
 	{ 
 		pt1->position_potion.x+=pt1->speed;	
 	}
@@ -172,9 +180,16 @@ if(clic==5)//walk droite
 	{
 		pt1->position_potion.x-=pt1->speed+2;
 	}
-	else if ((clic==6)&&(pt1->position_potion.x<3600))//walk gauche
+	else if ((clic==6)&&(pt1->position_potion.x<6500))//walk gauche
 	{ 
 		pt1->position_potion.x+=pt1->speed+2;	
+	}
+
+if(clic==3)
+	{
+		
+		pt1->position_potion.x-=pt1->speed;
+		
 	}
 }
 		
@@ -184,7 +199,7 @@ if(clic==2)//walk droite
 	{
 		pt2->position_potion.x-=pt2->speed;
 	}
-	else if ((clic==1)&&(pt2->position_potion.x<4150))//walk gauche
+	else if ((clic==1)&&(pt2->position_potion.x<6500))//walk gauche
 	{ 
 		pt2->position_potion.x+=pt2->speed;	
 	}
@@ -192,9 +207,17 @@ if(clic==5)//walk droite
 	{
 		pt2->position_potion.x-=pt2->speed+2;
 	}
-	else if ((clic==6)&&(pt2->position_potion.x<4150))//walk gauche
+	else if ((clic==6)&&(pt2->position_potion.x<6500))//walk gauche
 	{ 
 		pt2->position_potion.x+=pt2->speed+2;	
+	}
+
+
+if(clic==3)
+	{
+		
+		pt2->position_potion.x-=pt2->speed;
+		
 	}
 }
 	
@@ -204,7 +227,7 @@ if(clic==2)//walk droite
 	{
 		pt3->position_potion.x-=pt3->speed;
 	}
-	else if ((clic==1)&&(pt3->position_potion.x<2250))//walk gauche
+	else if ((clic==1)&&(pt3->position_potion.x<6500))//walk gauche
 	{ 
 		pt3->position_potion.x+=pt3->speed;	
 	}
@@ -212,9 +235,17 @@ if(clic==5)//walk droite
 	{
 		pt3->position_potion.x-=pt3->speed+2;
 	}
-	else if ((clic==6)&&(pt3->position_potion.x<2250))//walk gauche
+	else if ((clic==6)&&(pt3->position_potion.x<6500))//walk gauche
 	{ 
 		pt3->position_potion.x+=pt3->speed+2;	
+	}
+
+
+if(clic==3)
+	{
+		
+		pt3->position_potion.x-=pt3->speed;
+		
 	}
 }
 			
@@ -225,7 +256,7 @@ if(clic==2)//walk droite
 	{
 		pt4->position_potion.x-=pt4->speed;
 	}
-	else if ((clic==1)&&(pt4->position_potion.x<1195))//walk gauche
+	else if ((clic==1)&&(pt4->position_potion.x<6500))//walk gauche
 	{ 
 		pt4->position_potion.x+=pt4->speed;	
 	}
@@ -233,9 +264,16 @@ if(clic==5)//walk droite
 	{
 		pt4->position_potion.x-=pt4->speed+2;
 	}
-	else if ((clic==6)&&(pt4->position_potion.x<1195))//walk gauche
+	else if ((clic==6)&&(pt4->position_potion.x<6500))//walk gauche
 	{ 
 		pt4->position_potion.x+=pt4->speed+2;	
+	}
+
+if(clic==3)
+	{
+		
+		pt4->position_potion.x-=pt4->speed;
+		
 	}
 }
 
@@ -245,7 +283,7 @@ if(clic==2)//walk droite
 	{
 		pt5->position_potion.x-=pt5->speed;
 	}
-	else if ((clic==1)&&(pt5->position_potion.x<1700))//walk gauche
+	else if ((clic==1)&&(pt5->position_potion.x<6500))//walk gauche
 	{ 
 		pt5->position_potion.x+=pt5->speed;	
 	}
@@ -253,9 +291,16 @@ if(clic==5)//walk droite
 	{
 		pt5->position_potion.x-=pt5->speed+2;
 	}
-	else if ((clic==6)&&(pt5->position_potion.x<1700))//walk gauche
+	else if ((clic==6)&&(pt5->position_potion.x<6500))//walk gauche
 	{ 
 		pt5->position_potion.x+=pt5->speed+2;	
+	}
+
+if(clic==3)
+	{
+		
+		pt5->position_potion.x-=pt5->speed;
+		
 	}
 }
 
@@ -265,7 +310,7 @@ if(clic==2)//walk droite
 	{
 		pt6->position_potion.x-=pt6->speed;
 	}
-	else if ((clic==1)&&(pt6->position_potion.x<3000))//walk gauche
+	else if ((clic==1)&&(pt6->position_potion.x<6500))//walk gauche
 	{ 
 		pt6->position_potion.x+=pt6->speed;	
 	}
@@ -273,9 +318,16 @@ if(clic==5)//walk droite
 	{
 		pt6->position_potion.x-=pt6->speed+2;
 	}
-	else if ((clic==6)&&(pt6->position_potion.x<3000))//walk gauche
+	else if ((clic==6)&&(pt6->position_potion.x<6500))//walk gauche
 	{ 
 		pt6->position_potion.x+=pt6->speed+2;	
+	}
+
+if(clic==3)
+	{
+		
+		pt6->position_potion.x-=pt6->speed;
+		
 	}
 }
 
@@ -285,7 +337,7 @@ if(clic==2)//walk droite
 	{
 		pt7->position_potion.x-=pt7->speed;
 	}
-	else if ((clic==1)&&(pt7->position_potion.x<5080))//walk gauche
+	else if ((clic==1)&&(pt7->position_potion.x<6500))//walk gauche
 	{ 
 		pt7->position_potion.x+=pt7->speed;	
 	}
@@ -297,6 +349,13 @@ if(clic==5)//walk droite
 	{ 
 		pt7->position_potion.x+=pt7->speed+2;	
 	}
+
+if(clic==3)
+	{
+		
+		pt7->position_potion.x-=pt7->speed;
+		
+	}
 }
 
 void scroll_potion8(int clic, potion *pt8)
@@ -305,7 +364,7 @@ if(clic==2)//walk droite
 	{
 		pt8->position_potion.x-=pt8->speed;
 	}
-	else if ((clic==1)&&(pt8->position_potion.x<4780))//walk gauche
+	else if ((clic==1)&&(pt8->position_potion.x<6500))//walk gauche
 	{ 
 		pt8->position_potion.x+=pt8->speed;	
 	}
@@ -313,9 +372,16 @@ if(clic==5)//walk droite
 	{
 		pt8->position_potion.x-=pt8->speed+2;
 	}
-	else if ((clic==6)&&(pt8->position_potion.x<4780))//walk gauche
+	else if ((clic==6)&&(pt8->position_potion.x<6500))//walk gauche
 	{ 
 		pt8->position_potion.x+=pt8->speed+2;	
+	}
+
+if(clic==3)
+	{
+		
+		pt8->position_potion.x-=pt8->speed;
+		
 	}
 }
 	
@@ -325,7 +391,7 @@ if(clic==2)//walk droite
 	{
 		pt9->position_potion.x-=pt9->speed;
 	}
-	else if ((clic==6)&&(pt9->position_potion.x<5580))//walk gauche
+	if ((clic==6)&&(pt9->position_potion.x<6500))//walk gauche
 	{ 
 		pt9->position_potion.x+=pt9->speed;	
 	}
@@ -333,9 +399,16 @@ if(clic==5)//walk droite
 	{
 		pt9->position_potion.x-=pt9->speed+2;
 	}
-	else if ((clic==6)&&(pt9->position_potion.x<55800))//walk gauche
+	else if (clic==6)//&&(pt9->position_potion.x<6500))//walk gauche
 	{ 
 		pt9->position_potion.x+=pt9->speed+2;	
+	}
+
+if(clic==3)
+	{
+		
+		pt9->position_potion.x-=pt9->speed;
+		
 	}
 }
 	

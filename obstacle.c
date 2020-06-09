@@ -46,7 +46,7 @@ if(clic==2)//walk droite
 		o1->position_obs1.x-=o1->speed;
 		
 	}
-	else if ((clic==1)&&(o1->position_obs1.x<100))//walk gauche
+	else if ((clic==1)&&(o1->position_obs1.x<6500))//walk gauche
 	{ 
 		o1->position_obs1.x+=o1->speed;
 		
@@ -57,11 +57,19 @@ if(clic==5)//walk droite
 		o1->position_obs1.x-=o1->speed+2;
 		
 	}
-	else if ((clic==6)&&(o1->position_obs1.x<100))//walk gauche
+	else if ((clic==6)&&(o1->position_obs1.x<6500))//walk gauche
 	{ 
 		o1->position_obs1.x+=o1->speed+2;
 		
 	}
+
+if(clic==3)
+	{
+		
+		o1->position_obs1.x-=o1->speed;
+		
+	}
+
 }
 
 
@@ -76,7 +84,7 @@ if(clic==5)//walk droite
    	o2->image_obs21=IMG_Load("outils/obs21.png") ;
 	o2->image_obs22=IMG_Load("outils/obs21.png") ;
  // positions
-   o2->position_obs21.x=5430;//5500
+   o2->position_obs21.x=4150;//5500
    o2->position_obs21.y=350;
    
 o2->position_obs22.x=5450;
@@ -101,7 +109,7 @@ if(clic==2)//walk droite
 
 		
 	}
-	else if ((clic==1)&&(o2->position_obs21.x<5430))//walk gauche
+	else if ((clic==1)&&(o2->position_obs21.x<6000))//walk gauche
 	{ 
 		o2->position_obs21.x+=o2->speed;
 		
@@ -114,10 +122,18 @@ if(clic==5)//walk droite
 
 		
 	}
-	else if ((clic==6)&&(o2->position_obs21.x<5430))//walk gauche
+	else if ((clic==6)&&(o2->position_obs21.x<6000))//walk gauche
 	{ 
 		o2->position_obs21.x+=o2->speed+2;
 		
+		
+	}
+
+
+if(clic==3)
+	{
+		
+		o2->position_obs21.x-=o2->speed;
 		
 	}
 }
@@ -133,7 +149,7 @@ if(clic==5)//walk droite
 
    o3->image_obs3=IMG_Load("outils/obs3.png");
 
-   o3->position_obs3.x=5430;
+   o3->position_obs3.x=5000;
    o3->position_obs3.y=0;
 o3->speed=35;
 /*
@@ -160,7 +176,7 @@ if(clic==2)//walk droite
 
 		
 	}
-	else if ((clic==1)&&(o3->position_obs3.x<2240))//walk gauche
+	else if ((clic==1)&&(o3->position_obs3.x<6500))//walk gauche
 	{ 
 		o3->position_obs3.x+=o3->speed;
 		
@@ -173,10 +189,18 @@ if(clic==5)//walk droite
 
 		
 	}
-	else if ((clic==6)&&(o3->position_obs3.x<2240))//walk gauche
+	else if ((clic==6)&&(o3->position_obs3.x<6500))//walk gauche
 	{ 
 		o3->position_obs3.x+=o3->speed+2;
 		
+		
+	}
+
+
+if(clic==3)
+	{
+		
+		o3->position_obs3.x-=o3->speed;
 		
 	}
 }

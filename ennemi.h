@@ -43,7 +43,7 @@ SDL_Rect pos_affichage;
 
 
 }ennemi;
-
+int collision_enn2(personnage *p, ennemi en);
 int collision_enn(personnage *p, ennemi en);
 /*----- ennemi 1-----*/
 void initialiser_ennemi1(ennemi *en1);

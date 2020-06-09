@@ -39,9 +39,7 @@ void gestion_vies (vie *v,personnage *p)
 {
   //int i=0; 
 int vies=3;
-if ((p->position_personnage.x>=250) && (p->position_personnage.x<=253))
-//if (collision ( personnage, ennemie)==1)
-  { 
+ 
     v->val--;
 vies--;
     if (vies==2)
@@ -54,7 +52,7 @@ vies--;
 	printf("val vie :%d \n",v->val);
   }
 
- }
+ 
 
 
 

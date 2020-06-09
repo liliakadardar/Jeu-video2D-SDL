@@ -118,8 +118,8 @@ void scrolling_bg(int clic,background *bg)
 	}
 	else if(clic==3)//saut 
 	{ 
-		bg->position_bg.x-=bg->speed;
-		bg->scroll.x-=bg->speed;
+		bg->position_bg.x+=bg->speed;
+		bg->scroll.x+=bg->speed;
 
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
