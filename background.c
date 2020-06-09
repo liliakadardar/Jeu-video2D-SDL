@@ -26,7 +26,7 @@ bg->scroll.y=0;
 bg->scroll.w=6500;
 bg->scroll.h=600;
 
-bg->speed=25;
+bg->speed=35;
 
 bg->img_bg=IMG_Load("outils/bg_final.jpg");
 
@@ -54,6 +54,7 @@ void scrolling_bg(int clic,background *bg)
 	{ 
 		bg->position_bg.x-=bg->speed;
 		bg->scroll.x-=bg->speed;
+
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
 		if(bg->scroll.x>=5000-600)
@@ -62,8 +63,8 @@ void scrolling_bg(int clic,background *bg)
 	}
 	else if(clic==5)//run droite
 	{ 
-		bg->scroll.x+=bg->speed;
-		bg->position_bg.x+=bg->speed;
+		bg->scroll.x+=bg->speed+2;
+		bg->position_bg.x+=bg->speed+2;
 		
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
@@ -73,8 +74,9 @@ void scrolling_bg(int clic,background *bg)
 	}
 	else if(clic==6)//run gauche
 	{ 
-			bg->position_bg.x-=bg->speed;
-		bg->scroll.x-=bg->speed;
+		bg->position_bg.x-=bg->speed+2;
+		bg->scroll.x-=bg->speed+2;
+
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
 		if(bg->scroll.x>=5000-600)
@@ -82,8 +84,9 @@ void scrolling_bg(int clic,background *bg)
 		
 	}else if(clic==7)//slide
 	{ 
-			bg->position_bg.x+=bg->speed;
+		bg->position_bg.x+=bg->speed;
 		bg->scroll.x+=bg->speed;
+
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
 		if(bg->scroll.x>=5000-600)
@@ -93,8 +96,9 @@ void scrolling_bg(int clic,background *bg)
 
 	else if(clic==8)//attack droite
 	{ 
-			bg->position_bg.x+=bg->speed;
+		bg->position_bg.x+=bg->speed;
 		bg->scroll.x+=bg->speed;
+
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
 		if(bg->scroll.x>=5000-600)
@@ -103,8 +107,20 @@ void scrolling_bg(int clic,background *bg)
 	}
 	else if(clic==9)//attack gauche
 	{ 
-			bg->position_bg.x-=bg->speed;
+		bg->position_bg.x-=bg->speed;
 		bg->scroll.x-=bg->speed;
+
+		if(bg->scroll.x<=0)
+			bg->scroll.x=0;
+		if(bg->scroll.x>=5000-600)
+			bg->scroll.x=5000-600;
+		
+	}
+	else if(clic==3)//saut 
+	{ 
+		bg->position_bg.x-=bg->speed;
+		bg->scroll.x-=bg->speed;
+
 		if(bg->scroll.x<=0)
 			bg->scroll.x=0;
 		if(bg->scroll.x>=5000-600)

@@ -17,7 +17,7 @@ o1->image_obs1[3]=IMG_Load("outils/obs03_3.png") ;
 o1->image_obs1[4]=IMG_Load("outils/obs03_4.png") ;
 o1->image_obs1[5]=IMG_Load("outils/obs03_5.png") ;
 o1->image_obs1[6]=IMG_Load("outils/obs03_6.png") ;
-o1->speed=25;
+o1->speed=35;
 // positions
 
    o1->position_obs1.x=1940;
@@ -51,6 +51,17 @@ if(clic==2)//walk droite
 		o1->position_obs1.x+=o1->speed;
 		
 	}
+if(clic==5)//walk droite
+	{
+		
+		o1->position_obs1.x-=o1->speed+2;
+		
+	}
+	else if ((clic==6)&&(o1->position_obs1.x<100))//walk gauche
+	{ 
+		o1->position_obs1.x+=o1->speed+2;
+		
+	}
 }
 
 
@@ -72,7 +83,7 @@ o2->position_obs22.x=5450;
    o2->position_obs22.y=400;
 /*
    o2->position_obs2.w=0.677;
-   o2->position_obs2.h=1.213;*/o2->speed=25;
+   o2->position_obs2.h=1.213;*/o2->speed=35;
 }
 void afficher_obstacle2(obstacle o2, SDL_Surface *ecran)
 {  
@@ -96,6 +107,19 @@ if(clic==2)//walk droite
 		
 		
 	}
+if(clic==5)//walk droite
+	{
+		
+		o2->position_obs21.x-=o2->speed+2;
+
+		
+	}
+	else if ((clic==6)&&(o2->position_obs21.x<5430))//walk gauche
+	{ 
+		o2->position_obs21.x+=o2->speed+2;
+		
+		
+	}
 }
 
 
@@ -111,7 +135,7 @@ if(clic==2)//walk droite
 
    o3->position_obs3.x=5430;
    o3->position_obs3.y=0;
-o3->speed=25;
+o3->speed=35;
 /*
    o3->position_trap.w=0.677;
    o3->position_trap.h=0.290;*/
@@ -142,139 +166,19 @@ if(clic==2)//walk droite
 		
 		
 	}
+if(clic==5)//walk droite
+	{
+		
+		o3->position_obs3.x-=o3->speed+2;
+
+		
+	}
+	else if ((clic==6)&&(o3->position_obs3.x<2240))//walk gauche
+	{ 
+		o3->position_obs3.x+=o3->speed+2;
+		
+		
+	}
 }
-
-/*
-
-int collision_obstacle1(obstacle *o1)
-{
-
-
-    if( personnage.x+personnage.w <= o1->position_obs1.x )
-    {
-        return 0; // il y a une collision 
-    }
-
-    if( personnage.x>=o1->position_obs1.x+o1->position_obs1.w )
-    {
-        return 0;
-    }
-
-    if( personnage.y+personnage.h <= o1->position_obs1.y )
-    {
-        return 0;
-    }
-
-    if( personnage.y >= o1->position_obs1.y+o1->position_obs1.h )
-    {
-        return 0;
-    }
-
-   
-    return 1;
-}
-
-
-int collision_enemie(SDL_Rect personnage, SDL_Rect enemie *en)
-{
-
-
-    if( personnage.x+personnage.w <= en->postion_enemie.x )
-    {
-        return 0;
-    }
-
-    if( personnage.x >= en->postion_enemie.x+en->postion_enemie.w )
-    {
-        return 0;
-    }
-
-    if( personnage.y+personnage.h <= en->postion_enemie.y )
-    {
-        return 0;
-    }
-
-    if( personnage.y>= en->postion_enemie.y+en->postion_enemie.h )
-    {
-        return 0;
-    }
-
-   
-    return 1;
-}
-
-
-int collision_obstacle(SDL_Rect personnage, SDL_Rect obstacle *o2)
-{
-
-
-    if( personnage.x+personnage.w <= o2->position_obs2.x )
-    {
-        return 0;
-    }
-
-    if( personnage.x >=o2->position_obs2.x+o2->position_obs2.w )
-    {
-        return 0;
-    }
-
-    if( personnage.y+personnage.h <= o2->position_obs2.y )
-    {
-        return 0;
-    }
-
-    if( personnage.y >= o2->position_obs2.y+o2->position_obs2.h )
-    {
-        return 0;
-    }
-
-   
-    return 1;
-}
-int collision_obstacle(SDL_Rect personnage, SDL_Rect obstacle *o3)
-{
-
-
-    if( personnage.x+personnage.w <= o3->position_obs3.x )
-    {
-        return 0;
-    }
-
-    if( personnage.y >=o3->position_obs3.h+o3->position_obs3.y)
-    {
-        return 0;
-    }
-
-    if( personnage.y+personnage.h <= o3->position_obs3.y )
-    {
-        return 0;
-    }
-
-    if( personnage.y >= o3->position_obs3.y+o3->position_obs3.h )
-    {
-        return 0;
-    }
-
-   
-    return 1;
-}*/
-
-/*
-void animation_obstacle(obstacle *o)
-{
-
-
-if ((*o)==10)
-  (*o)=0;
- 
-if ( (*o)<=10)
-{
-(*o)++;
-
-SDL_Surface *obstacle_anime[10];
-						
-}
-}*/
-
 
 

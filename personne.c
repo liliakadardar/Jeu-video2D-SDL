@@ -14,7 +14,7 @@
 void initialiser_personnage(personnage *p)
 {
 p->position_personnage.x=0;
-p->position_personnage.y=250;
+p->position_personnage.y=300;
 
 
 char nomFich[130];
@@ -229,7 +229,7 @@ void deplacement_clavier(personnage *p,int clic)
 
 	else if(clic==5)
                {
-                 p->position_personnage.x += p->vitesse+5;
+                 p->position_personnage.x += p->vitesse+2;
                  animation_run_right (p);
                }
 
@@ -237,7 +237,7 @@ void deplacement_clavier(personnage *p,int clic)
 
 	else if(clic==6)
                {
-                 p->position_personnage.x -= p->vitesse+5;
+                 p->position_personnage.x -= p->vitesse+2;
                  animation_run_left (p);
                }
 
