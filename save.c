@@ -8,34 +8,50 @@
 
 /*-----Fonction de sauvegarde de la partie-----*/
 
-void save (SDL_Rect p.position_personnage.x,SDL_Rect p.position_personnage.y,int score)
+void save (personnage p,int valeur_score,vie v,temps t,int etat)
  { 
-    FILE* save = NULL;
-    save = fopen("sauvegarde.txt","w+"); // Ouverture en écriture du fichier sauvegarde.txt
+    FILE* saveF = NULL;
+    saveF = fopen("sauvegarde.txt","w+"); // Ouverture en écriture du fichier sauvegarde.txt
 
-        if(save != NULL)
+        if(saveF != NULL)
 {   // Ecriture dans le fichier des positions du joueur et score
-                fprintf(save,"%d\n%d\n",p.position_personnage.x,p.position_personnage.y);
-                fprintf(save,"%d\n",score);
+
+		if (etat=0)
+
+		fprintf(saveF,"**** Perdu ***\n");
+		if (etat=1)
+		fprintf(saveF,"**** Gagné ***\n");
+
+		fprintf(saveF,"** Etat: %d\n",etat);
+                fprintf(saveF,"** Position du personnage :%d | %d\n",p.position_personnage.x,p.position_personnage.y);
+                fprintf(saveF,"** Score :%d\n",valeur_score);
+		fprintf(saveF,"** nombre de Coeurs : %d\n",v.val);
+		fprintf(saveF,"** Temps: %d : %d\n",t.min,t.sec);
+
         }
 
-    fclose(save); // Fermeture du fichier
+    fclose(saveF); // Fermeture du fichier
 }
 
 
-/*------- Fonction de chargement de la partie--------*/
+/*------ Fonction de chargement de la partie--------*/
 
 
-void load (SDL_Rect p.position_personnage.x,SDL_Rect p.position_personnage.y,int score)
+void load (personnage *p,int valeur_score,vie v,temps t,int etat)
 { 
 
-    FILE* save = NULL;
-    save = fopen("sauvegarde.txt","r"); // Ouverture du fichier sauvegarde en lecture
+    FILE* saveF = NULL;
+    saveF = fopen("sauvegarde.txt","r"); // Ouverture du fichier sauvegarde en lecture
 
-    if(save != NULL) 
-	{ // Recuperation des positions du joueur et score
-            fscanf(save,"%d\n%d\n%d",p.position_personnage.x,p.position_personnage.y,&score);
-    }
+    if(saveF != NULL) 
+	{ // Recuperation des positions du joueur
+	    fscanf(saveF,"%d",&etat);
+            
+	    fscanf(saveF,"%d | %d",&p->position_personnage.x,&p->position_personnage.y);
+	    fscanf(saveF,"%d",&valeur_score);
+	    fscanf(saveF,"%d",&v.val);
+            fscanf(saveF,"%d:%d",&t.min,&t.sec);
+}
 
-    fclose(save); // Fermeture du fichier
+    fclose(saveF); // Fermeture du fichier
 }

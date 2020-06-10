@@ -12,9 +12,9 @@
 #include "temps.c"
 #include "ennemi.c"
 #include "potion.c"
+#include "finJeu.c"
+#include "save.c"
 
-//#include "save.c"
-//#include "collision.c"
 //#include "enigme.c"
 
 
@@ -42,6 +42,11 @@ int done=0; // lorsqu'on clique sur le clavier
 ennemi en1,en2;
 int ennemi1=1;
 int ennemi2=2;
+
+
+
+int etat=0; // variable pour mentionner son etat perdant ou gagant 
+
 
 
 /*
@@ -146,6 +151,7 @@ afficher_vie(v,ecran);
 afficher_temps(&t,ecran);
 
 //afficher_enigme(e1,ecran);
+
 // enigmeeeeeeeeeeeeeeeeeeeeeeeeee
 // ici y a une condition 3al enigme bich yaffichi ou yaffichi el temps d'enigme pas encore resolu 
 	//}
@@ -172,6 +178,9 @@ int clic=0;
                     {
                     case SDLK_ESCAPE:  // echape 
                     done = 1;
+printf("fin");
+ load (&p,valeur_score,v,t,etat);
+ save (p,valeur_score,v,t,etat);
                     break;
 
                     case SDLK_LEFT: // Flèche droite
@@ -287,42 +296,42 @@ potion0=0;}}
 /******* collision 2*************/
 if( collision_potion(&p,pt1)==1)
 {if (potion1==2)
-{
+{nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 
 potion1=0;}}
 /******* collision 3 *************/
 if( collision_potion(&p,pt2)==1)
 {if (potion2==3)
-{
+{nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 
 potion2=0;}}
 /******* collision 4*************/
 if( collision_potion(&p,pt3)==1)
 {if (potion3==4)
-{
+{nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 
 potion3=0;}}
 /******* collision 5*************/
 if( collision_potion(&p,pt4)==1)
 {if (potion4==5)
-{
+{nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 
 potion4=0;}}
 /******* collision 6*************/
 if( collision_potion(&p,pt5)==1)
 {if (potion5==6)
-{
+{nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 
 potion5=0;}}
 /******* collision 7*************/
 if( collision_potion(&p,pt6)==1)
 {if (potion6==7)
-{
+{nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 printf("col");
 
@@ -330,21 +339,21 @@ potion6=0;}}
 /******* collision 8*************/
 if( collision_potion(&p,pt7)==1)
 {if (potion7==8)
-{
+{nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 
 potion7=0;}}
 
 if( collision_potion(&p,pt8)==1)
 {if (potion8==9)
-{
+{nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 
 potion8=0;}}
 /******* collision 9*************/
 if( collision_potion(&p,pt9)==1)
 {if (potion9==10)
-{
+{nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 
 potion9=0;}}
@@ -353,20 +362,22 @@ printf("score :%d\n",valeur_score);
 printf("nb: :%d\n",nb_potion);
 /********** collision avec ennemi ******/
 if(collision_enn(&p,en1)==1)
+//gestion_vies(&v,&p);
 { if (ennemi1==1)
 {
-gestion_vies(&v,&p);
+
 ennemi1=0;}
 }
 
 if( collision_enn2(&p,en2)==1)
+//gestion_vies (&v,&p);
 //printf("hello uts me ");
  {if (ennemi2==2)
 {
 gestion_vies (&v,&p);
 ennemi2=0;}}
-
-
+/*-----FIN de jeu ------*/
+fin_jeu(v,&t,nb_potion,&p,ecran,etat);
 
 /*--------FLIP------*/
 SDL_Flip (ecran);

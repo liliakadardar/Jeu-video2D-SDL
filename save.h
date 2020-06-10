@@ -5,6 +5,9 @@
 #include <SDL/SDL_mixer.h>
 #include <SDL/SDL_ttf.h>
 
-void save (SDL_Rect p.position_personnage.x,SDL_Rect p.position_personnage.y,int score);
-void load (SDL_Rect p.position_personnage.x,SDL_Rect p.position_personnage.y,int score);
-#endif // SAVE_H_INCLUDED
+
+
+
+void save (personnage p,int valeur_score,vie v,temps t,int etat);
+void load (personnage *p,int valeur_score,vie v,temps t,int etat);
+

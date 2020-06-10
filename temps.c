@@ -33,6 +33,8 @@ SDL_Color couleurBlanche= {255, 255, 255};
 
         t->min=((t->secondesEcoulees/60)%60);
 	t->sec= ((t->secondesEcoulees)%60);
+printf("min: %d\n",t->min); 
+printf("sec: %d\n",t->sec);
 	 sprintf(t->entree,"%02d:%02d",t->min,t->sec);
       
 

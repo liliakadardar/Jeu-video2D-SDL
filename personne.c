@@ -140,7 +140,7 @@ int nb_frames_p=0;
 }
 
 //---------------------Animation en cas d'echouer a droite------------------------//
-/*
+
 void animation_fail_right (personnage *p)
 {
 int nb_frames_p=0;
@@ -150,10 +150,10 @@ int nb_frames_p=0;
 
 	p->Frame++;
 	
-}*/
+}
 
 //---------------------Animation en cas d'echouer a gauche------------------------//
-/*
+
 void animation_fail_left (personnage *p)
 {
 int nb_frames_p=0;
@@ -164,7 +164,7 @@ int nb_frames_p=0;
 	p->Frame++;
 	
 }
-*/
+
 
 //---------------------Animation de accroupissement droite---------------------//
 
