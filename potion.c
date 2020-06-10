@@ -163,6 +163,13 @@ if(clic==3)
 		pt0->position_potion.x-=pt0->speed;
 		
 	}
+
+if(clic==8)
+	{
+		
+		pt0->position_potion.x-=pt0->speed;
+		
+	}
 }
 		
 	
@@ -186,6 +193,12 @@ if(clic==5)//walk droite
 	}
 
 if(clic==3)
+	{
+		
+		pt1->position_potion.x-=pt1->speed;
+		
+	}
+if(clic==8)
 	{
 		
 		pt1->position_potion.x-=pt1->speed;
@@ -219,6 +232,12 @@ if(clic==3)
 		pt2->position_potion.x-=pt2->speed;
 		
 	}
+if(clic==8)
+	{
+		
+		pt2->position_potion.x-=pt2->speed;
+		
+	}
 }
 	
 void scroll_potion3(int clic, potion *pt3)
@@ -242,6 +261,12 @@ if(clic==5)//walk droite
 
 
 if(clic==3)
+	{
+		
+		pt3->position_potion.x-=pt3->speed;
+		
+	}
+if(clic==8)
 	{
 		
 		pt3->position_potion.x-=pt3->speed;
@@ -275,6 +300,12 @@ if(clic==3)
 		pt4->position_potion.x-=pt4->speed;
 		
 	}
+if(clic==8)
+	{
+		
+		pt4->position_potion.x-=pt4->speed;
+		
+	}
 }
 
 void scroll_potion5(int clic, potion *pt5)
@@ -297,6 +328,12 @@ if(clic==5)//walk droite
 	}
 
 if(clic==3)
+	{
+		
+		pt5->position_potion.x-=pt5->speed;
+		
+	}
+if(clic==8)
 	{
 		
 		pt5->position_potion.x-=pt5->speed;
@@ -329,6 +366,12 @@ if(clic==3)
 		pt6->position_potion.x-=pt6->speed;
 		
 	}
+if(clic==8)
+	{
+		
+		pt6->position_potion.x-=pt6->speed;
+		
+	}
 }
 
 void scroll_potion7(int clic, potion *pt7)
@@ -351,6 +394,12 @@ if(clic==5)//walk droite
 	}
 
 if(clic==3)
+	{
+		
+		pt7->position_potion.x-=pt7->speed;
+		
+	}
+if(clic==8)
 	{
 		
 		pt7->position_potion.x-=pt7->speed;
@@ -383,6 +432,12 @@ if(clic==3)
 		pt8->position_potion.x-=pt8->speed;
 		
 	}
+if(clic==8)
+	{
+		
+		pt8->position_potion.x-=pt8->speed;
+		
+	}
 }
 	
 void scroll_potion9(int clic, potion *pt9)
@@ -405,6 +460,12 @@ if(clic==5)//walk droite
 	}
 
 if(clic==3)
+	{
+		
+		pt9->position_potion.x-=pt9->speed;
+		
+	}
+if(clic==8)
 	{
 		
 		pt9->position_potion.x-=pt9->speed;
