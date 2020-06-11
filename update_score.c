@@ -47,14 +47,9 @@ char texte[20];
 strcpy(texte,"Score :"); // variable pouur l'affichage du message score sur l ecran 
 
 char number[20]; //tableau de chaine de c ou on va stocker la valeur du score 
-
-
-
 sprintf(number, "%d ", valeur_score);
 s->texte1= TTF_RenderText_Blended(s->police,texte,blanc);
 s->number1= TTF_RenderText_Blended(s->police,number,blanc);
-
-
  SDL_BlitSurface(s->texte1, NULL, ecran,&s->position_texte);
 SDL_BlitSurface(s->number1, NULL, ecran,&s->position_number);
 }
@@ -64,10 +59,12 @@ SDL_BlitSurface(s->number1, NULL, ecran,&s->position_number);
 void update_score  (int *valeur_score,score s,personnage *p, int nb_potion)
 {
   
-	*valeur_score=*valeur_score+25;	
+	*valeur_score=*valeur_score+5;	
 nb_potion++;
 
 }
+
+
 void free_score( score s)
 {
 SDL_FreeSurface(s.texte1);

@@ -6,8 +6,8 @@
 #include <SDL/SDL_ttf.h>
 #include "ennemi.h"
 
-/***********-------------- ENNEMI 1------------------**************/
 
+/***********-------------- ENNEMI 1------------------**************/
 
 void initialiser_ennemi1(ennemi *en1)
 {
@@ -27,35 +27,13 @@ en1->Frame=0;
 en1->speed=35;
 }
 
-void initialiser_ennemi2(ennemi *en2)
-{
-en2->position_entite.x=3325;
-en2->position_entite.y=50;
-en2->position_entite.w=448;
-en2->position_entite.h=373;
-  char entites[20];
-  int i;
-  for ( i = 0; i < 20; i++)
-  {
-      sprintf(entites,"ennemi/en2/%d.png",i);
-    en2->affichage_secondaire[i]=IMG_Load(entites);
-  }
-en2->Frame=0;en2->speed=35;
-}
 
 void afficher_ennemi1(ennemi en1, SDL_Surface *ecran)
 {
 SDL_BlitSurface(en1.affichage_secondaire[en1.Frame],NULL,ecran ,&(en1.position_entite));
 } 
 
-
-void afficher_ennemi2(ennemi en2, SDL_Surface *ecran)
-{
-SDL_BlitSurface(en2.affichage_secondaire[en2.Frame],NULL,ecran ,&(en2.position_entite));
-} 
-
-
-/*-- animation gauche/droite -- */
+/*-- animation gauche/droite EN1 -- */
 
 void animation_droite (ennemi *en1)
 {
@@ -67,8 +45,8 @@ void animation_droite (ennemi *en1)
 	en1->Frame++;
 	}
 
+	
 /*--SCROLL--*/
-
 
 void scroll_ennemi(int clic, ennemi *en1)
 {
@@ -103,12 +81,28 @@ if(clic==3)
 		en1->position_entite.x-=en1->speed;
 		
 	}
+if(clic==7)
+	{
+		
+		en1->position_entite.x-=en1->speed;
+		
+	}
+if(clic==8)
+	{
+		
+		en1->position_entite.x-=en1->speed;
+		
+	}
+if(clic==9)
+	{
+		
+		en1->position_entite.x+=en1->speed;
+		
+	}
 
 }
 
-
-
-
+/*********--collision--*********/
 int collision_enn(personnage *p, ennemi en)
 {
 if (((p->position_personnage.x+p->position_personnage.w>=en.position_entite.x)&&(p->position_personnage.x+p->position_personnage.w<=en.position_entite.x+en.position_entite.w))||((p->position_personnage.x>=en.position_entite.x)&&(p->position_personnage.x<=en.position_entite.x+en.position_entite.w)))
@@ -116,18 +110,33 @@ if (((p->position_personnage.x+p->position_personnage.w>=en.position_entite.x)&&
 return 1;}
 return 0;
 }
-int collision_enn2(personnage *p, ennemi en2)
-{
-if (((p->position_personnage.x+p->position_personnage.w>=en2.position_entite.x)&&(p->position_personnage.x+p->position_personnage.w<=en2.position_entite.x+en2.position_entite.w))||((p->position_personnage.x>=en2.position_entite.x)&&(p->position_personnage.x<=en2.position_entite.x+en2.position_entite.w)))
-{if ((p->position_personnage.y+p->position_personnage.h>=en2.position_entite.y-en2.position_entite.h)&&(p->position_personnage.y<=en2.position_entite.y+en2.position_entite.h))
-return 1;}
-return 0;
-}
+
 /***********-------------- ENNEMI 2 ------------------**************/
 
+void initialiser_ennemi2(ennemi *en2)
+{
+en2->position_entite.x=3325;
+en2->position_entite.y=50;
+en2->position_entite.w=448;
+en2->position_entite.h=373;
+  char entites[20];
+  int i;
+  for ( i = 0; i < 20; i++)
+  {
+      sprintf(entites,"ennemi/en2/%d.png",i);
+    en2->affichage_secondaire[i]=IMG_Load(entites);
+  }
+en2->Frame=0;en2->speed=35;
+}
 
-/*-- animation gauche/droite -- */
 
+void afficher_ennemi2(ennemi en2, SDL_Surface *ecran)
+{
+SDL_BlitSurface(en2.affichage_secondaire[en2.Frame],NULL,ecran ,&(en2.position_entite));
+} 
+
+
+/*-- animation gauche/droite EN 2 -- */
 void animation_droite2(ennemi *en2)
 {
 	if(en2->Frame<=0 || en2->Frame>=9)
@@ -175,7 +184,37 @@ if(clic==3)
 		
 	}
 
+if(clic==7)
+	{
+		
+		en2->position_entite.x-=en2->speed;
+		
+	}
+if(clic==8)
+	{
+		
+		en2->position_entite.x-=en2->speed;
+		
+	}
+if(clic==9)
+	{
+		
+		en2->position_entite.x+=en2->speed;
+		
+	}
 }
+
+/*********--collision--*********/
+int collision_enn2(personnage *p, ennemi en2)
+{
+if (((p->position_personnage.x+p->position_personnage.w>=en2.position_entite.x)&&(p->position_personnage.x+p->position_personnage.w<=en2.position_entite.x+en2.position_entite.w))||((p->position_personnage.x>=en2.position_entite.x)&&(p->position_personnage.x<=en2.position_entite.x+en2.position_entite.w)))
+{if ((p->position_personnage.y+p->position_personnage.h>=en2.position_entite.y-en2.position_entite.h)&&(p->position_personnage.y<=en2.position_entite.y+en2.position_entite.h))
+return 1;}
+return 0;
+}
+
+
+
 /*
 void animation_up_down (ennemi *en1)
 {

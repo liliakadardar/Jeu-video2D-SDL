@@ -69,6 +69,24 @@ if(clic==3)
 		o1->position_obs1.x-=o1->speed;
 		
 	}
+if(clic==7)
+	{
+		
+		o1->position_obs1.x-=o1->speed;
+		
+	}
+if(clic==8)
+	{
+		
+		o1->position_obs1.x-=o1->speed;
+		
+	}
+if(clic==9)
+	{
+		
+		o1->position_obs1.x+=o1->speed;
+		
+	}
 
 }
 
@@ -136,6 +154,24 @@ if(clic==3)
 		o2->position_obs21.x-=o2->speed;
 		
 	}
+if(clic==7)
+	{
+		
+		o2->position_obs21.x-=o2->speed;
+		
+	}
+if(clic==8)
+	{
+		
+		o2->position_obs21.x-=o2->speed;
+		
+	}
+if(clic==9)
+	{
+		
+		o2->position_obs21.x+=o2->speed;
+		
+	}
 }
 
 
@@ -195,12 +231,29 @@ if(clic==5)//walk droite
 		
 		
 	}
-
-
 if(clic==3)
 	{
 		
 		o3->position_obs3.x-=o3->speed;
+		
+	}
+
+if(clic==8)
+	{
+		
+		o3->position_obs3.x-=o3->speed;
+		
+	}
+if(clic==7)
+	{
+		
+		o3->position_obs3.x-=o3->speed;
+		
+	}
+if(clic==9)
+	{
+		
+		o3->position_obs3.x+=o3->speed;
 		
 	}
 }

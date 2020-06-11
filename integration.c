@@ -28,20 +28,31 @@ int main(int argc, char *argv[])
 
 //menu m;
 background bg; temps t;
-score s; vie v; int valeur_score=0; int nb_potion=0; int potion0=1;
-int potion1=2;int potion2=3;int potion3=4;int potion4=5;int potion5=6;int potion6=7;int potion7=8;int potion8=9;int potion9=10;
+score s; vie v; 
+personnage p; obstacle o1,o2,o3; 
 
+int valeur_score=0; int nb_potion=0; 
 
-personnage p; obstacle o1,o2,o3; //collision c;
+/*POTIONS*/
+int potion0=1;
+int potion1=2;
+int potion2=3;int potion3=4
+;int potion4=5;int potion5=6;
+int potion6=7;int potion7=8;int potion8=9;
+int potion9=10;
+
+// Ennemis 
+ennemi en1,en2;
+
+int ennemi1=1;
+int ennemi2=2;
+
 int touche=1; 
 int sens=0;
 // les Enigmes 
-//enigme e1,e2,e3,e4,e5,e6;
+//enigme e1,e2;
+
 int done=0; // lorsqu'on clique sur le clavier 
-// Ennemis 
-ennemi en1,en2;
-int ennemi1=1;
-int ennemi2=2;
 
 
 
@@ -65,7 +76,7 @@ SDL_Event event;
 
 /*---------------------------------------------------------------- INITIALISATION ---------------------------------------------------------------- */ 
 
-// fenetre et ecran
+/*---- fenetre et ecran ----*/
 
  SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER);
  TTF_Init();
@@ -75,54 +86,48 @@ SDL_Event event;
     SDL_WM_SetCaption("Land Of Gargoyls", NULL);
 
 
-// les fonctions 
+//les fonctions 
 
 //initialiser_menu(&m);
+
 initialiser_background(&bg);
 initialiser_personnage(&p);
 initialiser_temps(&t);
 initialiser_vie(&v);
 initialiser_score (valeur_score, &s );
-
 initialiser_obstacle1(&o1);
 initialiser_obstacle2(&o2);
 initialiser_obstacle3(&o3);
-
 initialiser_ennemi1(&en1);
 initialiser_ennemi2(&en2);
-
 initialiser_potion();
-
-
-//enigme
 //initialiser_enigme(&e1);
 //initialiser_enigme(&e2);
 
 
-
-
-
-
 /*---------------------------------------------------------------- DISPLAY ----------------------------------------------------------------*/
 
-// la boucle du jeu 
- while (!done)
-{ 
+	/****----- la boucle du jeu -----****/
+ 
+	while (!done)
+	{ 
 
 /*if (i==0) // lorsqu'on est dans le menu
 	{afficher_menu(m,ecran);}
 
 if (i==1) // lorsq'on est dans le jeu
 	{*/
+
 afficher_background(bg,ecran);
- 
 afficher_obstacle1(o1,ecran);
 afficher_obstacle2(o2,ecran);
 afficher_obstacle3(o3,ecran);
-if(ennemi1)
+
+//if(ennemi1)
 afficher_ennemi1(en1,ecran);
-if(ennemi2)
+//if(ennemi2)
 afficher_ennemi2(en2,ecran);
+
 if (potion4)
 afficher_potion4(ecran);
 if (potion0)
@@ -143,13 +148,11 @@ if (potion8)
 afficher_potion8(ecran);
 if (potion9)
 afficher_potion9(ecran);
-//if ((potion0)||(potion1)||(potion2)||(potion3)||(potion5)||(potion6)||(potion7)||(potion8)||(potion9))
-//afficher_potion(ecran);
+
 afficher_personnage(p,ecran);
 afficher_score(&s,ecran,valeur_score);
 afficher_vie(v,ecran);
 afficher_temps(&t,ecran);
-
 //afficher_enigme(e1,ecran);
 
 // enigmeeeeeeeeeeeeeeeeeeeeeeeeee
@@ -178,9 +181,9 @@ int clic=0;
                     {
                     case SDLK_ESCAPE:  // echape 
                     done = 1;
-printf("fin");
- load (&p,valeur_score,v,t,etat);
- save (p,valeur_score,v,t,etat);
+		printf("fin");
+		load (&p,valeur_score,v,t,etat,nb_potion);
+		save (p,valeur_score,v,t,etat,nb_potion);
                     break;
 
                     case SDLK_LEFT: // Flèche droite
@@ -203,12 +206,12 @@ printf("fin");
                     case SDLK_SPACE: 
                     clic=5;
                     break; 
-                    // Touche pour slide:glisser clic sur "0"
+                    // Touche pour slide:glisser touche d'entree
                     case SDLK_RETURN: 
                     clic=6;
                     break; 
 
-                    // option pour le joueur
+                  
                     case SDLK_s: 
                         clic=7;
                         break;
@@ -222,6 +225,7 @@ printf("fin");
 			case SDLK_p: 
 			clic=12;
                         break;
+
                    }
                 break;
 
@@ -249,27 +253,27 @@ printf("fin");
 if (clic!=0)
 //if ((p.position_personnage.x)>800) 
 {
-/*deplacement du personnage */
+
+	/*-----deplacement du personnage -----*/
 deplacement_clavier(&p,clic);
 deplacement_sourie(&p,clic);
 Evolue(&p,clic);
-
 scrolling_bg(clic,&bg);
 
-/*--- animations Ennemis---*/
+	/*--- animations Ennemis---*/
 animation_droite (&en1);
 SDL_Delay(80);
 animation_droite2 (&en2);
 SDL_Delay(80);
 
-// pour faire rouler les entites au meme temps avec le scrolling du perso 
+/* pour faire rouler les entites au meme temps avec le scrolling du perso */
 scroll_ennemi(clic,&en1);
 scroll_ennemi2(clic,&en2);
 scroll_obstacle(clic,&o1);
 scroll_obstacle2(clic,&o2);
 scroll_obstacle3(clic,&o3);
 
-/* POTIONS */
+
 scroll_potion0(clic, &pt0);
 scroll_potion1(clic,&pt1);
 scroll_potion2(clic, &pt2);
@@ -282,113 +286,111 @@ scroll_potion8(clic,&pt8);
 scroll_potion9(clic, &pt9);
 
 }
-printf("pos:%d\n",p.position_personnage.x );
 
-/******* collision 1*************/
 
+
+		/**--------Collision avec les Potions-------**/
+
+/* collision 0*/
 if( collision_potion(&p,pt0)==1)
 { if (potion0==1)
 {
 update_score (&valeur_score,s,&p,nb_potion);
 nb_potion++;
 potion0=0;}}
-
-/******* collision 2*************/
+/*collision 1 */
 if( collision_potion(&p,pt1)==1)
 {if (potion1==2)
 {nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
-
 potion1=0;}}
-/******* collision 3 *************/
+/*collision 2*/
 if( collision_potion(&p,pt2)==1)
 {if (potion2==3)
 {nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
-
 potion2=0;}}
-/******* collision 4*************/
+/* collision 3*/
 if( collision_potion(&p,pt3)==1)
 {if (potion3==4)
 {nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
-
 potion3=0;}}
-/******* collision 5*************/
+/* collision 4*/
 if( collision_potion(&p,pt4)==1)
 {if (potion4==5)
 {nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
-
 potion4=0;}}
-/******* collision 6*************/
+/* collision 5*/
 if( collision_potion(&p,pt5)==1)
 {if (potion5==6)
 {nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
-
 potion5=0;}}
-/******* collision 7*************/
+/* collision 6*/
 if( collision_potion(&p,pt6)==1)
 {if (potion6==7)
 {nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
 printf("col");
-
 potion6=0;}}
-/******* collision 8*************/
+/* collision 7*/
 if( collision_potion(&p,pt7)==1)
 {if (potion7==8)
 {nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
-
 potion7=0;}}
-
+/* collision 8*/
 if( collision_potion(&p,pt8)==1)
 {if (potion8==9)
 {nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
-
 potion8=0;}}
-/******* collision 9*************/
+/*collision 9*/
 if( collision_potion(&p,pt9)==1)
 {if (potion9==10)
 {nb_potion++;
 update_score (&valeur_score,s,&p,nb_potion);
-
 potion9=0;}}
 
-printf("score :%d\n",valeur_score);
-printf("nb: :%d\n",nb_potion);
-/********** collision avec ennemi ******/
+
+		/**------- collision avec ennemi -------**/
+
+/*-collision ennemi 1-*/
 if(collision_enn(&p,en1)==1)
 //gestion_vies(&v,&p);
 { if (ennemi1==1)
 {
-
+gestion_vies(&v,&p);
 ennemi1=0;}
 }
-
+/*-collision ennemi 2-*/
 if( collision_enn2(&p,en2)==1)
 //gestion_vies (&v,&p);
-//printf("hello uts me ");
- {if (ennemi2==2)
+{if (ennemi2==2)
 {
 gestion_vies (&v,&p);
 ennemi2=0;}}
-/*-----FIN de jeu ------*/
+
+
+//printf("score :%d\n",valeur_score);
+printf("nb: :%d\n",nb_potion);
+printf("pos:%d\n",p.position_personnage.x );
+	/*-----FIN de jeu ------*/
+
 fin_jeu(v,&t,nb_potion,&p,ecran,etat);
+
 
 /*--------FLIP------*/
 SDL_Flip (ecran);
+
 }
 
 /*----------------------------------------------------------------  FIN  ----------------------------------------------------------------*/
 free_temps(&t,ecran);
 free_score(s);
- //vie_freevie(v ) ;
-//save (p.position_personnage.x,p.position_personnage.y,s.score);
-//load (p.position_personnage.x,p.position_personnage.y,s.score);
+//vie_freevie(v ) ;
 
 // liberation SDL
 TTF_Quit();

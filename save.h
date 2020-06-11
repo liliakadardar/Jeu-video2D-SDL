@@ -6,8 +6,6 @@
 #include <SDL/SDL_ttf.h>
 
 
-
-
-void save (personnage p,int valeur_score,vie v,temps t,int etat);
-void load (personnage *p,int valeur_score,vie v,temps t,int etat);
+void save (personnage p,int valeur_score,vie v,temps t,int etat,int nb_potion);
+void load (personnage *p,int valeur_score,vie v,temps t,int etat,int nb_potion);
 

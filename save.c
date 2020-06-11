@@ -8,7 +8,7 @@
 
 /*-----Fonction de sauvegarde de la partie-----*/
 
-void save (personnage p,int valeur_score,vie v,temps t,int etat)
+void save (personnage p,int valeur_score,vie v,temps t,int etat,int nb_potion)
  { 
     FILE* saveF = NULL;
     saveF = fopen("sauvegarde.txt","w+"); // Ouverture en écriture du fichier sauvegarde.txt
@@ -23,10 +23,11 @@ void save (personnage p,int valeur_score,vie v,temps t,int etat)
 		fprintf(saveF,"**** Gagné ***\n");
 
 		fprintf(saveF,"** Etat: %d\n",etat);
-                fprintf(saveF,"** Position du personnage :%d | %d\n",p.position_personnage.x,p.position_personnage.y);
+                //fprintf(saveF,"** Position du personnage :%d | %d\n",p.position_personnage.x,p.position_personnage.y);
                 fprintf(saveF,"** Score :%d\n",valeur_score);
 		fprintf(saveF,"** nombre de Coeurs : %d\n",v.val);
-		fprintf(saveF,"** Temps: %d : %d\n",t.min,t.sec);
+		fprintf(saveF,"** nombre des potions : %d\n",nb_potion);
+		fprintf(saveF,"** Temps: %d min:%d sec\n",t.min,t.sec);
 
         }
 
@@ -37,7 +38,7 @@ void save (personnage p,int valeur_score,vie v,temps t,int etat)
 /*------ Fonction de chargement de la partie--------*/
 
 
-void load (personnage *p,int valeur_score,vie v,temps t,int etat)
+void load (personnage *p,int valeur_score,vie v,temps t,int etat,int nb_potion)
 { 
 
     FILE* saveF = NULL;
@@ -47,9 +48,10 @@ void load (personnage *p,int valeur_score,vie v,temps t,int etat)
 	{ // Recuperation des positions du joueur
 	    fscanf(saveF,"%d",&etat);
             
-	    fscanf(saveF,"%d | %d",&p->position_personnage.x,&p->position_personnage.y);
+	    //fscanf(saveF,"%d | %d ",&p->position_personnage.x,&p->position_personnage.y);
 	    fscanf(saveF,"%d",&valeur_score);
 	    fscanf(saveF,"%d",&v.val);
+		fscanf(saveF,"%d",&nb_potion);
             fscanf(saveF,"%d:%d",&t.min,&t.sec);
 }
 
